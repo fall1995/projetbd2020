@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+-->
+
+<xsd:schema version="1.0"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://classesGen/ingredient"
+            xmlns="http://classesGen/ingredient"
+            elementFormDefault="qualified">
+    <xsd:element name="ingredient" type="Ingredient"/> 
+    <xsd:simpleType name="Ingredient">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="viande"/>
+            <xsd:enumeration value="tomates"/>
+            <xsd:enumeration value="salade"/>
+            <xsd:enumeration value="olives"/>
+            <xsd:enumeration value="pain"/>
+            <xsd:enumeration value="avocate"/>
+            <xsd:enumeration value="sel"/>
+            <xsd:enumeration value="sucre"/>
+            <xsd:enumeration value="lait"/>
+            <xsd:enumeration value="fromage"/>
+            <xsd:enumeration value="poulet"/>
+            <xsd:enumeration value="orange"/>
+            <xsd:enumeration value="citron"/>
+            <xsd:enumeration value="framboise"/>
+            <xsd:enumeration value="fraise"/>
+            <xsd:enumeration value="champignons"/>
+            <xsd:enumeration value="mangue"/>
+            <xsd:enumeration value="pâtes"/>
+            <xsd:enumeration value="pomme"/>
+            <xsd:enumeration value="oignons"/>
+            <xsd:enumeration value="kiwi"/>
+            <xsd:enumeration value="thé"/>
+            <xsd:enumeration value="espresso"/>
+            <xsd:enumeration value="amande"/>
+            <xsd:enumeration value="vanille"/>
+            <xsd:enumeration value="chocolat"/>
+            <xsd:enumeration value="caramel"/>
+            <xsd:enumeration value="café"/>
+            <xsd:enumeration value="avocat"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
