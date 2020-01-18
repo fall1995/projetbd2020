@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {StorageService} from '../service/storage.service';
 import {Router} from '@angular/router';
 import {CommandeService} from '../service/commande.service';
@@ -6,6 +6,11 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {MessageService} from 'primeng/api';
 import {User} from '../tmdb-data/user';
 import {AuthService} from '../service/auth.service';
+import {TmdbService} from '../service/tmdb.service';
+import { EventEmitterService } from '../service/event-emitter.service';
+
+
+
 
 @Component({
     selector: 'app-panier',
@@ -14,9 +19,9 @@ import {AuthService} from '../service/auth.service';
 })
 export class PanierComponent implements OnInit {
 
-    constructor(private storageService: StorageService, private route: Router, private message: MessageService,
-                private commandeService: CommandeService, private afAuth: AngularFireAuth,
-                private authService: AuthService) {
+    constructor( private tmdbService: TmdbService, private storageService: StorageService, private route: Router, private message: MessageService,
+                 private commandeService: CommandeService, private afAuth: AngularFireAuth,
+                 private authService: AuthService, private eventEmitterService: EventEmitterService) {
 
     }
 
@@ -30,6 +35,8 @@ export class PanierComponent implements OnInit {
     totalMenu: any;
     totalMovie: any;
     total: number = 0;
+    prevScrollpos:any;
+
 
     ngOnInit() {
         this.init();
@@ -37,7 +44,6 @@ export class PanierComponent implements OnInit {
             (user) => {
                 if (user) {
                     this.isAuth = true;
-
                 } else {
                     this.isAuth = false;
                 }
@@ -45,6 +51,8 @@ export class PanierComponent implements OnInit {
         );
         this.initDialog();
         this.totalPanier();
+        this.prevScrollpos = window.pageYOffset;
+
     }
 
     init() {
@@ -52,22 +60,24 @@ export class PanierComponent implements OnInit {
         this.movie = this.storageService.getMieuNote();
         this.adresse = localStorage.getItem('adresse');
     }
-    /*
-    ici on calcul le total du panier
-     */
+
     totalPanier() {
-        this.totalMovie = 0.0;
-        this.totalMenu = 0.0;
-        let i: number;
-        let tabPrixMovie = JSON.parse(localStorage.getItem('totalMovie'));
-        for (i = 0; i < tabPrixMovie.length; i++) {
-            this.totalMovie += +tabPrixMovie[i];
+        if(this.movie){
+            this.totalMovie = this.movie.length*3.79;
+        }else{
+            this.totalMovie=0;
         }
+        this.totalMovie = Math.round(this.totalMovie*100)/100;
+        this.totalMenu = 0;
+        let i: number;
         let tabPrixMenu = JSON.parse(localStorage.getItem('totalMenu'));
-        for (i = 0; i < tabPrixMenu.length; i++) {
-            this.totalMenu += +tabPrixMenu[i];
+        if(tabPrixMenu){
+            for (i = 0; i < tabPrixMenu.length; i++) {
+                this.totalMenu += +tabPrixMenu[i];
+            }
         }
         this.total = this.totalMenu+this.totalMovie;
+        this.total = Math.round(this.total*100)/100;
     }
 
     async initDialog() {
@@ -75,7 +85,7 @@ export class PanierComponent implements OnInit {
             if (u) {
                 this.authService.getUser(u.uid).then(res => {
                     this.user = res;
-                    console.log(this.user);
+                    console.log(this.user)
                 }, r => {
                     console.log('errr' + r);
                 });
@@ -83,15 +93,16 @@ export class PanierComponent implements OnInit {
         });
     }
 
+
     /**
      * effacer l'élément sélectionné(plat)
      * @param index
      */
-    deleteMenusSelected(index: number) {
+    deleteMenusSelected(index) {
         this.storageService.delete(index);
         this.init();
         this.totalPanier();
-
+        this.eventEmitterService.refreshPanier();
     }
 
     /**
@@ -102,28 +113,24 @@ export class PanierComponent implements OnInit {
         this.storageService.deleteMovie(index);
         this.init();
         this.totalPanier();
-    }
-    
-
-    /**
-     * bouton de retour vers le menu
-     */
-    retour() {
-        this.route.navigate(['/menus']);
+        this.eventEmitterService.refreshPanier();
     }
 
-    /**
-     * bouton qui affiche le dialog pop up
-     */
-    afficherDialogProfil(): void {
-        this.afficherDialog = true;
+    @HostListener('window:scroll', ['$event'])
+    scrollHandler(event) {
+        let currentScrollPos = window.pageYOffset;
+        if ($( window ).width() > 900) {
+            if (this.prevScrollpos > currentScrollPos) {
+                if( currentScrollPos >34){
+                    $("#infosClients").stop().animate({"marginTop": ($(window).scrollTop()-50) + "px"});
+                }
+            } else{
+                if( this.prevScrollpos >80){
+                    $("#infosClients").stop().animate({"marginTop": ($(window).scrollTop()-70) + "px"});
+                }
+            }
+        }
+        this.prevScrollpos = currentScrollPos;
     }
 
-    /**
-     * fermeture du dialog pop up
-     */
-    onHideProfilDialog(): void {
-        this.afficherDialog = false;
-    }
 }
-

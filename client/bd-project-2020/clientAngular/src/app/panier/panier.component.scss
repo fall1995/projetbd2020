@@ -1,11 +1,37 @@
+.card-img{
+  margin-left: 1em;
+}
 
-.container{
-    margin: auto;
-    width:auto;
-  
-  }
 
-  #payer{
-    margin-left: 10px;
-  }
-  
+.card-img.film{
+  border:1px inset rgb(12, 229, 236);
+}
+
+.card-img.plat{
+  border:1px inset rgb(66, 240, 104);
+}
+
+#infosClients{
+  // position:fixed;
+  margin-left: 2.5em;
+  margin-top: 0.5em;
+  max-height: 32em;
+}
+
+#supprimerBoutton{
+  float: right;
+  margin-right: 1em;
+}
+
+#priceRightAlign{
+  float: right;
+  margin-right: 1em;
+}
+
+#CenterAlign{
+  text-align:center ;
+}
+
+h4 {
+  font-size: 16px;
+}

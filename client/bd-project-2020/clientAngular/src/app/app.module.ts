@@ -49,7 +49,7 @@ import {CarouselModule} from 'primeng/carousel';
 
 import 'hammerjs';
 import { UserDialogComponent } from './user-profil/user-dialog/user-dialog.component';
-import {FieldsetModule, OverlayPanelModule} from 'primeng/primeng';
+import {AccordionModule, FieldsetModule, OverlayPanelModule} from 'primeng/primeng';
 import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
 import {ValidationCommandeDialogComponent} from './panier/validation-commande-dialog/validation-commande-dialog.component';
@@ -101,7 +101,8 @@ import {ValidationCommandeDialogComponent} from './panier/validation-commande-di
         TooltipModule,
         MatStepperModule,
         MatFormFieldModule,
-        CarouselModule
+        CarouselModule,
+        AccordionModule
 
     ],
     providers: [TmdbService, MessageService,AuthService,MenuService, AuthGuardService, StorageService],
