@@ -1,9 +1,8 @@
 package l3m;
 
-import classesgen.plat.Plat;
-import classesgen.plats.Plats;
+
 import com.google.gson.Gson;
-import database.GestionnaireMenu;
+
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -30,13 +29,13 @@ public class LaCarteServlet extends HttpServlet {
         System.out.println( "========================================================== LaCarteServlet [doGet] =========================================================" );
         System.out.print("Récupération de la carte des plats ...");
         response.setContentType("application/json");
-        json = request.getParameter("json");
+     //   json = request.getParameter("json");
         
-        List<Plat> laCarte = GestionnaireMenu.getCartesDB();
+        // List<Plat> laCarte = GestionnaireMenu.getCartesDB();
         
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println( new Gson().toJson(laCarte) );
-        System.out.println("la carte est récupérée !");
+        //response.getWriter().println( new Gson().toJson(laCarte) );
+       // System.out.println("la carte est récupérée !");
     }
 }

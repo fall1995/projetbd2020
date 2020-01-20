@@ -63,7 +63,13 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 
 	@Override
 	public void getAllHebergements() {
-		// TODO Auto-generated method stub
+		try {
+			connectToDatabase();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 

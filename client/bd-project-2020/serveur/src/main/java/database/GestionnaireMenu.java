@@ -1,7 +1,6 @@
 package database;
 
-import classesgen.ingredient.Ingredient;
-import classesgen.plat.Plat;
+
 import classesgen.typedeplat.TypeDePlat;
 import com.google.gson.Gson;
 import java.io.FileReader;
@@ -22,6 +21,7 @@ import javax.xml.stream.events.XMLEvent;
 
 
 //TODO: Deplacer tous les methodes dans XMLAble?
+/*
 public class GestionnaireMenu  extends XMLAble{
     
     List<Plat> menu;
@@ -81,11 +81,12 @@ public class GestionnaireMenu  extends XMLAble{
         }
     }
     
-
+*/
     /**
      * Methode qui permet enlever un plat du menu
      * @param id
      */
+/*
     public void enleverDuMenu(String id) throws Exception {
         int i = 0;
         while (    !id.equals(menu.get(i).getId())     &&     i < menu.size()    ){
@@ -109,7 +110,7 @@ public class GestionnaireMenu  extends XMLAble{
      *
      * @return menu
      */
-
+/*
     public List<Plat> getMenu() {
         return menu;
     }
@@ -137,7 +138,7 @@ public class GestionnaireMenu  extends XMLAble{
      * Methode qui permet de recuperer les plats
      *
      * @return res
-     */
+     
     public static List<Plat> getCartesDB() {
         List<Plat> res = new ArrayList<Plat>();
         Plat target = new Plat();
@@ -218,5 +219,6 @@ public class GestionnaireMenu  extends XMLAble{
 
         return res;
     }
+    */
 
-}
+

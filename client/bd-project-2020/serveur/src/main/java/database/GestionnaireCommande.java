@@ -17,17 +17,17 @@ import oracle.jdbc.OracleTypes;
  * d'un client
  */
 public class GestionnaireCommande extends SQLAble {
+	/*
 
     private Commande commande;
 
-    /**
-     *
+  
+    
      * @param idClient
      * @param idPlats
      * @param idFilms
      * @param adresseLivraison
-     * @throws Exception
-     */
+
     public GestionnaireCommande(String idClient, List<String> idPlats, List<String> idFilms, String adresseLivraison)
             throws Exception {
 
@@ -39,10 +39,7 @@ public class GestionnaireCommande extends SQLAble {
         computePrix();
     }
 
-    /**
-     *
-     * @param id
-     */
+   
     public GestionnaireCommande(String id) {
         commande = new Commande();
         commande.setId(id);
@@ -78,11 +75,7 @@ public class GestionnaireCommande extends SQLAble {
         commande.setPrix(prixFilms + prixPlats);
     }
 
-    /**
-     *
-     * @throws SQLException
-     * @throws Exception
-     */
+   
     public void enregistrerCommandeDB() throws SQLException, Exception {
         try {
             connectToDatabase();
@@ -154,12 +147,6 @@ public class GestionnaireCommande extends SQLAble {
         }
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     * @throws SQLException
-     */
     public static Commande getCommande(String id) throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande(id);
         gc.connectToDatabase();
@@ -207,13 +194,7 @@ public class GestionnaireCommande extends SQLAble {
         return commande;
     }
 
-    /**
-     *
-     * @param idClient
-     * @return
-     * @throws SQLException
-     * @throws Exception
-     */
+    
     public static Commande getLastCommande(String idClient) throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande("0");
         gc.connectToDatabase();
@@ -245,10 +226,6 @@ public class GestionnaireCommande extends SQLAble {
         return commande;
     }
 
-    /**
-     *
-     * @return @throws SQLException
-     */
     public static List<String> getPlatsLesPlusCommandes() throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande("0");
         List<String> listIdPlatsPC = new ArrayList<String>();
@@ -271,10 +248,7 @@ public class GestionnaireCommande extends SQLAble {
         return listIdPlatsPC;
     }
 
-    /**
-     *
-     * @return @throws SQLException
-     */
+   
     public static List<String> getFilmsLesPlusVus() throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande("0");
         List<String> listIdFilmPV = new ArrayList<String>();
@@ -297,12 +271,7 @@ public class GestionnaireCommande extends SQLAble {
         return listIdFilmPV;
     }
 
-    /**
-     *
-     * @param idFilm
-     * @return
-     * @throws SQLException
-     */
+   
     public static List<String> getPlatsLesPlusCommandesAvec(String idFilm) throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande("0");
         List<String> listIdPlatsPCA = new ArrayList<String>();
@@ -326,11 +295,7 @@ public class GestionnaireCommande extends SQLAble {
         return listIdPlatsPCA;
     }
 
-    /**
-     *
-     * @param idPlat
-     * @return
-     */
+   
     public static List<String> getFilmsLesPlusVusAvec(String idPlat) throws SQLException, Exception {
         GestionnaireCommande gc = new GestionnaireCommande("0");
         List<String> listIdFilmPVA = new ArrayList<String>();
@@ -354,11 +319,7 @@ public class GestionnaireCommande extends SQLAble {
         return listIdFilmPVA;
     }
 
-    /**
-     *
-     * @param idPlat
-     * @return
-     */
+   
     private void ajouterPlatQtDB(String idCommande, String idPlat, int quantite) 
             throws SQLException, Exception {
         
@@ -374,11 +335,6 @@ public class GestionnaireCommande extends SQLAble {
         pstmt.close();
     }
 
-    /**
-     *
-     * @param idPlat
-     * @return
-     */
     private void ajouterFilmDB(String idCommande, String idFilm) 
             throws SQLException, Exception {
         
@@ -393,11 +349,7 @@ public class GestionnaireCommande extends SQLAble {
         pstmt.close();
     }
 
-    /**
-     *
-     * @param idPlat
-     * @return
-     */
+    
     private Map<String, Integer> listToMap(List<String> list) {
         Map<String, Integer> hashMap = new HashMap<String, Integer>();
         String elt = "";
@@ -419,13 +371,10 @@ public class GestionnaireCommande extends SQLAble {
         return hashMap;
     }
 
-    /**
-     *
-     * @return
-     */
+    
     public String CommandeToJson() {
         String json = new Gson().toJson(this.commande);
         return json;
     }
-
+*/
 }
