@@ -1,6 +1,7 @@
 package DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -44,7 +45,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 			ps.setString(17, h.getNomDep());
 			ps.setString(18, h.getNomRegion());
 			ps.setString(19, h.getDescription());
-			ps.setDate(20, h.getDateAjout());
+			ps.setDate(20, h.getDateAjout()); // toDate
 			ps.setInt(21, h.getIdUtilisateur());
 
 			ps.execute();
@@ -62,7 +63,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 	}
 
 	@Override
-	public void getAllHebergements() {
+	public void getHebergementsProches(int iDFestival, int nbPlaces, Date dateDebut, Date dateFin, String typeHebergement) {
 		try {
 			connectToDatabase();
 		} catch (ClassNotFoundException | SQLException e) {
