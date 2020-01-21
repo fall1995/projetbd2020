@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import ConnexionBase.SQLAble;
 import DAOInterfaces.HebergementInterface;
-import MesClasses.Hebergement;
+import mesClasses.Hebergement;
 
 public class HebergementDAO extends SQLAble implements HebergementInterface {
 	static Connection conn;

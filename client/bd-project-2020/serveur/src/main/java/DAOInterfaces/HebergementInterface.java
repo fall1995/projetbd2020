@@ -2,7 +2,7 @@ package DAOInterfaces;
 
 import java.sql.SQLException;
 
-import MesClasses.Hebergement;
+import mesClasses.Hebergement;
 
 public interface HebergementInterface {
 	public abstract void add(Hebergement h) throws SQLException ;
