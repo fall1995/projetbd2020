@@ -1,4 +1,4 @@
-package MesClasses;
+package mesClasses;
 
 import java.sql.Date;
 

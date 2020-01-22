@@ -12,16 +12,16 @@ drop table LesLogements;
 drop table LesPhotos;
 drop table LesAvis;
 drop table LesReservationHebergements;
-drop table LesPeriodeDeDisponibilite;
-drop table LesHebergements FORCE;
 drop table LesReservationPlaces;
 drop table LesPlaces;
 drop table LesReservations;
 drop table LesFestivals;
+drop table LesPeriodeDeDisponibilites;
+drop table LesHebergements FORCE;
 drop table LesHebergeurs FORCE;
 drop table LesClients;
 drop table LesOrganisateurs;
-drop table LesUtilisateurs ;
+drop table LesUtilisateurs FORCE;
 
 
 
@@ -34,7 +34,7 @@ CREATE TABLE LesUtilisateurs (
     tel        VARCHAR2(10),
     adresse  VARCHAR2(30),
     CONSTRAINT Utilisateur_C1 PRIMARY KEY ( idUtilisateur ),
-    constraint Utilisateur_C2 check (idUtilisateur between 1 and 99999)
+    constraint Utilisateur_C2 check (idUtilisateur between 0 and 99999)
 );
 
 
@@ -44,7 +44,7 @@ CREATE TABLE LesOrganisateurs (
     CONSTRAINT    fk_Organisateur_C2 
 	FOREIGN KEY (idUtilisateur) 
     	REFERENCES LesUtilisateurs ( idUtilisateur ) on delete cascade,
-    constraint Organisateur_C3 check (idUtilisateur between 1 and 99999)
+    constraint Organisateur_C3 check (idUtilisateur between 0 and 99999)
 );
 
 
@@ -54,7 +54,7 @@ CREATE TABLE LesClients (
     CONSTRAINT fk_Client_C2 
 	FOREIGN KEY (idUtilisateur) 
         REFERENCES LesUtilisateurs ( idUtilisateur ) on delete cascade,
-    constraint Client_3 check (idUtilisateur between 1 and 99999)
+    constraint Client_3 check (idUtilisateur between 0 and 99999)
 );
 
 
@@ -63,9 +63,43 @@ CREATE TABLE LesHebergeurs (
     idUtilisateur   NUMBER(5),
     CONSTRAINT Hebergeur_C1 PRIMARY KEY ( idUtilisateur ),
     CONSTRAINT    fk_Hebergeur_C2 FOREIGN KEY (idUtilisateur) REFERENCES LesUtilisateurs ( idUtilisateur ) on delete cascade,
-         constraint Hebergeur_C3 check (idUtilisateur between 1 and 99999)
+         constraint Hebergeur_C3 check (idUtilisateur between 0 and 99999)
 );
 
+CREATE TABLE LesHebergements (
+  idHebergement   number(10),
+  dateDePublication       DATE,
+  nomCommercial VARCHAR2(50) NOT NULL,
+  dateDeClassement     DATE,
+  nomCategorie      VARCHAR2(50),
+  classement        VARCHAR2(20),
+  adresse    VARCHAR2(40),
+  categorie    VARCHAR2(30),
+  codePostal    number(5),
+  commune   VARCHAR2(40),
+  numTel    number(20),
+  courriel    VARCHAR2(50),
+  siteNet    VARCHAR2(50),
+  coordonnees    FLOAT(10),
+  nomEPCI    FLOAT(10),
+  nomDep     VARCHAR2(40),
+  nomRegion     VARCHAR2(40),
+  Description      VARCHAR2(100),
+  dateAjout       DATE,
+  idUtilisateur number(5),
+  CONSTRAINT LesHebergements_C1 PRIMARY KEY ( idHebergement ),
+  CONSTRAINT    fk_LesHebergements_C2  FOREIGN KEY (idUtilisateur) REFERENCES LesHebergeurs ( idUtilisateur ) on delete cascade   
+);
+
+
+CREATE TABLE LesPeriodeDeDisponibilites (
+    idPerdiode   number(5),
+    dateDebutDispo  DATE,
+    dateFinDispo  DATE,
+    idHebergement number(10),
+    CONSTRAINT PeriodeDeDisponibilite_C1  PRIMARY KEY ( idPerdiode ),
+    CONSTRAINT fk_PeriodeDeDisponibilite_C2 FOREIGN KEY (idHebergement) REFERENCES LesHebergements ( idHebergement ) on delete cascade
+);
 CREATE TABLE LesFestivals (
     idFestival   VARCHAR2(10),
     nomFestival  VARCHAR2(20) NOT NULL,
@@ -79,6 +113,7 @@ CREATE TABLE LesFestivals (
     dateDebut   DATE,
     dateFin    DATE,
     dateCreation    DATE,
+    codepost NUMBER(6),
     codeINSEE    NUMBER(5),
     coordonneesINSEE    FLOAT(20),
     nomDepartement    VARCHAR2(100),
@@ -97,7 +132,7 @@ CREATE TABLE LesReservations (
     CONSTRAINT Reservation_C1  PRIMARY KEY ( idReservation ),
     CONSTRAINT fk_Reservation_C2 FOREIGN KEY (idUtilisateur) REFERENCES LesClients ( idUtilisateur ) on delete cascade,
     constraint Reservation_C3 check (prix >= 0),
-    constraint Reservation_C4 check (idReservation between 1 and 99999)
+    constraint Reservation_C4 check (idReservation between 0 and 99999)
 );
 
 CREATE TABLE LesPlaces (
@@ -120,44 +155,14 @@ CREATE TABLE LesReservationPlaces (
 	FOREIGN KEY (idReservation) 
         REFERENCES LesReservations ( idReservation ) on delete cascade,
     CONSTRAINT    fk_LesReservationPlaces_C3  FOREIGN KEY (idPlace) REFERENCES LesPlaces ( idPlace ) on delete cascade,
-    constraint ReservationPlace_C6 check (nbPlace between 1 and 99)
+    constraint ReservationPlace_C6 check (nbPlace between 0 and 99)
 );
 
 
 
-CREATE TABLE LesHebergements (
-  idHebergement   number(10),
-  dateDePublication       DATE,
-  nomCommercial VARCHAR2(50) NOT NULL,
-  dateDeClassement     DATE,
-  nomCategorie      VARCHAR2(50),
-  classement        VARCHAR2(20),
-  adresse    VARCHAR2(40),
-  categorie    VARCHAR2(30),
-  codePostal    number(5),
-  commune   VARCHAR2(40),
-  numTel    number(20),
-  courreil    VARCHAR2(50),
-  siteNet    VARCHAR2(50),
-  coordonnees    FLOAT(10),
-  nomEPCI    FLOAT(10),
-  nomDep     VARCHAR2(40),
-  nomRegion     VARCHAR2(40),
-  Description      VARCHAR2(100),
-  dateAjout       DATE,
-  idUtilisateur number(5),
-  CONSTRAINT LesHebergements_C1 PRIMARY KEY ( idHebergement ),
-  CONSTRAINT    fk_LesHebergements_C2  FOREIGN KEY (idUtilisateur) REFERENCES LesHebergeurs ( idUtilisateur ) on delete cascade   
-);
 
-CREATE TABLE LesPeriodeDeDisponibilites (
-    idPerdiode   number(5),
-    dateDebutDispo  DATE,
-    dateFinDispo  DATE,
-    idHebergement number(10),
-    CONSTRAINT PeriodeDeDisponibilite_C1  PRIMARY KEY ( idPerdiode ),
-    CONSTRAINT fk_PeriodeDeDisponibilite_C2 FOREIGN KEY (idHebergement) REFERENCES LesHebergements ( idHebergement ) on delete cascade
-);
+
+
 
 
 CREATE TABLE LesReservationHebergements (
@@ -183,7 +188,7 @@ CREATE TABLE LesAvis (
 	FOREIGN KEY (idReservation) 
         REFERENCES LesReservations ( idReservation ) on delete cascade,
     CONSTRAINT Avis_C3 check (note between 0 and 10 ),
-    CONSTRAINT Avis_C4 check (idAvis between 1 and 99999 )
+    CONSTRAINT Avis_C4 check (idAvis between 0 and 99999 )
 );
 
 
@@ -194,7 +199,7 @@ CREATE TABLE LesPhotos (
     CONSTRAINT    fk_Photo_C2 
 	FOREIGN KEY (idHebergement) 
         REFERENCES LesHebergements ( idHebergement ) on delete cascade,
-    CONSTRAINT Photo_C4 check (idPhoto between 1 and 99999 )
+    CONSTRAINT Photo_C4 check (idPhoto between 0 and 99999 )
 );
 
 
@@ -334,5 +339,51 @@ CREATE TABLE LesHebergementVillageVacances (
 show errors;
 
 
+table test pour implementer : 
+
+CREATE TABLE test2 (
+idF   VARCHAR2(10),
+nom VARCHAR2(80) NOT NULL,
+coord1 VARCHAR2(80) NOT NULL,
+coord2  VARCHAR2(80) NOT NULL,
+CONSTRAINT test2_C1 PRIMARY KEY ( idF )
+);
+
+
+
+
+
+CREATE TABLE test3 (
+    idFestival   VARCHAR2(10),
+    nomFestival  VARCHAR2(80) ,
+     region VARCHAR2(80) ,
+    domaine      VARCHAR2(80) ,
+    complementDomaine  VARCHAR2(80) ,
+    departement      NUMBER(2),
+    periodicite        VARCHAR2(20),
+    moiHabDebut    VARCHAR2(20),
+    siteWeb    VARCHAR2(80),
+    commune    VARCHAR2(50),
+    dateDebut   DATE,
+    dateFin    DATE,
+    dateCreation    DATE,
+    codepost NUMBER(6),
+    codeINSEE    NUMBER(6),
+    coord1    FLOAT(30),
+    coord2    FLOAT(30),
+    nomDepartement    VARCHAR2(100),
+    CONSTRAINT Fel_C1 PRIMARY KEY ( idFestival )
+);
+
+
+
+
+CREATE TABLE test2 (
+idF   VARCHAR2(10),
+nom VARCHAR2(80) NOT NULL,
+coord1 VARCHAR2(80) NOT NULL,
+coord2  VARCHAR2(80) NOT NULL,
+CONSTRAINT test2_C1 PRIMARY KEY ( idF )
+);
 
 
