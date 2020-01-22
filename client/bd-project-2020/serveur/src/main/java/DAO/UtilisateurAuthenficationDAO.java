@@ -2,7 +2,9 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import ConnexionBase.SQLAble;
 import DAOInterfaces.UtilisateurAuthenticationInterface;
@@ -12,9 +14,23 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 	
 
 	@Override
-	public boolean exist() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean exist(String idclient) throws SQLException  {
+		 int res=0;
+		Statement ps = conn.createStatement();
+		 String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur="+idclient+"";
+		 ResultSet resultats = ps.executeQuery(query);
+		
+		    while (resultats.next()) {
+		    	res = resultats.getInt(1);
+		    }
+		    resultats.close();
+		    if (res > 0) {
+				return true;
+			}
+		    else {
+		    	return false;
+			}
+		
 	}
 
 	@Override
@@ -34,7 +50,7 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 							"INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
 					ps.setString(1, idclient);
 					ps.setString(2, nom);
-					ps.setString(2, prenom);
+					ps.setString(3, prenom);
 					ps.executeQuery();
 				} catch (SQLException se) {
 					// log the exception
