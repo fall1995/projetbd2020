@@ -75,14 +75,15 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			        Date dateCreation = resultats.getDate(13);
 			        int codepost = resultats.getInt(14);
 			        String codeINSEE =  resultats.getString(15);
-			        String coordonneesINSEE = resultats.getString(16);
-			        String nomDepartement = resultats.getString(17);
-			        int nbPlaceLouees = resultats.getInt(18);
-			        Date dateAjout = resultats.getDate(19);
-			        int idUtilisateur = resultats.getInt(20);
+			        float coord1 = resultats.getFloat(16);
+			        float coord2 = resultats.getFloat(17);
+			        String nomDepartement = resultats.getString(18);
+			        int nbPlaceLouees = resultats.getInt(19);
+			        Date dateAjout = resultats.getDate(20);
+			        int idUtilisateur = resultats.getInt(21);
 			        
 			        // j'instancie la classe festival et je l'ajoute a ma liste de festivale
-			        fest = new Festival(idFestival, nomFestival, domaine, complementDomaine, region, departement, periodicite, moiHabDebut, siteWeb, commune, dateDebut, dateFin, dateCreation, codepost, codeINSEE, coordonneesINSEE, nomDepartement, nbPlaceLouees, dateAjout, idUtilisateur);
+			        fest = new Festival(idFestival, nomFestival, domaine, complementDomaine, region, departement, periodicite, moiHabDebut, siteWeb, commune, dateDebut, dateFin, dateCreation, codepost, codeINSEE, coord1,coord2, nomDepartement, nbPlaceLouees, dateAjout, idUtilisateur);
 			        festivals.add(fest);
 			    }
 			    resultats.close();
