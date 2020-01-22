@@ -8,7 +8,7 @@ import ConnexionBase.SQLAble;
 import DAOInterfaces.UtilisateurAuthenticationInterface;
 
 public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface{
-	static Connection conn;
+	
 	
 
 	@Override
@@ -31,7 +31,11 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 				try {
 
 					PreparedStatement ps = conn.prepareStatement(
-							"INSERT INTO LesUtilisateurs (idUtilisateur   ,nom ,prenom) VALUES (idclient,nom,prenom)");
+							"INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
+					ps.setString(1, idclient);
+					ps.setString(2, nom);
+					ps.setString(2, prenom);
+					ps.executeQuery();
 				} catch (SQLException se) {
 					// log the exception
 					throw se;
