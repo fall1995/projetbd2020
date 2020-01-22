@@ -21,7 +21,7 @@ export class PanierComponent implements OnInit {
 
     constructor( private tmdbService: TmdbService, private storageService: StorageService, private route: Router, private message: MessageService,
                  private commandeService: CommandeService, private afAuth: AngularFireAuth,
-                 private authService: AuthService, private eventEmitterService: EventEmitterService) {
+                 private authService: AuthService, private eventEmitterService: EventEmitterService){
 
     }
 
