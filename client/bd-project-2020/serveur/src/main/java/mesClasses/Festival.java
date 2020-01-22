@@ -14,23 +14,24 @@ public class Festival {
     String moiHabDebut;
     String siteWeb;
     String commune;
-    Date dateDebut;
-    Date dateFin;
-    Date dateCreation;
+    String dateDebut;
+    String dateFin;
+    String dateCreation;
     int codepost;
     String codeINSEE;
     float coord1;
     float coord2;
     String nomDepartement;
     int nbPlaceLouees;
-    Date dateAjout;
+    String dateAjout;
     int idUtilisateur;
     
     
+
 	public Festival(String idFestival, String nomFestival, String domaine, String complementDomaine, String region,
-			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, Date dateDebut,
-			Date dateFin, Date dateCreation, int codepost, String codeINSEE, float coord1, float coord2,
-			String nomDepartement, int nbPlaceLouees, Date dateAjout, int idUtilisateur) {
+			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, String dateDebut2,
+			String dateFin2, String dateCreation2, int codepost, String codeINSEE, float coord1, float coord2,
+			String nomDepartement, int nbPlaceLouees, String dateAjout2, int idUtilisateur) {
 		super();
 		this.idFestival = idFestival;
 		this.nomFestival = nomFestival;
@@ -42,16 +43,16 @@ public class Festival {
 		this.moiHabDebut = moiHabDebut;
 		this.siteWeb = siteWeb;
 		this.commune = commune;
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.dateCreation = dateCreation;
+		this.dateDebut = dateDebut2;
+		this.dateFin = dateFin2;
+		this.dateCreation = dateCreation2;
 		this.codepost = codepost;
 		this.codeINSEE = codeINSEE;
 		this.coord1 = coord1;
 		this.coord2 = coord2;
 		this.nomDepartement = nomDepartement;
 		this.nbPlaceLouees = nbPlaceLouees;
-		this.dateAjout = dateAjout;
+		this.dateAjout = dateAjout2;
 		this.idUtilisateur = idUtilisateur;
 	}
 
@@ -156,32 +157,32 @@ public class Festival {
 	}
 
 
-	public Date getDateDebut() {
+	public String getDateDebut() {
 		return dateDebut;
 	}
 
 
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(String dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
 
-	public Date getDateFin() {
+	public String getDateFin() {
 		return dateFin;
 	}
 
 
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(String dateFin) {
 		this.dateFin = dateFin;
 	}
 
 
-	public Date getDateCreation() {
+	public String getDateCreation() {
 		return dateCreation;
 	}
 
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
@@ -246,12 +247,12 @@ public class Festival {
 	}
 
 
-	public Date getDateAjout() {
+	public String getDateAjout() {
 		return dateAjout;
 	}
 
 
-	public void setDateAjout(Date dateAjout) {
+	public void setDateAjout(String dateAjout) {
 		this.dateAjout = dateAjout;
 	}
 

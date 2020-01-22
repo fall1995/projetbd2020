@@ -56,41 +56,73 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				Statement ps = conn.createStatement();
 			    System.out.println("avant select \n");
 			    //ps = conn.prepareStatement("SELECT * FROM LesFestivals");  
-			    String query = "SELECT * FROM LesFestivals where idFestival= 2";
+			    String query = "SELECT * FROM LesFestivals";
 			   // ps.setInt(1, 0);
 			    System.out.println(" apres ps \n");
 			    ResultSet resultats = ps.executeQuery(query);
 			  
 			    // Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			 
-			    boolean encore = resultats.next();
-			    while (encore) {
-			    	String idFestival= resultats.getString(1);
+			    String idFestival;
+		    	
+		        String nomFestival ;
+		       
+		        String domaine;
+		        String complementDomaine ;
+		        String region ;
+		        int departement ;
+		        String periodicite;
+		        String moiHabDebut;
+		        String siteWeb;
+		        String commune;
+		        String dateDebut ;
+		        String dateFin ;
+		        String dateCreation;
+		        int codepost;
+		        String codeINSEE ;
+		        float coord1 ;
+		        float coord2 ;
+		        String nomDepartement;
+		        int nbPlaceLouees ;
+		        String dateAjout;
+		        int idUtilisateur;
+			   
+			    while (resultats.next()) {
+			    	 idFestival= resultats.getString(1);
 			    	System.out.println("id festival = "+idFestival + "\n");
-			        String nomFestival = resultats.getString(2);
+			         nomFestival = resultats.getString(2);
 			        System.out.println("nomFestival = "+nomFestival + "\n");
-			        String domaine = resultats.getString(3);
-			        String complementDomaine = resultats.getString(4);
-			        String region =  resultats.getString(5);
-			        int departement = resultats.getInt(6);
-			        String periodicite=resultats.getString(7);
-			        String moiHabDebut= resultats.getString(8);
-			        String siteWeb=resultats.getString(9);
-			        String commune = resultats.getString(10);
-			        Date dateDebut = resultats.getDate(11);
-			        Date dateFin = resultats.getDate(12);
-			        Date dateCreation = resultats.getDate(13);
-			        int codepost = resultats.getInt(14);
-			        String codeINSEE =  resultats.getString(15);
-			        float coord1 = resultats.getFloat(16);
-			        float coord2 = resultats.getFloat(17);
-			        String nomDepartement = resultats.getString(18);
-			        int nbPlaceLouees = resultats.getInt(19);
-			        Date dateAjout = resultats.getDate(20);
-			        int idUtilisateur = resultats.getInt(21);
+			         domaine = resultats.getString(3);
+			         System.out.println("domaine = "+domaine + "\n");
+			         complementDomaine = resultats.getString(4);
+			         System.out.println("complement dom = "+complementDomaine + "\n");
+			         region =  resultats.getString(5);
+			         departement = resultats.getInt(6);
+			         periodicite=resultats.getString(7);
+			         moiHabDebut= resultats.getString(8);
+			         System.out.println("moiHabDebut  = "+moiHabDebut + "\n");
+			         siteWeb=resultats.getString(9);
+			         System.out.println("siteWeb  = "+siteWeb + "\n");
+			         commune = resultats.getString(10);
+			         System.out.println("commune  = "+commune + "\n");
+			         dateDebut = resultats.getString(11);
+			         System.out.println("dateDebut  = "+dateDebut + "\n");
+			         dateFin = resultats.getString(12);
+			         System.out.println("dateFin  = "+dateFin + "\n");
+			         dateCreation = resultats.getString(13);
+			         codepost = resultats.getInt(14);
+			         codeINSEE =  resultats.getString(15);
+			         coord1 = resultats.getFloat(16);
+			         coord2 = resultats.getFloat(17);
+			         nomDepartement = resultats.getString(18);
+			         System.out.println("nomDepartement  = "+nomDepartement + "\n");
+			         nbPlaceLouees = resultats.getInt(19);
+			         dateAjout = resultats.getString(20);
+			         idUtilisateur = resultats.getInt(21);
+			        System.out.println("id utilisateur "+idUtilisateur);
 			        
 			        // j'instancie la classe festival et je l'ajoute a ma liste de festivale
 			        fest = new Festival(idFestival, nomFestival, domaine, complementDomaine, region, departement, periodicite, moiHabDebut, siteWeb, commune, dateDebut, dateFin, dateCreation, codepost, codeINSEE, coord1,coord2, nomDepartement, nbPlaceLouees, dateAjout, idUtilisateur);
+			        System.out.println("Element de ma liste "+ fest.getIdUtilisateur());
 			        festivals.add(fest);
 			    }
 			    resultats.close();
