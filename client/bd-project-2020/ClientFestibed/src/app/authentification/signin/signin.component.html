@@ -1,0 +1,125 @@
+<div class="container ">
+    <div class="omb_login">
+
+        <div class="ui-g">
+            <div class="ui-md-5 ui-md-offset-3">
+                <h3 class="omb_authTitle">Connectez-vous </h3>
+            </div>
+        </div>
+        <div class="ui-g">
+
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <form class="omb_loginForm" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" name="email" placeholder="Adresse mail"
+                            id="email"
+                        formControlName="email">
+                    </div>
+                    <span class="help-block"></span>
+        
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <input type="password" class="form-control" id="password"
+                        name="password" placeholder="Mot de passe" formControlName="password">
+                    </div>
+                    <br>
+                    <div class="ui-g">
+                        <div class="ui-md-4 ui-md-offset-1">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                [disabled]="signInForm.invalid">Connexion
+                            </button>
+                        </div>
+                        <div class="ui-md-4 ui-md-offset-2" style="margin-top:1em;">
+                                <a>mot de passe oublié
+                                </a>
+                        </div>
+                    </div>
+                </form>
+                <span class="text-danger">{{ errorMessage }}</span>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="ui-g">
+                <div class="ui-md-3 ui-md-offset-3">  
+                        <button (click)="loginFacebook()" class="loginBtn loginBtn--facebook">
+                            Login with Facebook  
+                        </button>  
+                    </div>  
+                    <div class="ui-md-4">  
+                        <button (click)="loginGoogle()" class="loginBtn loginBtn--google">  
+                            Login with Google  
+                        </button>  
+                    </div> 
+        </div>
+
+
+
+
+
+
+
+<!-- 
+
+
+        <h3 class="omb_authTitle" style="">Vous pouvez vous connecter avec : </h3>
+        <div class="row  omb_socialButtons">
+            <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                <div class="col-xs-4 col-sm-5">
+                    <a class="btn btn-lg btn-block omb_btn-facebook">
+                        <i class="fa fa-facebook visible-xs"></i>
+                        <span (click)="loginFacebook()">Facebook</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                    <a href="#" class="btn btn-lg btn-block omb_btn-twitter">
+                        <i class="fa fa-twitter visible-xs"></i>
+                        <span>Twitter</span>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-5">
+                    <a class="btn btn-lg btn-block omb_btn-google">
+                        <i class="fa fa-google-plus visible-xs"></i>
+                        <span (click)="loginGoogle()">Google+</span>
+                    </a>
+                </div>
+            </div>
+
+            <br>
+            <div></div>
+            <br>
+            <div class="row omb_row-sm-offset-3 omb_loginOr">
+                <div class="col-xs-12 col-sm-6">
+                    <hr class="omb_hrOr">
+                    <span class="omb_spanOr">OU</span>
+                </div>
+            </div>
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-6">
+                    <form class="omb_loginForm" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="email" placeholder="email address"
+                                   id="email"
+                                   formControlName="email">
+                        </div>
+                        <span class="help-block"></span>
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password"
+                                   name="password" placeholder="Password" formControlName="password">
+                        </div>
+                        <br>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                [disabled]="signInForm.invalid">Connexion
+                        </button>
+                    </form>
+                    <span class="text-danger">{{ errorMessage }}</span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<p-toast position="top-right"></p-toast>

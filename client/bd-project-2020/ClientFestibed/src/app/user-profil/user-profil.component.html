@@ -1,0 +1,102 @@
+<div class="container" style="align-content: center">
+        <br>
+        <h1 class="text-center">
+            <i class="fa fa-user-circle-o fa-1x" aria-hidden="true"></i>
+            VOTRE PROFIL
+        </h1>
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <i class="fa fa-book"></i>
+                            informations personnelle
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div >
+                            <h4 class="first">NOM</h4>
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-12 ui-md-4">
+                                    <div class="ui-inputgroup">
+                                        <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                                        <input type="text" pInputText placeholder="{{user.nom}}" [(ngModel)]="user.nom">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <h4 class="first">PRENOM</h4>
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-12 ui-md-4">
+                                    <div class="ui-inputgroup">
+                                        <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                                        <input type="text" pInputText placeholder="{{user.prenom}}" [(ngModel)]="user.prenom">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <h4 class="first">TELEPHONE</h4>
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-12 ui-md-4">
+                                    <div class="ui-inputgroup">
+                                        <span class="ui-inputgroup-addon"><i class="pi glyphicon-phone-alt" style="line-height: 1.25;"></i></span>
+                                        <input type="text" pInputText placeholder="{{user.tel}}" [(ngModel)]="user.tel">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <h4 class="first">ADRESSE</h4>
+                            <div class="ui-g ui-fluid">
+                                <div class="ui-g-12 ui-md-4">
+                                    <div class="ui-inputgroup">
+                                        <span class="ui-inputgroup-addon"><i class="pi pi-map-marker" style="line-height: 1.25;"></i></span>
+                                        <input type="text" pInputText placeholder="{{user.adresse}}" [(ngModel)]="user.adresse">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <button *ngIf="!modif"type="button" class="btn btn-success" (click)="modifierInfos(user)">
+                                <i class="fa fa-user"></i>
+                                Modifier mes informations
+                            </button>
+                            <button *ngIf="modif"type="button" class="btn btn-success" (click)="confirmerModif(user)">
+                                <i class="fa fa-user"></i>
+                                Valider mes informations
+                            </button>
+                        </div>
+                    </div>
+                    <ng-template #content>
+                        <b style="text-align: center; color: #3b5998">PROFILE</b>
+                    </ng-template>
+                </div>
+    
+            </div>
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <i class="fa fa-book"></i>
+                            informations compte
+                        </h3>
+                    </div>
+                    <div class="panel-body" >
+                        <p style="align-content: center">
+                            <img height="330" width="250" src="{{userPhoto?.photo}}" alt="profile">
+                        </p>
+    
+                        <p>
+                            <button type="button" class="btn btn-success" (click)="updateProfile(user)">
+                                <i class="fa fa-user"></i>
+                                Modifier photo
+                            </button>
+                        </p>
+    
+                    </div>
+                </div>
+            </div>
+            <app-user-dialog [afficherDialog]="afficherDialog" *ngIf="afficherDialog"
+                             (onDialogHide)="onHideProfilDialog()" [user]="user"></app-user-dialog>
+        </div>
+    
+    </div>

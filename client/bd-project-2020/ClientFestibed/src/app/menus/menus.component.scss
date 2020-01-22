@@ -1,0 +1,12 @@
+.container{
+    margin: auto;
+    width:auto;
+
+  }
+
+
+  @media (min-width: 768px) {
+    #fixedCriteres{
+    position:fixed
+    }
+  }

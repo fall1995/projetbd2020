@@ -1,0 +1,101 @@
+    <div class="ui-sm-12 ui-md-10 ui-md-offset-1 border border-info  panel panel-default" *ngIf="user">
+        <div class="ui-g" *ngIf="user&&total>0">
+            <div class="ui-md-4">
+                                
+            <h2 style="margin-left:0.8em;"><b>Total</b></h2> <br>
+            <h4 style="margin-left:1.5em;">Sous-total films  
+                <span id="priceRightAlign"> {{totalMovie}}€</span>
+            </h4><br>
+            <h4 style="margin-left:1.5em;">Sous-total repas
+                <span id="priceRightAlign"> {{totalMenu}}€</span>
+            </h4><br>
+            <h4 style="margin-left:1.5em;">Livraison
+                <span id="priceRightAlign"> <b>Offerte</b></span>
+            </h4>
+            <mat-divider></mat-divider><br>
+            <h4 style="margin-left:1.5em;"><b>Total
+                <span id="priceRightAlign"> {{total}}€</span>
+            </b></h4>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="ui-md-7">
+        <mat-horizontal-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="firstFormGroup" [editable]="false">
+                    <ng-template matStepLabel>Vos coordonnées</ng-template>
+                    <div class="ui-g" style="margin-top:50">
+                        <div class="ui-md-8 ui-md-offset-2">
+
+                            <div class="ui-g">
+                                <div class="ui-md-10 ">
+                                    <form >
+                                        <mat-form-field>
+                                            <input matInput placeholder="Nom" value="{{user.prenom}}" disabled>
+                                        </mat-form-field>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Prénom" value="{{user.nom}}" disabled>
+                                        </mat-form-field>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Address" value="{{user.adresse}}" required id="nomInput">
+                                        </mat-form-field>
+                                        <div>
+                                            <button mat-button matStepperNext>Suivant</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </mat-step>
+
+                <mat-step [stepControl]="secondFormGroup"  [editable]="false">
+                    <form [formGroup]="secondFormGroup">
+                        <ng-template matStepLabel>Paiement</ng-template>
+                        <div class="ui-g" style="margin-top:50">
+                            <div class="ui-md-7 ui-md-offset-2">
+
+                                <mat-form-field>
+                                    <input matInput placeholder="Numéro de carte" formControlName="secondCtrl" required>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="Date d'expiration" formControlName="secondCtrl" required>
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <input matInput placeholder="CVC" formControlName="secondCtrl" required>
+                                </mat-form-field>
+                                <div>
+                                    <button mat-button matStepperNext (click)="createFacture()">Payer</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </form>
+                </mat-step>
+
+
+                <mat-step>
+                    <ng-template matStepLabel>Facture</ng-template>
+                    <div class="ui-g" style="margin-top:50">
+                        <div class="ui-sm-12 ui-md-12">
+                            <div class="ui-sm-12 ui-md-12 alert alert-success" role="alert">
+                                <h3 style="text-align:center;">Votre commande est confirmée</h3>
+                            </div>
+                            <div class="ui-sm-12 ui-md-6 ui-md-offset-5">
+                                <button mat-button (click)="imprimerFacture()">Imprimer ma facture</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+              </mat-horizontal-stepper>
+            </div>
+
+
+    </div>
+    <div class="ui-g" *ngIf="user&&total==0">
+            <div class="ui-sm-12 ui-md-8 ui-md-offset-2 alert alert-info" role="alert">
+                <h3 style="text-align:center;">Votre panier est vide :(</h3>
+            </div>
+    </div>
+</div>

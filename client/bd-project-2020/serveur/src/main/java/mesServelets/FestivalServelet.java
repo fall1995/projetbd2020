@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import DAO.FestivalDAO;
 import mesClasses.Festival;
 
@@ -40,13 +42,13 @@ public class FestivalServelet extends HttpServlet{
         datefin = parametres.get("dateDebut");
         /*
          * Dans cette partie faudra transformer datedebut et datefin en Date
-         * 
          */
         ArrayList<Festival> resultat = new ArrayList<Festival>();
         FestivalDAO festDao = new FestivalDAO();
         // la methode suivante ne va pas marcher a cause du type Date 
         // 
-        //resultat = festDao.getFestival(domaine, datedebut, datefin, ville);
+        // resultat = festDao.getFestival(domaine, datedebut, datefin, ville);
+        // String json = new Gson().toJson(resultat);
 
 
     }

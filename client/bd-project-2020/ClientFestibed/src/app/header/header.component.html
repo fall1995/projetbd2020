@@ -1,0 +1,86 @@
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#" style="padding-top:1em" id="applicationLogo">
+                <b>AppCinema </b>
+                <i class="fa fa-television" aria-hidden="true"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item Accueilbouton" id="rightButton">
+                    <a routerLink="/">
+                        <span id="iconeMove">
+                            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <p>Accueil</p>
+                    </a>
+                </li>
+                <li class="nav-item" id="rightButton">
+                    <a routerLink="films">
+                        <span>
+                            <i class="fa fa-film fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <p>Films</p>
+                    </a>
+                </li>
+                <li class="nav-item" id="rightButton">
+                    <a routerLink="menus">
+                        <span>
+                            <i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <p>Menus</p>
+                    </a>
+                </li>
+                <li class="nav-item" id="rightButton">
+                    <a routerLink="user/panier">
+                            <i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="size: 30px">
+                            </i>
+                            <span matBadge="{{nbArticlesPanier}}" matBadgeOverlap="false" *ngIf="nbArticlesPanier&&nbArticlesPanier!=0"></span>
+
+                        
+                        <p>Panier </p>
+                    </a>
+                </li>
+                <li class="nav-item dropdown" id="rightButton">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+                        </span>
+                        <p>Compte</p>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li *ngIf="user" style="margin-left: 20px; color: green; font-weight: bold; font-style: italic">
+                                <p>{{user}}<i aria-hidden="true" style="margin-left: 5px"></i></p>
+                            </li>
+                            <li *ngIf="user">
+                                <a routerLink="user/dashbord">Mon profil</a>
+                            </li>
+                            <li *ngIf="user">
+                                <a routerLink="user/commande">Historique </a>
+                            </li>
+                            <li *ngIf="user">
+                                <a routerLink="user/panier">Votre panier</a>
+                            </li>
+                            <li routerLinkActive="" *ngIf="!user">
+                                <a routerLink="authentification/signin">Connexion</a>
+                            </li>
+                            <li routerLinkActive="" *ngIf="!user">
+                                <a routerLink="authentification/signup">Créer un compte</a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li>
+                                <a (click)="onSignOut()" *ngIf="user" style="cursor:pointer">Se déconnecter</a>
+                            </li>
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+<br><br><br><br>
+
+
+
+
+<p-toast position="top-right"></p-toast>
