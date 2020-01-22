@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public abstract class SQLAble implements DataBaseAble {
 
-    static Connection conn;
+    protected static Connection conn;
 
     @Override
     public void connectToDatabase() throws SQLException, ClassNotFoundException {

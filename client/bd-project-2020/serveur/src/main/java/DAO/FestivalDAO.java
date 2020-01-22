@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import ConnexionBase.SQLAble;
@@ -13,7 +14,7 @@ import mesClasses.Festival;
 
 public class FestivalDAO extends SQLAble implements FestivalInterface {
     
-	static Connection conn;
+
 	
 	@Override
 	public void addFestival() {
@@ -33,8 +34,8 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 
 
 	
-	@Override
-	public ArrayList<Festival>  getFestival(String domaineF, Date dateDebutF, Date dateFinF, String Ville) {
+	@Override //modifier string de date
+	public ArrayList<Festival>  getFestival(String domaineF, String dateDebutF, String dateFinF, String Ville) {
 		
 		// connection à la base
 		try {
@@ -48,20 +49,26 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		ArrayList<Festival> festivals = new ArrayList<Festival>();// Liste pour recuperer mon resultat
 		
 		// requete si l'utilisateur n'a pas affiné sa recherche 
-		
+		System.out.println("avant try \n");
 			try {
 				Festival fest;
-			    PreparedStatement ps;
-			    ps = conn.prepareStatement("SELECT * FROM LesFestivals natural join LesPaquetsPlaces where LesPaquetsPlaces.nbPlacesRestants > ?");   
-			    ps.setInt(1, 0);
-			    ResultSet resultats = ps.executeQuery();
-			    
+			   // PreparedStatement ps;
+				Statement ps = conn.createStatement();
+			    System.out.println("avant select \n");
+			    //ps = conn.prepareStatement("SELECT * FROM LesFestivals");  
+			    String query = "SELECT * FROM LesFestivals where idFestival= 2";
+			   // ps.setInt(1, 0);
+			    System.out.println(" apres ps \n");
+			    ResultSet resultats = ps.executeQuery(query);
+			  
 			    // Parcours des resulats (objet ResulSet) retournés par executeQuery()
 			 
 			    boolean encore = resultats.next();
 			    while (encore) {
 			    	String idFestival= resultats.getString(1);
+			    	System.out.println("id festival = "+idFestival + "\n");
 			        String nomFestival = resultats.getString(2);
+			        System.out.println("nomFestival = "+nomFestival + "\n");
 			        String domaine = resultats.getString(3);
 			        String complementDomaine = resultats.getString(4);
 			        String region =  resultats.getString(5);
@@ -88,11 +95,12 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			    }
 			    resultats.close();
 			    
-			    if (domaineF.equalsIgnoreCase(s) && dateDebutF==null && dateFinF==null && Ville.equalsIgnoreCase(s) ) {
-			    	return festivals;
-			    }
+			    
+			   // if (domaineF.equalsIgnoreCase(s) && dateDebutF==null && dateFinF==null && Ville.equalsIgnoreCase(s) ) {
+			    	//return festivals;
+			   // }
 			    // cas ou on sasit seulement le domaine
-			    if ((!(domaineF.equalsIgnoreCase(s)) && dateDebutF==null && dateFinF==null && Ville.equalsIgnoreCase(s))) {
+			/*    if ((!(domaineF.equalsIgnoreCase(s)) && dateDebutF==null && dateFinF==null && Ville.equalsIgnoreCase(s))) {
 			    	ArrayList<Festival>  resultat = new ArrayList<Festival>();
 			    	for (int i = 0; i < festivals.size(); i++) {
 		    			if(festivals.get(i).getDomaine().equalsIgnoreCase(domaineF)){
@@ -121,7 +129,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		    			}
 		    		}
 			    	return resultat;
-				}
+				}*/
 			    
 			    // reste 2 ou 3 cas a faire
 			    
@@ -130,9 +138,9 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				System.out.println(e.getMessage());
 			}
 			
-		
-
-		return null;
+			System.out.println("\n"+festivals.size());
+			return festivals;
+		//return null;
 	}
 
 

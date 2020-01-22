@@ -14,5 +14,5 @@ dbUrl =jdbc:oracle:thin:@im2ag-oracle.e.ujf-grenoble.fr:1521:im2ag
 
 
 # User name and password to access the database
-username =fallaly
-password =Af47683357
+username =belahadi
+password =Manel2004

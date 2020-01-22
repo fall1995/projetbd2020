@@ -6,6 +6,7 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+import mesServelets.*;
 
 /**
  * @author Groupe6 PizzaServer
@@ -38,6 +39,7 @@ public class PizzaServer extends HttpServlet {
         servletHandler.addServletWithMapping(ClientAuthentificationServlet.class, "/api/authentification");
        
        
+        servletHandler.addServletWithMapping(FestivalServelet.class, "/api/festivals");
         
         servletHandler.addServletWithMapping(LaCarteServlet.class, "/api/plats");
         servletHandler.addServletWithMapping(SuggestionFilmsServlet.class, "/api/suggetionFilm");
