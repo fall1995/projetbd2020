@@ -56,7 +56,7 @@ public class AuthentificationServelet extends HttpServlet{
             System.out.println( "la récupération des informations est éffectuée avec succès !");
         
         } finally {
-			
+        	
 		} 
     }
 
@@ -89,12 +89,13 @@ public class AuthentificationServelet extends HttpServlet{
 			/*	if (postValide(parametres, id,nom,prenom )) {*/
 					UtilisateurAuthenficationDAO utiliDao = new UtilisateurAuthenficationDAO();
 					try {
-						if (utiliDao.exist(id)) {
+						if (!utiliDao.exist(id)) {
 							System.out.println("avant connection \n");
 							utiliDao.addClient(id, nom, prenom);
 							 System.out.println("le client est crée avec succès !");
 						} else {
 							  System.out.println("le client est logé avec succès !");
+							  
 						}
 						LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
 						response.setStatus(HttpServletResponse.SC_OK);

@@ -1,12 +1,14 @@
 package DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import ConnexionBase.SQLAble;
 import DAOInterfaces.FestivalInterface;
@@ -35,7 +37,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 
 	
 	@Override //modifier string de date
-	public ArrayList<Festival>  getFestival(String domaineF, String dateDebutF, String dateFinF, String Ville) {
+	public ArrayList<Festival>  getFestival() {
 		
 		// connection à la base
 		try {
@@ -74,16 +76,16 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		        String moiHabDebut;
 		        String siteWeb;
 		        String commune;
-		        String dateDebut ;
-		        String dateFin ;
-		        String dateCreation;
+		        Date dateDebut ;
+		        Date dateFin ;
+		        Date dateCreation;
 		        int codepost;
 		        String codeINSEE ;
 		        float coord1 ;
 		        float coord2 ;
 		        String nomDepartement;
 		        int nbPlaceLouees ;
-		        String dateAjout;
+		        Date dateAjout;
 		        int idUtilisateur;
 			   
 			    while (resultats.next()) {
@@ -104,11 +106,11 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			         System.out.println("siteWeb  = "+siteWeb + "\n");
 			         commune = resultats.getString(10);
 			         System.out.println("commune  = "+commune + "\n");
-			         dateDebut = resultats.getString(11);
+			         dateDebut = resultats.getDate(11);
 			         System.out.println("dateDebut  = "+dateDebut + "\n");
-			         dateFin = resultats.getString(12);
+			         dateFin = resultats.getDate(12);
 			         System.out.println("dateFin  = "+dateFin + "\n");
-			         dateCreation = resultats.getString(13);
+			         dateCreation = resultats.getDate(13);
 			         codepost = resultats.getInt(14);
 			         codeINSEE =  resultats.getString(15);
 			         coord1 = resultats.getFloat(16);
@@ -116,7 +118,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			         nomDepartement = resultats.getString(18);
 			         System.out.println("nomDepartement  = "+nomDepartement + "\n");
 			         nbPlaceLouees = resultats.getInt(19);
-			         dateAjout = resultats.getString(20);
+			         dateAjout = resultats.getDate(20);
 			         idUtilisateur = resultats.getInt(21);
 			        System.out.println("id utilisateur "+idUtilisateur);
 			        
@@ -175,7 +177,39 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		//return null;
 	}
 
-
+	public ArrayList<Festival> affiner(ArrayList<Festival> festivals, String domaineF, String dateDebutF, String dateFinF, String Ville){
+		
+		//aucun filtre 
+		 if ((domaineF == null || domaineF.isEmpty()) && (dateDebutF == null || dateDebutF.isEmpty()) && (dateFinF == null || dateFinF.isEmpty()) && (Ville == null || Ville.isEmpty()) ) {
+			 return festivals;
+    }
+		//filtre uniquement sur domaine
+		 if ((domaineF != null || !domaineF.isEmpty()) && (dateDebutF == null || dateDebutF.isEmpty()) && (dateFinF == null || dateFinF.isEmpty()) && (Ville == null || Ville.isEmpty()) ) {
+			 ArrayList<Festival>  resultat = new ArrayList<Festival>();
+		    	for (int i = 0; i < festivals.size(); i++) {
+	    			if(festivals.get(i).getDomaine().equalsIgnoreCase(domaineF)){
+	    				resultat.add(festivals.get(i));
+	    			}
+	    		}
+		    	return resultat;
+    }
+		//filtre sur domaine et datedebut et date fin
+		 if ((domaineF != null && !domaineF.isEmpty()) && (dateDebutF != null || !dateDebutF.isEmpty()) && (dateFinF != null || !dateFinF.isEmpty()) && (Ville == null || Ville.isEmpty()) ) {
+			 ArrayList<Festival> resultat = new ArrayList<Festival>();
+			 Date dateD=new SimpleDateFormat("dd/MM/yyyy").parse(dateDebutF); 
+			 
+			 
+		    	for (int i = 0; i < festivals.size(); i++) {
+	    			if(festivals.get(i).getDomaine().equalsIgnoreCase(domaineF) && (festivals.get(i).getDateDebut().before(dateD) || festivals.get(i).getDateDebut().after(dateDebutF)) && Ville.equalsIgnoreCase(s)){
+	    				resultat.add(festivals.get(i)); 
+	    			}
+	    		}
+		 
+		return resultat;
+		 }
+		return festivals; 
+		
+	}
 
 
 	@Override

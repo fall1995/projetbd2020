@@ -9,6 +9,7 @@ import java.sql.Statement;
 import ConnexionBase.SQLAble;
 import DAOInterfaces.UtilisateurAuthenticationInterface;
 import mesClasses.LesUtilisateurs;
+import oracle.jdbc.OracleConnection.CommitOption;
 
 public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface {
 
@@ -57,6 +58,8 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 			ps.setString(2, nom);
 			ps.setString(3, prenom);
 			ps.executeQuery();
+			System.out.println("apres insert");
+			
 		} catch (SQLException se) {
 			// log the exception
 			throw se;

@@ -1,6 +1,6 @@
 package mesClasses;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Festival {
 	
@@ -14,24 +14,23 @@ public class Festival {
     String moiHabDebut;
     String siteWeb;
     String commune;
-    String dateDebut;
-    String dateFin;
-    String dateCreation;
+    Date dateDebut;
+    Date dateFin;
+    Date dateCreation;
     int codepost;
     String codeINSEE;
     float coord1;
     float coord2;
     String nomDepartement;
     int nbPlaceLouees;
-    String dateAjout;
+    Date dateAjout;
     int idUtilisateur;
     
     
-
 	public Festival(String idFestival, String nomFestival, String domaine, String complementDomaine, String region,
-			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, String dateDebut2,
-			String dateFin2, String dateCreation2, int codepost, String codeINSEE, float coord1, float coord2,
-			String nomDepartement, int nbPlaceLouees, String dateAjout2, int idUtilisateur) {
+			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, Date dateDebut,
+			Date dateFin, Date dateCreation, int codepost, String codeINSEE, float coord1, float coord2,
+			String nomDepartement, int nbPlaceLouees, Date dateAjout, int idUtilisateur) {
 		super();
 		this.idFestival = idFestival;
 		this.nomFestival = nomFestival;
@@ -43,16 +42,16 @@ public class Festival {
 		this.moiHabDebut = moiHabDebut;
 		this.siteWeb = siteWeb;
 		this.commune = commune;
-		this.dateDebut = dateDebut2;
-		this.dateFin = dateFin2;
-		this.dateCreation = dateCreation2;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.dateCreation = dateCreation;
 		this.codepost = codepost;
 		this.codeINSEE = codeINSEE;
 		this.coord1 = coord1;
 		this.coord2 = coord2;
 		this.nomDepartement = nomDepartement;
 		this.nbPlaceLouees = nbPlaceLouees;
-		this.dateAjout = dateAjout2;
+		this.dateAjout = dateAjout;
 		this.idUtilisateur = idUtilisateur;
 	}
 
@@ -157,32 +156,32 @@ public class Festival {
 	}
 
 
-	public String getDateDebut() {
+	public Date getDateDebut() {
 		return dateDebut;
 	}
 
 
-	public void setDateDebut(String dateDebut) {
+	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
 
-	public String getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
 
 
-	public void setDateFin(String dateFin) {
+	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
 
 
-	public String getDateCreation() {
+	public Date getDateCreation() {
 		return dateCreation;
 	}
 
 
-	public void setDateCreation(String dateCreation) {
+	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
@@ -247,12 +246,12 @@ public class Festival {
 	}
 
 
-	public String getDateAjout() {
+	public Date getDateAjout() {
 		return dateAjout;
 	}
 
 
-	public void setDateAjout(String dateAjout) {
+	public void setDateAjout(Date dateAjout) {
 		this.dateAjout = dateAjout;
 	}
 
@@ -268,8 +267,6 @@ public class Festival {
     
     
 
-    
-    
     
     
 
