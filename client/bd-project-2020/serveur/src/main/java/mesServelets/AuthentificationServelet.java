@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DAO.UtilisateurAuthenficationDAO;
+import mesClasses.LesUtilisateurs;
 
 public class AuthentificationServelet extends HttpServlet{
 	
@@ -66,6 +67,9 @@ public class AuthentificationServelet extends HttpServlet{
 						} else {
 							  System.out.println("le client est logé avec succès !");
 						}
+						LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
+						response.setStatus(HttpServletResponse.SC_OK);
+		                response.getWriter().println(new Gson().toJson(utilisateur));
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
