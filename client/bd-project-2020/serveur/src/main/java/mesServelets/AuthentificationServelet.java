@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DAO.UtilisateurAuthenficationDAO;
+import classesgen.client.Client;
+import database.GestionnaireClient;
+import l3m.ClientAuthentificationServlet;
 import mesClasses.LesUtilisateurs;
 
 public class AuthentificationServelet extends HttpServlet{
@@ -31,6 +34,31 @@ public class AuthentificationServelet extends HttpServlet{
 
 	        return res;
 	    }
+	
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println( "================================================== ClientAuthentificationServlet [doGet] ==================================================" );
+        System.out.print( "Récupération des informations du client ...");
+        String idClient = request.getParameter("idClient");
+        UtilisateurAuthenficationDAO utilDao = new UtilisateurAuthenficationDAO();
+        LesUtilisateurs utilisateur = null;
+		try {
+			utilisateur = utilDao.getClient(idClient);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+            
+            response.setContentType("application/json");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.getWriter().println(new Gson().toJson(utilisateur));
+            System.out.println( "la récupération des informations est éffectuée avec succès !");
+        
+        } finally {
+        	
+		} 
+    }
 
 	 @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,12 +89,13 @@ public class AuthentificationServelet extends HttpServlet{
 			/*	if (postValide(parametres, id,nom,prenom )) {*/
 					UtilisateurAuthenficationDAO utiliDao = new UtilisateurAuthenficationDAO();
 					try {
-						if (utiliDao.exist(id)) {
+						if (!utiliDao.exist(id)) {
 							System.out.println("avant connection \n");
 							utiliDao.addClient(id, nom, prenom);
 							 System.out.println("le client est crée avec succès !");
 						} else {
 							  System.out.println("le client est logé avec succès !");
+							  
 						}
 						LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
 						response.setStatus(HttpServletResponse.SC_OK);
