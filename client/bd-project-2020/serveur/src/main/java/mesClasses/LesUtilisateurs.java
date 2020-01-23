@@ -8,17 +8,18 @@ public class LesUtilisateurs {
 	String mail;
 	String tel;
 	String adresse;
-	public LesUtilisateurs(String idUtilisateur, String nomUtilisateur, String nom, String prenom, String mail,
-			String tel, String adresse) {
+	
+	public LesUtilisateurs(String idUtilisateur, String nom, String prenom) {
 		super();
 		this.idUtilisateur = idUtilisateur;
-		this.nomUtilisateur = nomUtilisateur;
+		this.nomUtilisateur = null;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.mail = mail;
-		this.tel = tel;
-		this.adresse = adresse;
+		this.mail = null;
+		this.tel = null;
+		this.adresse = null;
 	}
+	
 	public String getIdUtilisateur() {
 		return idUtilisateur;
 	}
