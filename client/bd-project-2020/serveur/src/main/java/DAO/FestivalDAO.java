@@ -175,7 +175,30 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		//return null;
 	}
 
-
+	public ArrayList<Festival> affiner(ArrayList<Festival> festivals, String domaineF, String dateDebutF, String dateFinF, String Ville){
+		
+		//aucun filtre 
+		 if ((domaineF == null && domaineF.isEmpty()) && (dateDebutF == null && dateDebutF.isEmpty()) && (dateFinF == null && dateFinF.isEmpty()) && (Ville == null && Ville.isEmpty()) ) {
+			 return festivals;
+    }
+		//filtre uniquement sur domaine
+		 if ((domaineF != null && !domaineF.isEmpty()) && (dateDebutF == null && dateDebutF.isEmpty()) && (dateFinF == null && dateFinF.isEmpty()) && (Ville == null && Ville.isEmpty()) ) {
+			 ArrayList<Festival>  resultat = new ArrayList<Festival>();
+		    	for (int i = 0; i < festivals.size(); i++) {
+	    			if(festivals.get(i).getDomaine().equalsIgnoreCase(domaineF)){
+	    				resultat.add(festivals.get(i));
+	    			}
+	    		}
+		    	return resultat;
+    }
+		//filtre sur domaine et datedebut et date fin
+		 if ((domaineF == null && domaineF.isEmpty()) && (dateDebutF == null && dateDebutF.isEmpty()) && (dateFinF == null && dateFinF.isEmpty()) && (Ville == null && Ville.isEmpty()) ) {
+		 
+		 
+		return festivals;
+		
+		
+	}
 
 
 	@Override
