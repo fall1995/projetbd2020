@@ -8,56 +8,78 @@ import java.sql.Statement;
 
 import ConnexionBase.SQLAble;
 import DAOInterfaces.UtilisateurAuthenticationInterface;
+import mesClasses.LesUtilisateurs;
 
-public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface{
-	
-	
+public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface {
 
 	@Override
-	public boolean exist(String idclient) throws SQLException  {
-		 int res=0;
+	public boolean exist(String idclient) throws SQLException {
+		int res = 0;
 		Statement ps = conn.createStatement();
-		 String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur="+idclient+"";
-		 ResultSet resultats = ps.executeQuery(query);
-		
-		    while (resultats.next()) {
-		    	res = resultats.getInt(1);
-		    }
-		    resultats.close();
-		    if (res > 0) {
-				return true;
-			}
-		    else {
-		    	return false;
-			}
-		
+		String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur=" + idclient + "";
+		ResultSet resultats = ps.executeQuery(query);
+
+		while (resultats.next()) {
+			res = resultats.getInt(1);
+		}
+		resultats.close();
+		if (res > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	@Override
 	public void addClient(String idclient, String nom, String prenom) throws SQLException {
-		
+
 		// connection à la base
-				try {
-					connectToDatabase();
-				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		try {
+			connectToDatabase();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-				try {
+		try {
 
-					PreparedStatement ps = conn.prepareStatement(
-							"INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
-					ps.setString(1, idclient);
-					ps.setString(2, nom);
-					ps.setString(3, prenom);
-					ps.executeQuery();
-				} catch (SQLException se) {
-					// log the exception
-					throw se;
-				}
+			PreparedStatement ps = conn
+					.prepareStatement("INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
+			ps.setString(1, idclient);
+			ps.setString(2, nom);
+			ps.setString(3, prenom);
+			ps.executeQuery();
+		} catch (SQLException se) {
+			// log the exception
+			throw se;
+		}
 	}
-		
-	}
-  
 
+	@Override
+	public LesUtilisateurs getClient(String idClient) throws SQLException {
+		Statement ps = conn.createStatement();
+		String query = "SELECT * FROM LesUtilisateurs where idUtilisateur=" + idClient + "";
+		ResultSet resultats = ps.executeQuery(query);
+		String idcli = null;
+		String nomutili;
+		String nom = null;
+		String prenom = null;
+		String mail;
+		String tel;
+		String adresse;
+		while (resultats.next()) {
+			idcli = resultats.getString(1);
+			nomutili = resultats.getString(2);
+			nom = resultats.getString(3);
+			prenom = resultats.getString(4);
+			mail = resultats.getString(5);
+			tel = resultats.getString(6);
+			adresse = resultats.getString(7);
+		}
+		resultats.close();
+		LesUtilisateurs ut = new LesUtilisateurs(idcli, nom, prenom);
+		return ut;
+	}
+
+}
