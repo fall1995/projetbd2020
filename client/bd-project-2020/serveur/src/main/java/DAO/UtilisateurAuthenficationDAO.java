@@ -15,8 +15,14 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 
 	@Override
 	public boolean exist(String idclient) throws SQLException  {
+		try {
+			connectToDatabase();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		 int res=0;
 		Statement ps = conn.createStatement();
+		idclient="'"+idclient+"'";
 		 String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur="+idclient+"";
 		 ResultSet resultats = ps.executeQuery(query);
 		

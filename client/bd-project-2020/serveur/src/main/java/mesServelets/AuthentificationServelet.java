@@ -58,10 +58,11 @@ public class AuthentificationServelet extends HttpServlet{
 	            String id = parametres.get("idClient");
 				String nom = parametres.get("nom");
 				String prenom = parametres.get("prenom");
-				if (postValide(parametres, id,nom,prenom )) {
+			/*	if (postValide(parametres, id,nom,prenom )) {*/
 					UtilisateurAuthenficationDAO utiliDao = new UtilisateurAuthenficationDAO();
 					try {
-						if (!utiliDao.exist(id)) {
+						if (utiliDao.exist(id)) {
+							System.out.println("avant connection \n");
 							utiliDao.addClient(id, nom, prenom);
 							 System.out.println("le client est crée avec succès !");
 						} else {
@@ -80,11 +81,11 @@ public class AuthentificationServelet extends HttpServlet{
 				response.setStatus(HttpServletResponse.SC_OK);
 				// A revoir 
 				//response.getWriter().println(new Gson().toJson(client));
-				}
+				/*}
 				else {
 				    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 				    response.getWriter().println("Parametre non complet");
-				}
+				}*/
 	       
 	    }
 }
