@@ -19,14 +19,10 @@ import { EventEmitterService } from '../service/event-emitter.service';
 })
 export class PanierComponent implements OnInit {
 
+    // tslint:disable-next-line:max-line-length
     constructor( private tmdbService: TmdbService, private storageService: StorageService, private route: Router, private message: MessageService,
-<<<<<<< HEAD:client/bd-project-2020/ClientFestibed/src/app/panier/panier.component.ts
                 private commandeService: CommandeService, private afAuth: AngularFireAuth,
                 private authService: AuthService, private eventEmitterService: EventEmitterService) {
-=======
-                 private commandeService: CommandeService, private afAuth: AngularFireAuth,
-                 private authService: AuthService, private eventEmitterService: EventEmitterService){
->>>>>>> aa0a0fca56b34451f34f2acc4957852436c2d5a2:client/bd-project-2020/clientAngular/src/app/panier/panier.component.ts
 
     }
 

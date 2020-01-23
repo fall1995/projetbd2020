@@ -1,38 +1,12 @@
-img{
-	width: 160px;
-	height: 230px;
-	object-fit: cover;
-	margin-top: 6px;
-	margin-left: 1.7em;
-  }
+.container{
+	margin: auto;
+	width:auto;
 
-  .ui-carousel-header {
-	background: red;
-  }
+}
 
-  #backgroundNew{
-	background-image:url(https://i.ytimg.com/vi/jkycoaEVlnM/maxresdefault.jpg);
-	background-size: contain;
-	height: 380;
-  }
 
-  #backgroundNeww{
-	background-image:url(https://steamuserimages-a.akamaihd.net/ugc/772855510632476572/89B81AE98931165D1441C71908B1E7D889177C83/);
-	background-size: contain;
-	height: 380;
-  }
-
-  #backgroundNoel{
-	background-image:url(https://www.enfant.com/assets/posts/1000/1257-noel-dossier.jpg);
-  }
-
-  #backgroundNoell{
-	background-image:url(https://www.sis-fr.com/cache/uploads/composer/boules-1-double-3.png/1575_600.png);
-  }
-
-  #backgroundRepas{
-	background-image:url(https://amp.magazine-avantages.fr/data/photo/w2000_c18/1bk/fruits-legume-hiver.jpg);
-  }
-  .carousel-indicators[_ngcontent-c7]{
-	margin-left: 0 !important;
+@media (min-width: 768px) {
+	#fixedCriteres{
+		position:fixed
+	}
 }
