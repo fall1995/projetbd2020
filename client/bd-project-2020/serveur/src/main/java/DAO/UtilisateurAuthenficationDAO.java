@@ -12,22 +12,29 @@ import mesClasses.LesUtilisateurs;
 
 public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface {
 
-	@Override
-	public boolean exist(String idclient) throws SQLException {
-		int res = 0;
+	public boolean exist(String idclient) throws SQLException  {
+		try {
+			connectToDatabase();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		 int res=0;
 		Statement ps = conn.createStatement();
-		String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur=" + idclient + "";
-		ResultSet resultats = ps.executeQuery(query);
-
-		while (resultats.next()) {
-			res = resultats.getInt(1);
-		}
-		resultats.close();
-		if (res > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		idclient="'"+idclient+"'";
+		 String query = "SELECT COUNT(*) FROM LesUtilisateurs where idUtilisateur="+idclient+"";
+		 ResultSet resultats = ps.executeQuery(query);
+		
+		    while (resultats.next()) {
+		    	res = resultats.getInt(1);
+		    }
+		    resultats.close();
+		    if (res > 0) {
+				return true;
+			}
+		    else {
+		    	return false;
+			}
+		
 
 	}
 
