@@ -12,14 +12,17 @@ import {environment} from '../../environments/environment';
 export class HomeComponent implements OnInit {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
 
-  slides:any[];
-  films: any;
-  filmsNoel:any;
+  domaine:any[];
+  domaineSlectionne: any;
+  VilleSelect:any;
+  Datedebut : any;
+  DateFin : any;
 
   constructor(private tmdbService: TmdbService) { }
   
 
   ngOnInit() {
+    this.domaine = ['Aly', 'Demba', 'Houleye', 'Allasane', 'Demba'];
     this.init() 
   }
   // plats: Plats[];
@@ -93,17 +96,9 @@ export class HomeComponent implements OnInit {
   // }
 
   async init(){
-    this.tmdbService.init( environment.tmdbKey );
-    await this.tmdbService.getAllMovie(1, 1990, 2019).then(data =>{( this.films = data.results)});
-    await this.tmdbService.searchMovie(1,'noel').then(data =>{( this.filmsNoel = data.results.slice(0, 6)) 
-      console.log(this.filmsNoel)});
 
-      this.slides=[{index:0,nom:'Pâtes au fromage',prix:'8,50',image:'https://i.f1g.fr/media/madame/1900x800_crop/sites/default/files/img/2018/04/les-plats-prepares-bios-sont-ils-vraiment-meilleurs-.jpg'},
-                  {index:1,nom:'Salade du chef',prix:'9',image:'http://blog-primeal.fr/wordpress/http://blog-primeal.fr/category/nos-produits-en-images//2017/06/Les-cles-d-un-repas-equilibre.jpg.jpg'},
-                  {index:2,nom:'Pâtes aux asperges',prix:'11',image:'https://www.dietetiquesportive.com/wp-content/uploads/2008/06/repas-veille-competition-feculents.jpg'},
-                  {index:3,nom:'Quiche Lorraine',prix:'9,25',image:'https://www.cookomix.com/wp-content/uploads/2017/06/quiche-lorraine-thermomix-1280x720.jpg'},
-                  {index:4,nom:'Lasagne maison',prix:'8',image:'https://assets.afcdn.com/recipe/20180119/76936_w1024h768c1cx2680cy1786cxt0cyt0cxb5361cyb3573.jpg'}];
-    // (this.films = this.films.results)
+
+
 
   }
 }

@@ -15,7 +15,7 @@ function AlxToObjectString(data?: object): { [key: string]: string } {
     return res;
 }
 
-@I
+@Injectable({
     providedIn: 'root'
 })
 export class MenuService {
