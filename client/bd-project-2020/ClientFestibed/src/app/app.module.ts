@@ -88,6 +88,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.component';
+
 
 
 
@@ -128,6 +130,8 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
         ValidationCommandeDialogComponent,
         FactureDetailComponent,
         ConfirmerCommandeComponent,
+        AjouterfestivalComponent,
+
 
 
     ],
