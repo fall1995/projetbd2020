@@ -68,7 +68,7 @@ public class FestivalServelet extends HttpServlet{
         
         
 
-        resultat = festDao.getFestival();
+        //resultat = festDao.getFestival();
         resultat = festDao.affiner(resultat,domaine,datedebut, datefin, ville);
         //System.out.println("apres \n");
         response.setContentType("application/json");
