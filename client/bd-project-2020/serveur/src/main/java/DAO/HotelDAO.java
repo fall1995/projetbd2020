@@ -5,11 +5,11 @@
  */
 package DAO;
 
-import ConnexionBase.SQLAble;
+import connexionBase.SQLAble;
 import DAOInterfaces.HebergementInterface;
 import java.sql.Date;
 import java.sql.SQLException;
-import mesClasses.Hebergement;
+import mesClassesMetier.Hebergement;
 
 /**
  *

@@ -11,9 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import ConnexionBase.SQLAble;
+import connexionBase.SQLAble;
 import DAOInterfaces.FestivalInterface;
-import mesClasses.Festival;
+import mesClassesMetier.Festival;
 
 public class FestivalDAO extends SQLAble implements FestivalInterface {
 

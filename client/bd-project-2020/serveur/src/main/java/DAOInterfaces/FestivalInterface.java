@@ -3,7 +3,7 @@ package DAOInterfaces;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import mesClasses.Festival;
+import mesClassesMetier.Festival;
 
 public interface FestivalInterface {
 	public abstract void addFestival();

@@ -1,80 +1,19 @@
-<<<<<<< HEAD
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/XMLAble.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/FestivalInterface.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/Commande.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/facture/GestionnaireFactures.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAO/UtilisateurAuthenficationDAO.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/DataBaseAble.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/plats/package-info.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireCommande.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/RecupererFactureServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/DatabaseAccesProperties.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/SQLAble.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/ClientAuthentificationServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/UtilisateurAuthenticationInterface.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/LaCarteServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/SQLAble.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/ObjectFactory.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/mesClasses/LesUtilisateurs.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/BlockingServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/ObjectFactory.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/mesClasses/Hebergement.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/SuggestionPlatsServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/PizzaServer.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/facture/SauvegarderFacture.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAO/FestivalDAO.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/DataBaseAble.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/servelet/ClientData.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/SuggestionFilmsServlet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/package-info.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireClient.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireMenu.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/typedeplat/ObjectFactory.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/package-info.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/DatabaseAccesProperties.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/HebergementInterface.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/DAO/HebergementDAO.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/Client.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/l3m/BdAccess.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/classesgen/typedeplat/TypeDePlat.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/mesClasses/Reservation.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/mesServelets/FestivalServelet.java
-/home/fall/S7 M1 MIAGE/ABD/ProjetBD2020/client/bd-project-2020/serveur/src/main/java/mesClasses/Festival.java
-=======
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/facture/SauvegarderFacture.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/SuggestionPlatsServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/typedeplat/ObjectFactory.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/SQLAble.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/MesClasses/Festival.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/HebergementDAO.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireMenu.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/XMLAble.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/FestivalInterface.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/PizzaServer.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/DatabaseAccesProperties.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireCommande.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/DataBaseAble.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/GestionnaireClient.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/ObjectFactory.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/SuggestionFilmsServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/HebergementInterface.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/DataBaseAble.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/ClientAuthentificationServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/database/SQLAble.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/LaCarteServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/plats/package-info.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/MesClasses/Hebergement.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/FestivalDAO.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/BdAccess.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/typedeplat/TypeDePlat.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/RecupererFactureServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/ConnexionBase/DatabaseAccesProperties.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/servelet/ClientData.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/package-info.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/facture/GestionnaireFactures.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/Commande.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/package-info.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/client/Client.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/l3m/BlockingServlet.java
-/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesgen/commande/ObjectFactory.java
->>>>>>> aa0a0fca56b34451f34f2acc4957852436c2d5a2
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/FestivalServelet.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/AuthentificationServelet.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Festival.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/FestivalInterface.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Hotel.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Hebergement.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LesUtilisateurs.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/UtilisateurAuthenficationDAO.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/serveur/FestiBedServeur.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/HebergementDAO.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/serveur/BlockingServlet.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/SQLAble.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/UtilisateurAuthenticationInterface.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/HebergementInterface.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/FestivalDAO.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/DataBaseAble.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/DatabaseAccesProperties.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/HotelDAO.java
+/home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Reservation.java

@@ -2,7 +2,7 @@ package DAOInterfaces;
 
 import java.sql.SQLException;
 
-import mesClasses.LesUtilisateurs;
+import mesClassesMetier.LesUtilisateurs;
 
 public interface UtilisateurAuthenticationInterface {
 	public abstract void addClient(String idclient, String nom, String prenom) throws SQLException;

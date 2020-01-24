@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DAO.UtilisateurAuthenficationDAO;
-import classesgen.client.Client;
-import database.GestionnaireClient;
-import l3m.ClientAuthentificationServlet;
-import mesClasses.LesUtilisateurs;
+
+
+import mesClassesMetier.LesUtilisateurs;
 
 public class AuthentificationServelet extends HttpServlet{
 	

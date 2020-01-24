@@ -5,9 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import ConnexionBase.SQLAble;
+import connexionBase.SQLAble;
 import DAOInterfaces.HebergementInterface;
-import mesClasses.Hebergement;
+import mesClassesMetier.Hebergement;
 
 public class HebergementDAO extends SQLAble implements HebergementInterface {
 	static Connection conn;

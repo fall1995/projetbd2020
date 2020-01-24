@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import DAO.FestivalDAO;
-import mesClasses.Festival;
+import mesClassesMetier.Festival;
 
 public class FestivalServelet extends HttpServlet{
 	@Override

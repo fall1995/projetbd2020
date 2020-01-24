@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import ConnexionBase.SQLAble;
+import connexionBase.SQLAble;
 import DAOInterfaces.UtilisateurAuthenticationInterface;
-import mesClasses.LesUtilisateurs;
+import mesClassesMetier.LesUtilisateurs;
 import oracle.jdbc.OracleConnection.CommitOption;
 
 public class UtilisateurAuthenficationDAO extends SQLAble implements UtilisateurAuthenticationInterface {
