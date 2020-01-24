@@ -10,12 +10,15 @@ import {CommandeComponent} from './commande/commande.component';
 import {PanierComponent} from './panier/panier.component';
 import {FactureDetailComponent} from './commande/facture-detail/facture-detail.component';
 import {ConfirmerCommandeComponent} from './confirmer-commande/confirmer-commande.component';
+import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.component';
+
 
 const routes: Routes = [
     {path: 'authentification/signin', component: SigninComponent},
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
+    {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },
     {path: 'user/panier', component: PanierComponent },
     {path: 'confirmer-commande', component: ConfirmerCommandeComponent },
