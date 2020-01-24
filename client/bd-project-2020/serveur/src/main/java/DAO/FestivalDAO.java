@@ -160,6 +160,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		// filtre uniquement sur domaine
 		System.out.println("test domaine" +domaineF);
 			if (domaineFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
+				System.out.println("dans la fonction");
 				ArrayList<Festival> resultat = new ArrayList<Festival>();
 				for (int i = 0; i < festivals.size(); i++) {
 					// test domaine
@@ -276,7 +277,8 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 	}
 
 	boolean domaineFiltre(String domaineF, String dateDebutF, String dateFinF, String Ville) {
-		return ((domaineF != null || !domaineF.isEmpty()) && (dateDebutF == null || dateDebutF.isEmpty())
+		System.out.println("dans boolean");
+		return ((domaineF != null && !domaineF.isEmpty()) && (dateDebutF == null || dateDebutF.isEmpty())
 				&& (dateFinF == null || dateFinF.isEmpty()) && (Ville == null || Ville.isEmpty()));
 	}
 
