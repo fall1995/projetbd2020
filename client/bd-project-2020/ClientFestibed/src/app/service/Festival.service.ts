@@ -33,7 +33,7 @@ export class FestivalService {
     }
 
     async getFestivals(params: { [key: string]: string }): Promise<Festival[]> {
-        const url = `${this.serverUrl}/api/platsPrixType`;
+        const url = `${this.serverUrl}`;
         const res = await this.get<Festival[]>(url, params);
         console.log('heyyyyyy')
         return res.body;
