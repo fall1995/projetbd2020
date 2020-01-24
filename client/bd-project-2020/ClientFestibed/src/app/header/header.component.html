@@ -1,6 +1,6 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#" style="padding-top:1em" id="applicationLogo">
-                <b>AppCinema </b>
+                <b>BIENVENUE SUR FESTIBED </b>
                 <i class="fa fa-television" aria-hidden="true"></i>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,25 +12,29 @@
                 <li class="nav-item Accueilbouton" id="rightButton">
                     <a routerLink="/">
                         <span id="iconeMove">
-                            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                           <mat-icon>library_music</mat-icon>
                         </span>
-                        <p>Accueil</p>
+                        <p>Festivals</p>
                     </a>
                 </li>
-                <li class="nav-item" id="rightButton">
-                    <a routerLink="films">
-                        <span>
-                            <i class="fa fa-film fa-2x" aria-hidden="true"></i>
+
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                          <li class="nav-item Accueilbouton" id="rightButton">
+                              <a routerLink="/ajoutfestival">
+                        <span id="iconeMove">
+                           <mat-icon>library_music</mat-icon>
                         </span>
-                        <p>Films</p>
-                    </a>
-                </li>
+                                  <p>Ajout-Festivals</p>
+                              </a>
+                          </li>
+
                 <li class="nav-item" id="rightButton">
                     <a routerLink="menus">
                         <span>
-                            <i class="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+                            <mat-icon> hotel</mat-icon>
                         </span>
-                        <p>Menus</p>
+                        <p>Hebergements</p>
                     </a>
                 </li>
                 <li class="nav-item" id="rightButton">
@@ -51,18 +55,7 @@
                         <p>Compte</p>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li *ngIf="user" style="margin-left: 20px; color: green; font-weight: bold; font-style: italic">
-                                <p>{{user}}<i aria-hidden="true" style="margin-left: 5px"></i></p>
-                            </li>
-                            <li *ngIf="user">
-                                <a routerLink="user/dashbord">Mon profil</a>
-                            </li>
-                            <li *ngIf="user">
-                                <a routerLink="user/commande">Historique </a>
-                            </li>
-                            <li *ngIf="user">
-                                <a routerLink="user/panier">Votre panier</a>
-                            </li>
+
                             <li routerLinkActive="" *ngIf="!user">
                                 <a routerLink="authentification/signin">Connexion</a>
                             </li>
