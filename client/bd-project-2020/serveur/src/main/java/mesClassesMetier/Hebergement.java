@@ -1,6 +1,6 @@
 package mesClassesMetier;
 
-import java.sql.Date;
+import java.util.Date;
 
 import oracle.sql.DATE;
 
@@ -12,14 +12,13 @@ public class Hebergement {
 	String nomCategorie;
 	String classement;
 	String adresse;
-	String categorie;
-	int codePostal;
+	String codePostal;
 	String commune;
-	int numTel;
+	String numTel;
 	String courreil;
 	String siteNet;
-	double coordonnees;
-	double nomEPCI;
+	float coordonnee1;
+	float coordonnee2;
 	String nomDep;
 	String nomRegion;
 	String Description;
@@ -28,8 +27,8 @@ public class Hebergement {
 	
 	
 	public Hebergement(int idHebergement, Date dateDePublication, String nomCommercial, Date dateDeClassement,
-			String nomCategorie, String classement, String adresse, String categorie, int codePostal, String commune,
-			int numTel, String courreil, String siteNet, double coordonnees, double nomEPCI, String nomDep,
+			String nomCategorie, String classement, String adresse, String codePostal, String commune,
+			String numTel, String courreil, String siteNet, float coordonnee1, float coordonnee2, String nomDep,
 			String nomRegion, String description, Date dateAjout, int idUtilisateur) {
 		super();
 		this.idHebergement = idHebergement;
@@ -39,17 +38,17 @@ public class Hebergement {
 		this.nomCategorie = nomCategorie;
 		this.classement = classement;
 		this.adresse = adresse;
-		this.categorie = categorie;
+	
 		this.codePostal = codePostal;
 		this.commune = commune;
 		this.numTel = numTel;
 		this.courreil = courreil;
 		this.siteNet = siteNet;
-		this.coordonnees = coordonnees;
-		this.nomEPCI = nomEPCI;
+		this.coordonnee1 = coordonnee1;
+		this.coordonnee2 = coordonnee2;
 		this.nomDep = nomDep;
 		this.nomRegion = nomRegion;
-		Description = description;
+		this.Description = description;
 		this.dateAjout = dateAjout;
 		this.idUtilisateur = idUtilisateur;
 	}
@@ -125,22 +124,13 @@ public class Hebergement {
 	}
 
 
-	public String getCategorie() {
-		return categorie;
-	}
 
-
-	public void setCategorie(String categorie) {
-		this.categorie = categorie;
-	}
-
-
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
 
-	public void setCodePostal(int codePostal) {
+	public void setCodePostal(String codePostal) {
 		this.codePostal = codePostal;
 	}
 
@@ -155,12 +145,12 @@ public class Hebergement {
 	}
 
 
-	public int getNumTel() {
+	public String getNumTel() {
 		return numTel;
 	}
 
 
-	public void setNumTel(int numTel) {
+	public void setNumTel(String numTel) {
 		this.numTel = numTel;
 	}
 
@@ -185,23 +175,23 @@ public class Hebergement {
 	}
 
 
-	public double getCoordonnees() {
-		return coordonnees;
+	public double getCoordonnee1() {
+		return coordonnee1;
 	}
 
 
-	public void setCoordonnees(double coordonnees) {
-		this.coordonnees = coordonnees;
+	public void setCoordonnees(float coordonnee1) {
+		this.coordonnee1 = coordonnee1;
 	}
 
 
-	public double getNomEPCI() {
-		return nomEPCI;
+	public double getCoordonnee2() {
+		return coordonnee2;
 	}
 
 
-	public void setNomEPCI(double nomEPCI) {
-		this.nomEPCI = nomEPCI;
+	public void setNomEPCI(float coordonnee2) {
+		this.coordonnee2 = coordonnee2;
 	}
 
 
