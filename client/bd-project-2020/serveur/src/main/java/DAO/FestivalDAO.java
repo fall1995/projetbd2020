@@ -844,7 +844,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		}
 
 		// filtre sur ville et domaine
-		if (dateVilleFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
+		if (villeDomaineFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
 			System.out.println("banks to banks");
 			ArrayList<Festival> festivals = new ArrayList<Festival>();
 			festivals = this.filtreDomaineVilleSql(domaineF, Ville);
@@ -930,13 +930,13 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 	}
 
 	boolean dateVilleFiltre(String domaineF, String dateDebutF, String dateFinF, String Ville) {
-		return ((domaineF != null ) && (dateDebutF != null || !dateDebutF.isEmpty())
-				&& (dateFinF != null || !dateFinF.isEmpty()) && (Ville != null || !Ville.isEmpty()));
+		return ((domaineF != null ) && (dateDebutF != null )
+				&& (dateFinF != null ) && (Ville != null || !Ville.isEmpty()));
 	}
 
 	boolean villeDomaineFiltre(String domaineF, String dateDebutF, String dateFinF, String Ville) {
-		return ((domaineF != null || !domaineF.isEmpty()) && (dateDebutF != null || !dateDebutF.isEmpty())
-				&& (dateFinF != null || !dateFinF.isEmpty()) && (Ville != null || !Ville.isEmpty()));
+		return ((domaineF != null || !domaineF.isEmpty()) && (dateDebutF == null )
+				&& (dateFinF == null ) && (Ville != null || !Ville.isEmpty()));
 	}
 
 
