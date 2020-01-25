@@ -27,7 +27,11 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                         <button class="dropdown-item" type="button"*ngFor="let domaine of domaine" [(ngModel)]="domaineSlectionne">{{domaine}}</button>
-
+                        
+                        <select class="mdb-select md-form colorful-select dropdown-primary" [(ngModel)]="domaineF">
+                            <option *ngFor="et domain of domaine">{{domain}}</option>
+                          </select>
+                          <label class="mdb-main-label">Choisir Domaine</label>
                     </div>
                 </div>
                 <br>
