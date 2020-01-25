@@ -23,7 +23,7 @@ public class RemplissageHebergement {
         String username = "bouazizl";
         String password = "Lamine96";
  
-        String csvFilePath = "/home/bouaziz/Etudes M1/ProjetBDi/FichierCSV/LesHebergements.csv";
+        String csvFilePath = "./src/main/java/fichierCSV/LesHebergements.csv";
  
         int batchSize = 20;
  

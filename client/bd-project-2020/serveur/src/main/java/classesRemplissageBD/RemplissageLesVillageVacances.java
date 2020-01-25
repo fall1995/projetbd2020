@@ -21,7 +21,7 @@ public class RemplissageLesVillageVacances{
         String username = "bouazizl";
         String password = "Lamine96";
 
-        String csvFilePath = "/home/bouaziz/Etudes M1/ProjetBDi/FichierCSV/villageVacances.csv";
+        String csvFilePath = "./src/main/java/fichierCSV/villageVacances.csv";
 
         int batchSize = 20;
 
