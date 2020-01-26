@@ -36,27 +36,25 @@ public class FestivalServelet extends HttpServlet{
         }
        
 
-        String  domaine, ville, datedebut, datefin ;
+        /*String  domaine, ville, datedebut, datefin ;
         domaine = parametres.get("domaine"); 
         ville = parametres.get("ville");
         datedebut = parametres.get("dateDebut");
-        datefin = parametres.get("dateFin");
-       /* SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date newDateDebut;
-        java.util.Date newDateFin;
-        try {
-			newDateDebut = sdf1.parse(datedebut);
-			newDateFin = sdf1.parse(datefin);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+        datefin = parametres.get("dateFin");*/
+     
+        
+        String idFestival ;
+        idFestival = parametres.get("idFestival");
+        
         
         
         /*
          * Dans cette partie faudra transformer datedebut et datefin en Date
          */
-        ArrayList<Festival> resultat = new ArrayList<Festival>();
+        
+        //decommenter ca pour affiner
+       // ArrayList<Festival> resultat = new ArrayList<Festival>();
+        boolean resultat ;
         FestivalDAO festDao = new FestivalDAO();
         // la methode suivante ne va pas marcher a cause du type Date 
         // 
@@ -68,9 +66,9 @@ public class FestivalServelet extends HttpServlet{
         
         
 
-        //resultat = festDao.getFestival();
-        resultat = festDao.affiner(domaine,datedebut, datefin, ville);
-        //System.out.println("apres \n");
+       //decommenter ca pour affiner
+      //  resultat = festDao.affiner(domaine,datedebut, datefin, ville);
+        resultat = festDao.supprimerFestival(idFestival);
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println( new Gson().toJson(resultat));

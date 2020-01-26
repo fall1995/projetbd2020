@@ -904,12 +904,79 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		return festivals;
 		// return null;
 	}
+	
+	public boolean SupprimerSql(String idFestival) {
+		
+
+		// connection à la base
+		try {
+			connectToDatabase();
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String s = "null";
+		int id =Integer.parseInt(idFestival);		 
+		System.out.println("idFestival avant delelete"+idFestival);
+		
+		
+		
+		ArrayList<Festival> festivals = new ArrayList<Festival>();// Liste pour recuperer mon resultat
+
+		// requete si l'utilisateur n'a pas affiné sa recherche
+		try {
+			Festival fest;
+			// PreparedStatement ps;
+			Statement ps = conn.createStatement();
+			// ps = conn.prepareStatement("SELECT * FROM LesFestivals");
+			String query = "DELETE from LesFestivals WHERE idFestival = "+idFestival+"";
+			// ps.setInt(1, 0);
+			ResultSet resultats = ps.executeQuery(query);
+
+			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
+
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+
+		System.out.println("\n" + festivals.size());
+		return true;
+		// return null;
+	}
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public boolean supprimerFestival(String idFestival) {
+		if( supprimerF(idFestival)) {
+			if(SupprimerSql(idFestival)) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		return false;
+		
+	}
 
 	public ArrayList<Festival> affiner(String domaineF, String dateDebutF, String dateFinF, String Ville) {
 		System.out.println("domaineF = " + domaineF + "\n");
 		System.out.println("dateDebutF = " + dateDebutF + "\n");
 		System.out.println("dateFinF = " + dateFinF + "\n");
 		System.out.println("Ville = " + Ville + "\n");
+		
+		
+		
 
 		if (aucunFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
 			// System.out.println("dans aucun filtre");
@@ -1072,6 +1139,13 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				&& (dateFinF != null || !dateFinF.isEmpty()) && (Ville != null || !Ville.isEmpty()));
 	}
 
+	
+	boolean supprimerF(String idFestival) {
+		return ((idFestival != null && !idFestival.isEmpty()));
+	}
+	
+	
+	
 	// possible de le faire en combinant les autres filtres
 	/*
 	 * boolean EntreDateDomaine(ArrayList<Festival> festivals, String domaineF, Date
