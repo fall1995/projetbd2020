@@ -8,7 +8,7 @@ import mesClassesMetier.Festival;
 import mesClassesMetier.Hebergement;
 
 public interface HebergementInterface {
-	public abstract void add(Hebergement h) throws SQLException ;
+	public abstract void addH(Hebergement h) throws SQLException ;
 	public abstract void update(Hebergement h);
 	//public abstract ArrayList<Hebergement>  getHebergementsProches(int iDFestival);
 	public abstract void getOneHebergement(Hebergement h);

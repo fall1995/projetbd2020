@@ -19,7 +19,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 
     @Override
   
-    public void add(Hebergement h) throws SQLException {
+    public void addH(Hebergement h) throws SQLException {
         /*
         try {
             connectToDatabase();
@@ -83,9 +83,11 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
                     int iDFestival = Integer.parseInt(iDFestivalString);
                     //ArrayList<Hebergement> listeH = h.getHebergementsProchesPartiel(iDFestival, nomDepartement);
                     hebergementsProches.add(h.getHebergementsProchesPartiel(iDFestival, nomDepartement));
-                    hebergementsProches.add(r.getHebergementsProchesPartiel(iDFestival, nomDepartement));
+                  
+                    System.out.println(hebergementsProches.get(0));
+                  /*  hebergementsProches.add(r.getHebergementsProchesPartiel(iDFestival, nomDepartement));
                     hebergementsProches.add(c.getHebergementsProchesPartiel(iDFestival, nomDepartement));
-                    hebergementsProches.add(v.getHebergementsProchesPartiel(iDFestival, nomDepartement));
+                    hebergementsProches.add(v.getHebergementsProchesPartiel(iDFestival, nomDepartement));*/
                 
                     return hebergementsProches;
          

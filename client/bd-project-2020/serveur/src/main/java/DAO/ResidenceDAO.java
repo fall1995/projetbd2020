@@ -24,7 +24,7 @@ import mesClassesMetier.Residence;
 public class ResidenceDAO extends SQLAble implements HebergementInterface{
 
     @Override
-    public void add(Hebergement h) throws SQLException {
+    public void addH(Hebergement h) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
