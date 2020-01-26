@@ -1,10 +1,3 @@
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Festival" aria-label="Search">
-        <button type="button" class="btn btn-success">Rechercher</button>
-    </form>
-</nav>
-
 <div class="ui-g">
     <div class="ui-sm-12 ui-md-3 ui-md-offset-1 border border-info panel panel-default" id="fixedCriteres">
         <div class="jumbotron jumbotron-fluid" style="padding-top:15;padding-bottom:15">
@@ -18,28 +11,45 @@
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="ui-g">
-                    <h4 class="first"> Type de plat</h4>
+                    <h4 class="first"><b> PAR DOMAINE </b> </h4>
                 </div>
-
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button"*ngFor="let domaine of domaine" [(ngModel)]="domaineSlectionne">{{domaine}}</button>
-
+                <div class="ui-g">
+                    <div class="input-group-prepend">
+                        <select [(ngModel)]="domaineF" class="selectpicker"
+                                id="inputGroupSelect01" (change)="getFestivals()">
+                            <option *ngFor="let dom of domaineExistant">{{dom}}</option>
+                        </select>
                     </div>
                 </div>
-                <br>
 
+                <div class="dropdown-divider"></div>
                 <div class="ui-g">
-                    <h4 class="first">Fourchette de prix</h4>
+                    <h4 class="first"><b> PAR VILLE</b></h4>
+                </div>
+                <div class="ui-g">
+                    <div class="input-group-prepend">
+                        <select [(ngModel)]="VilleSelect" class="selectpicker"
+                                id="inputGroupSelect01" (change)="getFestivals()">
+                            <option *ngFor="let dom of domaineExistant">{{dom}}</option>
+                        </select>
+                    </div>
                 </div>
 
 
-                <ng5-slider (userChangeEnd)="PrixetType()" [(value)]="minValue" [(highValue)]="maxValue"
-                            [options]="options"></ng5-slider>
+                <br>
 
+                <br>
+                <div class="ui-g">
+                    <h4 class="first"> <b>DATE DEBUT</b> </h4>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" placeholder="choisir date debut ">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <br>
                 <br>
             </div>
         </div>
@@ -55,11 +65,12 @@
                         </div>
                     </div>
                     <div class="alert alert-warning ui-md-8" *ngIf="festivals&&festivals.length==0" role="alert">
-                        Aucun produit ne correspond à vos critères, veuillez les modifier
+                        Aucun Festivale ne correspond à vos critères, veuillez les modifier
                     </div>
                 </div>
 
-                <p-dataView #dv *ngIf="festivals&&festivals.length!=0" [value]="festivals" [paginator]="true" [rows]="4"
+                <p-dataView #dv *ngIf="festivals&&festivals.length!=0" [value]="festivals" [paginator]="true"
+                            [rows]="20"
                             [sortField]="sortField" [sortOrder]="sortOrder"
                             filterBy="id" [loading]="loading">
                     <p-header>
@@ -70,29 +81,26 @@
                                                 (onChange)="onSortChange($event)"
                                                 [style]="{'min-width':'15em'}"></p-dropdown>
                                 </div>
-                                <div class="ui-g-6 ui-md-3 ui-md-offset-1 filter-container">
-                                    <div style="position:relative">
-                                        <mat-form-field class="example-full-width">
-                                            <input matInput placeholder="Nom du plat" (input)="dv.filter($event.target.value)">
-                                        </mat-form-field>
-                                        <!-- <input type="search" pInputText placeholder="Search by brand" (input)="dv.filter($event.target.value)"> -->
-                                    </div>
-                                </div>
-                                <div class="ui-g-6 ui-md-4" style="text-align:right">
-                                    <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-                                </div>
+
+
                             </div>
                         </div>
                     </p-header>
+
                     <ng-template let-festiva pTemplate="listItem">
                         <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-                            
+
                             <div class="ui-g-12 ui-md-6 ui-md-offset-1 car-details">
-                                <div class="ui-g" >
-                                    <div class="ui-md-12" style="padding: 0em; "><h4><b>{{festiva.nomFestival}}</b></h4></div>
-                                    <div class="ui-md-12" style="padding: 0em;"><h5>{{festiva.domain}}</h5></div>
-                                    <div class="ui-md-12" style="padding: 0em;"><h5>{{festiva.dateDebut}}</h5></div>
-                                    <div class="ui-md-12" style="padding: 0em;"><h5> <i>{{festiva.dateFin}}</i></h5></div>
+                                <div class="ui-g">
+                                    <div ><h6>Nom Festival :<b> {{festiva.nomFestival}}</b></h6></div>
+                                    <div class="ui-md-12" style="padding: 0em;"><h5>DOMAINE {{festiva.domain}}</h5>
+                                    </div>
+                                    <div class="ui-md-12" style="padding: 0em;"><h5> DATE DEBUT
+                                        : {{festiva.dateDebut}}</h5></div>
+                                    <div class="ui-md-12" style="padding: 0em;"><h5>DATE FIN : {{festiva.dateFin}}</h5>
+                                    </div>
+                                    <div class="ui-md-12" style="padding: 0em;"><h5>Commune : {{festiva.commune}}</h5>
+                                    </div>
 
 
                                 </div>
@@ -100,24 +108,17 @@
                             <div class="ui-g-12 ui-md-1" style="padding-top: 50px">
                                 <button style="margin-bottom: 10px" pButton type="button" icon="fa fa-cart-plus"
                                         pTooltip="Ajouter dans votre panier" tooltipPosition="top"
-                                         class="ui-button-success"></button>
+                                        class="ui-button-success" (click)="selectPlace(festiva)"></button>
                                 <br>
+
+                                <button pButton type="button" icon="fa fa-eye" (click)="selectdetails(festiva)"
+                                        pTooltip="Voir les details du Festival" tooltipPosition="top"
+                                        style="margin-top:0"></button>
+
                             </div>
                         </div>
                     </ng-template>
-                    <ng-template let-festiva pTemplate="gridItem">
-                        <div style="padding:.5em" class="ui-g-12 ui-md-3">
-                            <p-panel [header]="festiva.idFestival" [style]="{'text-align':'center'}">
-                                <img src="{{festiva.idFestival}}" width=150>
-                                <div class="car-detail">{{festiva.siteWeb}} - {{festiva.commune}}</div>
-                                <hr class="ui-widget-content" style="border-top:0">
-                                <button style="margin-right: 10px" pButton type="button" icon="fa fa-cart-plus"
-                                        pTooltip="Ajouter dans le panier"
-                                        class="ui-button-success"
-                                        tooltipPosition="top"></button>
-                            </p-panel>
-                        </div>
-                    </ng-template>
+
                     <ng-template pTemplate="paginatorleft" let-state>
                         <button type="button" pButton icon="fa-refresh"></button>
                     </ng-template>
@@ -130,4 +131,37 @@
             </div>
         </div>
     </div>
+    <p-dialog header="fest detail" [(visible)]="displayDialog" [responsive]="true" [modal]="true"
+              [style]="{width: '550px', height: '550px'}">
+        <div class="ui-g" *ngIf="selectedFest">
+
+            <div class="ui-g-4"><b>Nom Festival</b> : {{selectedFest.nomFestival}} :</div>
+            <div class="ui-g-8"><b> Date debut </b>: {{selectedFest.dateDebut}}</div>
+            <div class="ui-g-4"><b> Date fin</b> : {{selectedFest.dateFin}}</div>
+            <div class="ui-g-8"><b> Domaine </b>: {{selectedFest.domaine}}</div>
+            <div class="ui-g-4"><b>Commune </b> : {{selectedFest.commune}}</div>
+            <div class="ui-g-8"><b>Siteweb </b>: {{selectedFest.siteWeb}}</div>
+
+        </div>
+    </p-dialog>
+
+    <p-dialog header="Choix nombre places ?" [(visible)]="displayeD" [responsive]="true" [modal]="true"
+              [style]="{width: '305px', height: '450px'}">
+        <div class="ui-g" *ngIf="selectedFest">
+
+            <div class="ui-g-4"><b>Nombre de place</b> :</div>
+          <div><input type="number" id="tentacles" name="tentacles"
+                      min="1" [ngModel]="nombrePlace">
+          </div>
+            <br>
+            <div >
+                <p-button label="Annuler Choix" styleClass="ui-button-danger" (click)="fermerPopup()"><mat-icon>thumb_down</mat-icon></p-button>
+            </div>
+            <div >
+                <p-button label="Valider Choix" styleClass="ui-button-success" ><mat-icon>thumb_up</mat-icon></p-button>
+            </div>
+
+
+        </div>
+    </p-dialog>
 </div>

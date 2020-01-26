@@ -32,11 +32,22 @@ export class FestivalService {
     constructor(private http: HttpClient) {
     }
 
-    async getFestivals(params: { [key: string]: string }): Promise<Festival[]> {
+    async getFestivals(params: { dateDebut: string; domaine: string; dateFin: string; Ville: string }): Promise<Festival[]> {
         const url = `${this.serverUrl}`;
         const res = await this.get<Festival[]>(url, params);
         console.log('heyyyyyy')
         return res.body;
     }
+
+    async addFestival(params:  {[key: string]: number}) {
+        this.serverUrl= "http://localhost:8090/api/addFestivals";
+        const url = `${this.serverUrl}`;
+        return this.http.post( `${this.serverUrl}`, params, {
+            observe: 'response',
+            responseType: 'text',
+            headers: {'content-type': 'application/x-www-form-urlencoded'}
+        }).toPromise();
+    }
+
 
 }

@@ -89,6 +89,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from '@angular/material';
+import {MatSidenavModule} from "@angular/material/sidenav";
+
+
 
 
 
@@ -131,6 +136,7 @@ import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.comp
         FactureDetailComponent,
         ConfirmerCommandeComponent,
         AjouterfestivalComponent,
+
 
 
 
@@ -193,7 +199,10 @@ import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.comp
         MatTableModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
-        MatCarouselModule.forRoot()
+        MatCarouselModule.forRoot(),
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSidenavModule
 
     ],
     providers: [
