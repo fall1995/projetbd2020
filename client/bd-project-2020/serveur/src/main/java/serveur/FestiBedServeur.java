@@ -40,7 +40,7 @@ public class FestiBedServeur extends HttpServlet {
        
         servletHandler.addServletWithMapping(AuthentificationServelet.class, "/api/authentification");
         servletHandler.addServletWithMapping(FestivalServelet.class, "/api/festivals");
-        
+        servletHandler.addServletWithMapping(HebergementServelet.class, "/api/hebergements");
      
         
         server.start();

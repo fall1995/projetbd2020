@@ -13,12 +13,14 @@
                 <div class="ui-g">
                     <h4 class="first"><b> PAR DOMAINE </b> </h4>
                 </div>
+
                 <div class="ui-g">
                     <div class="input-group-prepend">
                         <select [(ngModel)]="domaineF" class="selectpicker"
                                 id="inputGroupSelect01" (change)="getFestivals()">
                             <option *ngFor="let dom of domaineExistant">{{dom}}</option>
                         </select>
+
                     </div>
                 </div>
 
