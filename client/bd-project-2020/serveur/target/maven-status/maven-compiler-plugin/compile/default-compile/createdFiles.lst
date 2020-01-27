@@ -1,5 +1,5 @@
-serveur/BlockingServlet.class
 classesRemplissageBD/RemplissageCamping.class
+serveur/BlockingServlet.class
 connexionBase/SQLAble.class
 classesRemplissageBD/RemplissageHotels.class
 mesClassesMetier/LesUtilisateurs.class
@@ -12,7 +12,7 @@ mesClassesMetier/Hotel.class
 classesRemplissageBD/RemplissageLesVillageVacances.class
 classesRemplissageBD/RemplissageLesResidences.class
 classesRemplissageBD/RemplissageHebergement.class
-mesClassesMetier/Hebergement.class
 serveur/FestiBedServeur.class
+mesClassesMetier/Hebergement.class
 DAO/HotelDAO.class
 mesClassesMetier/Reservation.class
