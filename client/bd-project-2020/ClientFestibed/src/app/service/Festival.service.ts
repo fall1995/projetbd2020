@@ -50,8 +50,8 @@ export class FestivalService {
         }).toPromise();
     }
 
-    async getPlaces(params:  {[key: string]: number}) : Promise<Place[]>  {
-        this.serverUrl= "http://localhost:8090/api/addPlace";
+    async getPlaces(params:  {idFestival : number}) : Promise<Place[]>  {
+        this.serverUrl= "http://localhost:8090/api/billets";
         const url = this.serverUrl;
         const res = await this.get<Place[]>(url, params);
         console.log('recuperation places festivals.service')

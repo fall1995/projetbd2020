@@ -9,16 +9,16 @@ import {FestivalService} from "../../service/Festival.service";
 })
 export class SelectFestivalComponent implements OnInit {
 places : Place[];
-@Input() idFestival;
+ idFestival=400;
 
   constructor(private festservice : FestivalService) { }
 
   ngOnInit() {
-
+    this.init() ;
   }
   async getPlace(){
     this.places = await this.festservice.getPlaces({
-      idFestivalse : this.idFestival,
+      idFestival : this.idFestival,
 
     })
 
@@ -26,7 +26,7 @@ places : Place[];
 
   async init(){
     await this.getPlace();
-    this.init() ;
+    
   }
 
 }

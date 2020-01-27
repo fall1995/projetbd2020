@@ -74,7 +74,7 @@ public class PaquetsBilletsDAO extends SQLAble{
 				// System.out.println("siteWeb = "+siteWeb + "\n");
 				nbPlacesRestantesSansCateg = resultats.getInt(10);
 				// System.out.println("commune = "+commune + "\n");
-			
+				
 
 				// j'instancie la classe  et je l'ajoute a ma liste 
 				billets = new PaquetsBillets(jour, tarifSansCateg, tarifCateg1, tarifCateg2, nbPlacesCateg1, nbPlacesCateg2, 
@@ -89,6 +89,7 @@ public class PaquetsBilletsDAO extends SQLAble{
 		}
 
 		//System.out.println("\n" + festivals.size());
+		System.out.println("taille ==== "+paquetsB.size());
 		return paquetsB;
 		// return null;
 	}

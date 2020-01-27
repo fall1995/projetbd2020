@@ -48,6 +48,7 @@ public class BilletServelet extends HttpServlet{
 
 	        String  idF ;
 	        idF = parametres.get("idFestival"); 
+	        System.out.println(idF);
 	        int idFestival = Integer.parseInt(idF);		       
 	        
  
