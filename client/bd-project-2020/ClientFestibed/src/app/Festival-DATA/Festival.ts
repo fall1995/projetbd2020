@@ -1,5 +1,5 @@
  export interface Festival{
-    idFestival  : string;
+    idFestival  : number;
     nomFestival : string ;
     domaine   :  string;
     complementDomaine : string;
