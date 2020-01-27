@@ -38,9 +38,11 @@ public class HebergementServelet extends HttpServlet{
         }
        
 
-        String  idFestival, nomDepartement ;
+        String  idFestival, nomDepartement, typeHebergement, classement ;
         idFestival = parametres.get("idFestival"); 
         nomDepartement = parametres.get("nomDepartement");
+        typeHebergement = parametres.get("typeHebergement");
+        classement = parametres.get("classement");
        
        /* SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
         java.util.Date newDateDebut;
@@ -70,7 +72,7 @@ public class HebergementServelet extends HttpServlet{
         
 System.out.println("avant \n");
         //resultat = festDao.getFestival();
-        resultat = HebDao.getHebergementsProches(idFestival, nomDepartement);
+        resultat = HebDao.affiner(idFestival, nomDepartement, typeHebergement, classement);
         System.out.println("apres \n");
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
