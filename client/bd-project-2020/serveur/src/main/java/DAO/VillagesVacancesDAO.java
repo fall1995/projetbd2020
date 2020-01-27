@@ -50,7 +50,8 @@ public class VillagesVacancesDAO extends SQLAble implements HebergementInterface
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-         
+         String nomDepartementUpper = nomDepartement.toUpperCase();
+		
          String s = "null";
 	ArrayList<Hebergement> hebergementsProches = new ArrayList<Hebergement>();
         try {
@@ -60,7 +61,7 @@ public class VillagesVacancesDAO extends SQLAble implements HebergementInterface
 
 			
 			
-                        String query1 = "SELECT * FROM LesHebergements natural join LesHotels where nomRegion LIKE '%"+nomDepartement+"%'";
+                        String query1 = "SELECT * FROM LesHebergements natural join LesVillageVacances where nomRegion LIKE '%"+nomDepartementUpper+"%'";
 			ResultSet resultats = ps.executeQuery(query1);
                      
 			int idHebergement;
@@ -121,12 +122,12 @@ public class VillagesVacancesDAO extends SQLAble implements HebergementInterface
 				// System.out.println("coord1 = "+coord1 + "\n");
 				Description = resultats.getString(17);
 				// System.out.println("coord2 = "+coord2 + "\n");
-				nomDepartement = resultats.getString(18);
+				
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
-				dateAjout = resultats.getDate(19);
-				idUtilisateur = resultats.getInt(20);
-                                capaciteAcc = resultats.getInt(21);
-                                nbUniteHabitationVil = resultats.getInt(22);
+				dateAjout = resultats.getDate(18);
+				idUtilisateur = resultats.getInt(19);
+                                capaciteAcc = resultats.getInt(20);
+                                nbUniteHabitationVil = resultats.getInt(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -134,7 +135,8 @@ public class VillagesVacancesDAO extends SQLAble implements HebergementInterface
 						adresse, codePostal, commune, numTel, courriel, siteNet, coord1, coord2,
 						nomDep, nomRegion, Description, dateAjout, idUtilisateur, capaciteAcc, nbUniteHabitationVil);
 				// System.out.println("Element de ma liste "+ fest.getIdUtilisateur());
-				hebergementsProches.add(hebergementProche);
+				System.out.println("idHebergement  village="+hebergementProche.getIdHebergement());
+                                hebergementsProches.add(hebergementProche);
                                 System.out.println(hebergementProche);
 			}
 			resultats.close();
