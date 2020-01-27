@@ -3,7 +3,7 @@ import {TmdbService} from '../service/tmdb.service';
 import {environment} from '../../environments/environment';
 import {Festival} from '../Festival-DATA/Festival';
 import {FestivalService} from '../service/Festival.service';
-
+import { Router } from '@angular/router';
 
 
 
@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   displayDialog: boolean;
   displayeD : boolean;
   nombrePlace = 1;
+  router : Router;
 
   constructor(private festservice : FestivalService) { }
   
@@ -59,6 +60,10 @@ export class HomeComponent implements OnInit {
 
   fermerPopup() {
     this.displayeD=false;
+  }
+
+  changementDePage() {
+    this.router.navigate(['AjoutPlaceFestivale']);
   }
 
   async init(){
