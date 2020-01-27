@@ -51,16 +51,15 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			Statement ps = conn.createStatement();
 			System.out.println("avant select \n");
 			// ps = conn.prepareStatement("SELECT * FROM LesFestivals");
-			String query = "SELECT * FROM LesFestivals";
+			String query = "SELECT * FROM LesFestivals natural Join LesPaquetsPlaces where (nbPlacesRestantesCateg1 > 0 or nbPlacesRestantesCateg2 > 0 or nbPlacesRestantesSansCateg > 0 ";
 			// ps.setInt(1, 0);
-			System.out.println(" apres ps \n");
+			
 			ResultSet resultats = ps.executeQuery(query);
-
+			System.out.println(" apres query \n");
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
 			String idFestival;
 
 			String nomFestival;
-
 			String domaine;
 			String complementDomaine;
 			String region;
@@ -79,7 +78,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -98,7 +97,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				siteWeb = resultats.getString(9);
 				// System.out.println("siteWeb = "+siteWeb + "\n");
 				commune = resultats.getString(10);
-				// System.out.println("commune = "+commune + "\n");
+				 System.out.println("commune = "+commune + "\n");
 				dateDebut = resultats.getDate(11);
 				// System.out.println("dateDebut = "+dateDebut + "\n");
 				dateFin = resultats.getDate(12);
@@ -108,17 +107,18 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				codepost = resultats.getInt(14);
 				// System.out.println("codeP = "+codepost + "\n");
 				codeINSEE = resultats.getString(15);
-				// System.out.println("codeInsee = "+codeINSEE + "\n");
+				System.out.println("codeInsee = "+codeINSEE + "\n");
 				coord1 = resultats.getFloat(16);
-				// System.out.println("coord1 = "+coord1 + "\n");
+				 System.out.println("coord1 = "+coord1 + "\n");
 				coord2 = resultats.getFloat(17);
-				// System.out.println("coord2 = "+coord2 + "\n");
+				System.out.println("coord2 = "+coord2 + "\n");
 				nomDepartement = resultats.getString(18);
-				// System.out.println("nomDepartement = "+nomDepartement + "\n");
+				 System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
-				// System.out.println("id utilisateur "+idUtilisateur);
+				System.out.println("avant utilisateur");
+				idUtilisateur = resultats.getString(21);
+				 System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
 				fest = new Festival(idFestival, nomFestival, domaine, complementDomaine, region, departement,
@@ -189,7 +189,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -227,7 +227,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -298,7 +298,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -336,7 +336,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -408,7 +408,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -446,7 +446,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -518,7 +518,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -556,7 +556,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -627,7 +627,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -665,7 +665,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -736,7 +736,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -774,7 +774,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -846,7 +846,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String nomDepartement;
 			int nbPlaceLouees;
 			Date dateAjout;
-			int idUtilisateur;
+			String idUtilisateur;
 
 			while (resultats.next()) {
 				idFestival = resultats.getString(1);
@@ -884,7 +884,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				idUtilisateur = resultats.getInt(21);
+				idUtilisateur = resultats.getString(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -979,10 +979,12 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		
 
 		if (aucunFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
-			// System.out.println("dans aucun filtre");
+			 System.out.println("dans aucun filtre");
 			ArrayList<Festival> festivals = new ArrayList<Festival>();
 			festivals = this.getFestival();
+			System.out.println("apres appelle fonction get  ");
 			return festivals;
+			
 		}
 		// System.out.println("apres aucun filtre");
 		// filtre uniquement sur ville
@@ -1006,7 +1008,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 		}
 		// filtre sur domaine et date debut et fin
 		if (dateDomaineFiltre(domaineF, dateDebutF, dateFinF, Ville)) {
-			System.out.println("banks to banks");
+			System.out.println("banks to banks 2");
 			ArrayList<Festival> festivals = new ArrayList<Festival>();
 			festivals = this.filtreDateDomaineSql(dateDebutF, dateFinF, domaineF);
 			return festivals;
