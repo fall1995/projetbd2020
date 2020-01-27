@@ -52,6 +52,8 @@ public class ResidenceDAO extends SQLAble implements HebergementInterface{
 		}
          
          String s = "null";
+         String nomDepartementUpper = nomDepartement.toUpperCase();
+		
 	ArrayList<Hebergement> hebergementsProches = new ArrayList<Hebergement>();
         try {
 			Residence hebergementProche;
@@ -60,7 +62,7 @@ public class ResidenceDAO extends SQLAble implements HebergementInterface{
 
 			
 			
-                        String query1 = "SELECT * FROM LesHebergements natural join LesResidences where nomRegion LIKE '%"+nomDepartement+"%'";
+                        String query1 = "SELECT * FROM LesHebergements natural join LesResidences where nomRegion LIKE '%"+nomDepartementUpper+"%'";
 			ResultSet resultats = ps.executeQuery(query1);
                      
 			int idHebergement;
@@ -121,12 +123,12 @@ public class ResidenceDAO extends SQLAble implements HebergementInterface{
 				// System.out.println("coord1 = "+coord1 + "\n");
 				Description = resultats.getString(17);
 				// System.out.println("coord2 = "+coord2 + "\n");
-				nomDepartement = resultats.getString(18);
+				
 				// System.out.println("nomDepartement = "+nomDepartement + "\n");
-				dateAjout = resultats.getDate(19);
-				idUtilisateur = resultats.getInt(20);
-                                capaciteAcc = resultats.getInt(21);
-                                nbUniteHabitationRes = resultats.getInt(22);
+				dateAjout = resultats.getDate(18);
+				idUtilisateur = resultats.getInt(19);
+                                capaciteAcc = resultats.getInt(20);
+                                nbUniteHabitationRes = resultats.getInt(21);
 				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
@@ -134,8 +136,9 @@ public class ResidenceDAO extends SQLAble implements HebergementInterface{
 						adresse, codePostal, commune, numTel, courriel, siteNet, coord1, coord2,
 						nomDep, nomRegion, Description, dateAjout, idUtilisateur, capaciteAcc, nbUniteHabitationRes);
 				// System.out.println("Element de ma liste "+ fest.getIdUtilisateur());
-				hebergementsProches.add(hebergementProche);
-                                System.out.println(hebergementProche);
+				System.out.println("idHebergement residence ="+hebergementProche.getIdHebergement());
+                                hebergementsProches.add(hebergementProche);
+                               // System.out.println(hebergementProche);
 			}
 			resultats.close();
 

@@ -22,6 +22,10 @@ import mesClassesMetier.Hotel;
  */
 public class HotelDAO extends SQLAble implements HebergementInterface {
 
+    /*public static void main(String[] args) {
+        HotelDAO h = new HotelDAO();
+        h.getHebergementsProchesPartiel(1, "VIENNE");
+    }*/
 	@Override
 	public void addH(Hebergement h) throws SQLException {
 		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
@@ -48,13 +52,13 @@ public class HotelDAO extends SQLAble implements HebergementInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		nomDepartement = "'" + nomDepartement + "'";
+                String nomDepartementUpper = nomDepartement.toUpperCase();
+		nomDepartementUpper = "'" + nomDepartementUpper + "'";
 
 		ArrayList<Hebergement> hebergementsProches = new ArrayList<Hebergement>();
 		try {
 
-			System.out.println("-------->" + nomDepartement);
+			
 			System.out.println(iDFestival);
 			Hotel hebergementProche;
 			// PreparedStatement ps;
@@ -82,8 +86,8 @@ public class HotelDAO extends SQLAble implements HebergementInterface {
 			int idUtilisateur;
 			int capaciteAcc;
 			int nbChambres;
-			System.out.println("iciiiii +++++++++>" + nomDepartement);
-			String query = "SELECT * FROM LesHebergements natural join LesHotels where nomRegion=" + nomDepartement
+			
+			String query = "SELECT * FROM LesHebergements natural join LesHotels where nomRegion=" + nomDepartementUpper
 					+ "";
 			// String query = "SELECT * FROM LesHebergements natural join LesHotels where
 			// nomRegion LIKE '%"+nomDepartement+"%'";
@@ -123,28 +127,22 @@ public class HotelDAO extends SQLAble implements HebergementInterface {
 				nomRegion = resultats.getString(16);
 				// System.out.println("coord1 = "+coord1 + "\n");
 				Description = resultats.getString(17);
-				// System.out.println("coord2 = "+coord2 + "\n");
-				//nomDepartement = resultats.getString(18);
-			//	System.out.println("essaie un  "+ resultats.getString(18)+"\n");
-				// System.out.println("nomDepartement = "+nomDepartement + "\n");
-				System.out.println("dans resultats ");
-				//System.out.println("essaie un milliard "+ resultats.getDate(18)+"\n");
+			
 				dateAjout = resultats.getDate(18);
-				System.out.println("apres date");
+				
 				idUtilisateur = resultats.getInt(19);
 				
 				capaciteAcc = resultats.getInt(20);
 				nbChambres = resultats.getInt(21);
 				
-				// System.out.println("id utilisateur "+idUtilisateur);
-				System.out.println("la \n");
+				
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
 				hebergementProche = new Hotel(idHebergement, dateDePublication, nomCommercial, dateDeClassement,
 						nomCategorie, classement, adresse, codePostal, commune, numTel, courriel, siteNet, coord1,
 						coord2, nomDep, nomRegion, Description, dateAjout, idUtilisateur, capaciteAcc, nbChambres);
 				// System.out.println("Element de ma liste "+ fest.getIdUtilisateur());
-				System.out.println("ici \n");
-				System.out.println("idHebergement ="+hebergementProche.getIdHebergement());
+		
+				System.out.println("idHebergement Hotel ="+hebergementProche.getIdHebergement());
 				hebergementsProches.add(hebergementProche);
 				
 			}

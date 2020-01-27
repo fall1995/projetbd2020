@@ -24,13 +24,13 @@ public class Festival {
     String nomDepartement;
     int nbPlaceLouees;
     Date dateAjout;
-    int idUtilisateur;
+    String idUtilisateur;
     
     
 	public Festival(String idFestival, String nomFestival, String domaine, String complementDomaine, String region,
 			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, Date dateDebut,
 			Date dateFin, Date dateCreation, int codepost, String codeINSEE, float coord1, float coord2,
-			String nomDepartement, int nbPlaceLouees, Date dateAjout, int idUtilisateur) {
+			String nomDepartement, int nbPlaceLouees, Date dateAjout, String idUtilisateur) {
 		super();
 		this.idFestival = idFestival;
 		this.nomFestival = nomFestival;
@@ -256,12 +256,12 @@ public class Festival {
 	}
 
 
-	public int getIdUtilisateur() {
+	public String getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
 
-	public void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(String idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
     
