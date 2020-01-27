@@ -17,6 +17,7 @@ const routes: Routes = [
     {path: 'authentification/signin', component: SigninComponent},
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
+    {path: 'AjoutFestival', component: AjouterfestivalComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },

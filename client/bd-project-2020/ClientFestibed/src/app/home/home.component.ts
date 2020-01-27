@@ -6,6 +6,7 @@ import {FestivalService} from '../service/Festival.service';
 
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,18 +16,23 @@ export class HomeComponent implements OnInit {
 
 
   domaineExistant:any[];
-  domaineF ="";
-  VilleSelect="";
-  Datedebut="";
-  DateFin="";
+  domaineF = "";
+  VilleSelect= "";
+  Datedebut= "";
+  DateFin = "";
+  selectedFest: Festival; // festival selectionner
   festivals : Festival[];
+  displayDialog: boolean;
+  displayeD : boolean;
+  nombrePlace = 1;
 
   constructor(private festservice : FestivalService) { }
   
 
   ngOnInit() {
-    this.domaineExistant = ['Aly', 'Demba', 'Houleye', 'Allasane', 'Demba'];
-    this.init() 
+    this.domaineExistant = ['Aly', 'Demba', 'Houleye', 'Allasane', 'Demba','Aly', 'Demba', 'Houleye', 'Allasane', 'Demba',
+      'Aly', 'Demba', 'Houleye', 'Allasane', 'Demba','Aly', 'Demba', 'Houleye', 'Allasane', 'Demba','Aly', 'Demba', 'Houleye', 'Allasane', 'Demba'];
+    this.init() ;
   }
 
   async getFestivals() {
@@ -39,10 +45,26 @@ export class HomeComponent implements OnInit {
     })
 
   }
+  selectdetails(fes: Festival) {
+    this.selectedFest = fes;
+    this.displayDialog = true;
+    event.preventDefault();
+  }
+
+  selectPlace(fes: Festival) {
+    this.selectedFest = fes;
+    this.displayeD = true;
+    event.preventDefault();
+  }
+
+  fermerPopup() {
+    this.displayeD=false;
+  }
 
   async init(){
     await this.getFestivals();
   }
+
 
 
 }

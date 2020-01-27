@@ -18,8 +18,9 @@ export class HeaderComponent implements OnInit {
     //isAuth: boolean;
     nbArticlesPanier:number;
     user: any;
-    adresse: any;
     prevScrollpos:any;
+    isAuth: boolean;
+
 
 
     constructor(private eventEmitterService: EventEmitterService, private storageService: StorageService, private afAuth: AngularFireAuth, private authService: AuthService,
