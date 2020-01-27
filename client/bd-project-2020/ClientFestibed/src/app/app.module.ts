@@ -92,6 +92,7 @@ import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.comp
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from '@angular/material';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { AjoutFestivalComponent } from './ajout-festival/ajout-festival.component';
 
 
 
@@ -136,6 +137,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
         FactureDetailComponent,
         ConfirmerCommandeComponent,
         AjouterfestivalComponent,
+        AjoutFestivalComponent,
 
 
 

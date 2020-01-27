@@ -51,13 +51,13 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			Statement ps = conn.createStatement();
 			System.out.println("avant select \n");
 			// ps = conn.prepareStatement("SELECT * FROM LesFestivals");
-			String query = "SELECT * FROM LesFestivals natural Join LesPaquetsPlaces where (nbPlacesRestantesCateg1 > 0 or nbPlacesRestantesCateg2 > 0 or nbPlacesRestantesSansCateg > 0 ";
+			String query = "SELECT * FROM LesFestivals natural Join LesPaquetsPlaces where (nbPlacesRestantesCateg1 > 0 or nbPlacesRestantesCateg2 > 0 or nbPlacesRestantesSansCateg > 0) ";
 			// ps.setInt(1, 0);
 			
 			ResultSet resultats = ps.executeQuery(query);
 			System.out.println(" apres query \n");
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 			String domaine;
@@ -81,7 +81,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -167,7 +167,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -192,7 +192,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -276,7 +276,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -301,7 +301,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -386,7 +386,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -411,7 +411,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -496,7 +496,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -521,7 +521,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -605,7 +605,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -630,7 +630,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -714,7 +714,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -739,7 +739,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -824,7 +824,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -849,7 +849,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");

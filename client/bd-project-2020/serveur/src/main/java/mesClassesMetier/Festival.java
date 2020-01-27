@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Festival {
 	
-	String idFestival;
+	int idFestival;
     String nomFestival ;
     String domaine;
     String complementDomaine;
@@ -27,7 +27,7 @@ public class Festival {
     String idUtilisateur;
     
     
-	public Festival(String idFestival, String nomFestival, String domaine, String complementDomaine, String region,
+	public Festival(int idFestival, String nomFestival, String domaine, String complementDomaine, String region,
 			int departement, String periodicite, String moiHabDebut, String siteWeb, String commune, Date dateDebut,
 			Date dateFin, Date dateCreation, int codepost, String codeINSEE, float coord1, float coord2,
 			String nomDepartement, int nbPlaceLouees, Date dateAjout, String idUtilisateur) {
@@ -56,12 +56,12 @@ public class Festival {
 	}
 
 
-	public String getIdFestival() {
+	public int getIdFestival() {
 		return idFestival;
 	}
 
 
-	public void setIdFestival(String idFestival) {
+	public void setIdFestival(int idFestival) {
 		this.idFestival = idFestival;
 	}
 

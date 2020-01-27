@@ -4,7 +4,6 @@ connexionBase/SQLAble.class
 classesRemplissageBD/RemplissageHotels.class
 mesClassesMetier/LesUtilisateurs.class
 connexionBase/DataBaseAble.class
-mesClassesMetier/Festival.class
 connexionBase/DatabaseAccesProperties.class
 classesRemplissageBD/RemplissageLesLogements.class
 classesRemplissageBD/RemplissageChambres.class

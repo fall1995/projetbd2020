@@ -62,6 +62,7 @@ public class FestivalServelet extends HttpServlet{
         
 
        //decommenter ca pour affiner
+        
         resultat = festDao.affiner(domaine,datedebut, datefin, ville);
        // resultat = festDao.supprimerFestival(idFestival);
         System.out.println("apres appelle a resultat");

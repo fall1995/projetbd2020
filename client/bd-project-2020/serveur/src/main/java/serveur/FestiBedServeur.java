@@ -41,6 +41,7 @@ public class FestiBedServeur extends HttpServlet {
         servletHandler.addServletWithMapping(AuthentificationServelet.class, "/api/authentification");
         servletHandler.addServletWithMapping(FestivalServelet.class, "/api/festivals");
         servletHandler.addServletWithMapping(HebergementServelet.class, "/api/hebergements");
+        servletHandler.addServletWithMapping(BilletServelet.class, "/api/billets");
      
         
         server.start();
