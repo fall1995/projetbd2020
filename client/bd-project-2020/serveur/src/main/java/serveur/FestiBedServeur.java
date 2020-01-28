@@ -43,6 +43,10 @@ public class FestiBedServeur extends HttpServlet {
         servletHandler.addServletWithMapping(HebergementServelet.class, "/api/hebergements");
         servletHandler.addServletWithMapping(LogementServelet.class, "/api/logements");
         servletHandler.addServletWithMapping(DisponibilitesServlet.class, "/api/disponibilitesLogement");
+
+        servletHandler.addServletWithMapping(BilletServelet.class, "/api/billets");
+     
+        
         server.start();
     }
 

@@ -57,7 +57,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 			System.out.println(" apres query \n");
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 			String domaine;
@@ -81,7 +81,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -97,7 +97,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				siteWeb = resultats.getString(9);
 				// System.out.println("siteWeb = "+siteWeb + "\n");
 				commune = resultats.getString(10);
-				 System.out.println("commune = "+commune + "\n");
+				 //System.out.println("commune = "+commune + "\n");
 				dateDebut = resultats.getDate(11);
 				// System.out.println("dateDebut = "+dateDebut + "\n");
 				dateFin = resultats.getDate(12);
@@ -107,18 +107,18 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				codepost = resultats.getInt(14);
 				// System.out.println("codeP = "+codepost + "\n");
 				codeINSEE = resultats.getString(15);
-				System.out.println("codeInsee = "+codeINSEE + "\n");
+				//System.out.println("codeInsee = "+codeINSEE + "\n");
 				coord1 = resultats.getFloat(16);
-				 System.out.println("coord1 = "+coord1 + "\n");
+				// System.out.println("coord1 = "+coord1 + "\n");
 				coord2 = resultats.getFloat(17);
-				System.out.println("coord2 = "+coord2 + "\n");
+				//System.out.println("coord2 = "+coord2 + "\n");
 				nomDepartement = resultats.getString(18);
-				 System.out.println("nomDepartement = "+nomDepartement + "\n");
+				// System.out.println("nomDepartement = "+nomDepartement + "\n");
 				nbPlaceLouees = resultats.getInt(19);
 				dateAjout = resultats.getDate(20);
-				System.out.println("avant utilisateur");
+				//System.out.println("avant utilisateur");
 				idUtilisateur = resultats.getString(21);
-				 System.out.println("id utilisateur "+idUtilisateur);
+				// System.out.println("id utilisateur "+idUtilisateur);
 
 				// j'instancie la classe festival et je l'ajoute a ma liste de festivale
 				fest = new Festival(idFestival, nomFestival, domaine, complementDomaine, region, departement,
@@ -167,7 +167,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -192,7 +192,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -276,7 +276,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -301,7 +301,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -386,7 +386,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -411,7 +411,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -496,7 +496,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -521,7 +521,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -605,7 +605,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -630,7 +630,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -714,7 +714,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -739,7 +739,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");
@@ -824,7 +824,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			ResultSet resultats = ps.executeQuery(query);
 
 			// Parcours des resulats (objet ResulSet) retournés par executeQuery()
-			String idFestival;
+			int idFestival;
 
 			String nomFestival;
 
@@ -849,7 +849,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			String idUtilisateur;
 
 			while (resultats.next()) {
-				idFestival = resultats.getString(1);
+				idFestival = resultats.getInt(1);
 				// System.out.println("id festival = "+idFestival + "\n");
 				nomFestival = resultats.getString(2);
 				// System.out.println("nomFestival = "+nomFestival + "\n");

@@ -93,6 +93,12 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from '@angular/material';
 import {MatSidenavModule} from "@angular/material/sidenav";
 
+import { AjoutFestivalComponent } from './ajout-festival/ajout-festival.component';
+
+import { PlaceComponent } from './AjoutPlaceFestivale/place.component';
+import { SelectFestivalComponent } from './home/select-festival/select-festival.component';
+
+
 
 
 
@@ -136,6 +142,12 @@ import {MatSidenavModule} from "@angular/material/sidenav";
         FactureDetailComponent,
         ConfirmerCommandeComponent,
         AjouterfestivalComponent,
+
+        AjoutFestivalComponent,
+
+        PlaceComponent,
+        SelectFestivalComponent,
+
 
 
 

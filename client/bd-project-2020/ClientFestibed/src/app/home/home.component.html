@@ -108,9 +108,12 @@
                                 </div>
                             </div>
                             <div class="ui-g-12 ui-md-1" style="padding-top: 50px">
-                                <button style="margin-bottom: 10px" pButton type="button" icon="fa fa-cart-plus"
-                                        pTooltip="Ajouter dans votre panier" tooltipPosition="top"
-                                        class="ui-button-success" (click)="selectPlace(festiva)"></button>
+                                <a [routerLink]="['AjoutPlaceFestivale',festiva.idFestival]">
+                <span style=" margin-left: 10px; margin-top: 10px">
+                </span>
+                                    <p>Ajout-Festivale</p>
+                                </a>
+
                                 <br>
 
                                 <button pButton type="button" icon="fa fa-eye" (click)="selectdetails(festiva)"
@@ -118,6 +121,8 @@
                                         style="margin-top:0"></button>
 
                             </div>
+
+
                         </div>
                     </ng-template>
 
@@ -147,23 +152,5 @@
         </div>
     </p-dialog>
 
-    <p-dialog header="Choix nombre places ?" [(visible)]="displayeD" [responsive]="true" [modal]="true"
-              [style]="{width: '305px', height: '450px'}">
-        <div class="ui-g" *ngIf="selectedFest">
 
-            <div class="ui-g-4"><b>Nombre de place</b> :</div>
-          <div><input type="number" id="tentacles" name="tentacles"
-                      min="1" [ngModel]="nombrePlace">
-          </div>
-            <br>
-            <div >
-                <p-button label="Annuler Choix" styleClass="ui-button-danger" (click)="fermerPopup()"><mat-icon>thumb_down</mat-icon></p-button>
-            </div>
-            <div >
-                <p-button label="Valider Choix" styleClass="ui-button-success" ><mat-icon>thumb_up</mat-icon></p-button>
-            </div>
-
-
-        </div>
-    </p-dialog>
 </div>

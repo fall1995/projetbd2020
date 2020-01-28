@@ -11,6 +11,7 @@ import {PanierComponent} from './panier/panier.component';
 import {FactureDetailComponent} from './commande/facture-detail/facture-detail.component';
 import {ConfirmerCommandeComponent} from './confirmer-commande/confirmer-commande.component';
 import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.component';
+import {SelectFestivalComponent} from "./home/select-festival/select-festival.component";
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
     {path: 'AjoutFestival', component: AjouterfestivalComponent},
+    {path: 'AjoutPlaceFestivale/:id', component: SelectFestivalComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },
