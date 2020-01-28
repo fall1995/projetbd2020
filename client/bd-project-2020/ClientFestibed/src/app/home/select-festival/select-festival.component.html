@@ -16,19 +16,34 @@ filterBy="id" [loading]="loading">
 
     <div class="ui-g-12 ui-md-6 ui-md-offset-1 car-details">
       <div class="ui-g">
-        <div ><h6>jour :<b> {{place.jour}}</b></h6></div>
+        <div ><h6>jour : <b> {{place.jour}}</b></h6></div>
         <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesRestantesSansCateg {{place.nbPlacesRestantesSansCateg}}</h5>
         </div>
         <div class="ui-md-12" style="padding: 0em;"><h5>tarifSansCateg
           : {{place.tarifSansCateg}}</h5></div>
+        <label for="tentacles">Choisix :</label>
+
+        <input type="number" id="tentacles" name="tentacles"
+               min="0" max="{{place.nbPlacesRestantesSansCateg}}">
+
         <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesCateg1 : {{place.nbPlacesCateg1}}</h5>
         </div>
+
         <div class="ui-md-12" style="padding: 0em;"><h5>tarifCateg1 : {{place.tarifCateg1}}</h5>
         </div>
+        <label for="tentacles">Choisix :</label>
+
+        <input type="number" id="tentacles" name="tentacles"
+               min="0" max="{{place.nbPlacesCateg1}}">
+
         <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesRestantesCateg2 : {{place.nbPlacesRestantesCateg2}}</h5>
         </div>
         <div class="ui-md-12" style="padding: 0em;"><h5>tarifCateg2 : {{place.tarifCateg2}}</h5>
         </div>
+        <label for="tentacles">Choisix :</label>
+
+        <input type="number" id="tentacles" name="tentacles"
+               min="0" max="{{place.nbPlacesRestantesCateg2}}">
         <div class="ui-md-12" style="padding: 0em;"><h5>idFestival : {{place.idFestival}}</h5>
         </div>
 

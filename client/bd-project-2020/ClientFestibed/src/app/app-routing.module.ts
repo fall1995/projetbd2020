@@ -19,7 +19,7 @@ const routes: Routes = [
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
     {path: 'AjoutFestival', component: AjouterfestivalComponent},
-    {path: 'AjoutPlaceFestivale', component: SelectFestivalComponent},
+    {path: 'AjoutPlaceFestivale/:id', component: SelectFestivalComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },
