@@ -114,8 +114,15 @@ public class PaquetsBilletsDAO extends SQLAble {
 
 	}
 
-	public void creerResBillet(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg, int nbPlaceCateg1,
+	public boolean creerResBillet(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg, int nbPlaceCateg1,
 			int nbPlaceCateg2) throws SQLException {
+                       /* System.out.println("nbcommandeS  ="+ nbPlacesSansCateg);
+                         System.out.println("nbcommandeC1  ="+ nbPlaceCateg1);
+                           System.out.println("nbcommandeC2  ="+ nbPlaceCateg2);*/
+                       System.out.println("-------------->"+nbPlacesSansCateg);
+                       System.out.println("-------------->"+nbPlaceCateg1);
+                       System.out.println("-------------->"+nbPlaceCateg2);
+
 		try {
 			connectToDatabase();
 			
@@ -156,9 +163,14 @@ public class PaquetsBilletsDAO extends SQLAble {
 				tarifC1 = rs1.getInt(5);
 				tarifC2 = rs1.getInt(6);
 			}
-			System.out.println("quantite sans =" + nbSansC);
-			System.out.println("quantite cat1 =" + nbC1);
-			System.out.println("quantite cat2 =" + nbC2);
+			System.out.println("quantite sans = " + nbSansC);
+			System.out.println("quantite cat1 = " + nbC1);
+			System.out.println("quantite cat2 = " + nbC2);
+                        System.out.println("prixS = " + tarifS);
+                        System.out.println("prix1 = " + tarifC1);
+                        System.out.println("prix2 = " + tarifC2);
+
+
 			int totalSansC = tarifS * nbPlacesSansCateg;
 			int totalC1 = tarifC1 * nbPlaceCateg1;
 			int totalC2 = tarifC2 * nbPlaceCateg2;
@@ -187,38 +199,46 @@ public class PaquetsBilletsDAO extends SQLAble {
 				System.out.println("Nombre de lignes insérées dans RESPAQUETPLACE = " + nb2);
 				
 				}
+                                ps.close();
+                                return true ;
 				//upd.close();
 			} else {
 				
 				//int nb = ps.executeUpdate("Delete from LesReservations where idReservation =" + idReservation + "");
 				//System.out.println("Nombre de lignes supprime dans LesReservations = " + nb);
 				SQLAble.conn.rollback();
+                                ps.close();
+                                return false;
 			}
 
-			ps.close();
 			
-			this.disconnect();
+			//this.disconnect();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			//e.printStackTrace();
 			SQLAble.conn.rollback();
+                        return false;
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+            return false;
 
 	}
 
-	public void reserverBillets(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
+	public boolean reserverBillets(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
 			int nbPlaceCateg1, int nbPlaceCateg2) {
-		try {
+		boolean res = false ;
+            try {
 			//this.creerPanierRes(idUtilisateur);
-			this.creerResBillet(idUtilisateur, idFestival, jour, nbPlacesSansCateg, nbPlaceCateg1, nbPlaceCateg2);
-
+                        
+			res =this.creerResBillet(idUtilisateur, idFestival, jour, nbPlacesSansCateg, nbPlaceCateg1, nbPlaceCateg2);
+                        
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+            return res;
 
 	}
 
