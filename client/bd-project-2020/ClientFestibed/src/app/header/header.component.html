@@ -1,4 +1,53 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">FESTIBED</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" routerLink="/">HomeFestibed <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="user/panier">Panier</a>
+        </li>
+        <li class="nav-item dropdown" id="rightButton">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+                <p>Compte</p>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li *ngIf="user" style="margin-left: 20px; color: green; font-weight: bold; font-style: italic">
+                        <p>{{user}}<i aria-hidden="true" style="margin-left: 5px"></i></p>
+                    </li>
+                    
+                    
+                    
+                    <li routerLinkActive="" *ngIf="!user">
+                        <a routerLink="authentification/signin">Connexion</a>
+                    </li>
+                    <li routerLinkActive="" *ngIf="!user">
+                        <a routerLink="authentification/signup">Créer un compte</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li>
+                        <a (click)="onSignOut()" *ngIf="user" style="cursor:pointer">Se déconnecter</a>
+                    </li>
+            </div>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+
+
+
+
+
+<!--<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#" style="padding-top:1em" id="applicationLogo">
         <b>AppCinema </b>
         <i class="fa fa-television" aria-hidden="true"></i>
@@ -84,3 +133,4 @@
 
 
 <p-toast position="top-right"></p-toast>
+-->

@@ -108,12 +108,12 @@
                                 </div>
                             </div>
                             <div class="ui-g-12 ui-md-1" style="padding-top: 50px">
-                                <a routerLink="AjoutPlaceFestivale">
+                                <a [routerLink]="['AjoutPlaceFestivale',festiva.idFestival]">
                 <span style=" margin-left: 10px; margin-top: 10px">
                 </span>
                                     <p>Ajout-Festivale</p>
                                 </a>
-                                <!-- <app-select-festival [idFestival]="festiva.idFestival" ></app-select-festival> -->
+
                                 <br>
 
                                 <button pButton type="button" icon="fa fa-eye" (click)="selectdetails(festiva)"
@@ -121,6 +121,8 @@
                                         style="margin-top:0"></button>
 
                             </div>
+
+
                         </div>
                     </ng-template>
 

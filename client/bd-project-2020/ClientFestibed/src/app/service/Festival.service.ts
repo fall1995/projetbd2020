@@ -58,6 +58,16 @@ export class FestivalService {
         return res.body;
     }
 
+    async addPlace(params:  {[key: string]: number}) {
+        this.serverUrl= "http://localhost:8090/api/billets";
+        const url = `${this.serverUrl}`;
+        return this.http.post( `${this.serverUrl}`, params, {
+            observe: 'response',
+            responseType: 'text',
+            headers: {'content-type': 'application/x-www-form-urlencoded'}
+        }).toPromise();
+    }
+
 
 
 
