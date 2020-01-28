@@ -113,23 +113,16 @@ public class BilletServelet extends HttpServlet{
 				
 			/*	if (postValide(parametres, id,nom,prenom )) {*/
 					PaquetsBilletsDAO paquetDAO = new PaquetsBilletsDAO();
-					/*try {
-						
-						
-						paquetDAO.reserverBillets(idUtilisateur, idFestival,jour, nbPlaceSansCateg, nbPlaceCateg1, nbPlaceCateg2);
-						
-						
-						//LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
-						response.setStatus(HttpServletResponse.SC_OK);
-		               // response.getWriter().println(new Gson().toJson(utilisateur));
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-          */
+					paquetDAO.reserverBillets(idUtilisateur, idFestival,jour, nbPlaceSansCateg, nbPlaceCateg1, nbPlaceCateg2);
+					
+					
+					//LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
+					response.setStatus(HttpServletResponse.SC_OK);
+            // response.getWriter().println(new Gson().toJson(utilisateur));
+          
+				System.out.println("bingo des bengos !!!");
 				
-				
-				response.setStatus(HttpServletResponse.SC_OK);
+				//response.setStatus(HttpServletResponse.SC_OK);
 				// A revoir 
 				//response.getWriter().println(new Gson().toJson(client));
 				/*}
