@@ -2,61 +2,67 @@
 
 
 
+<div class="col-md-6">
+<div *ngFor="let place of places">
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                Jour {{place.jour}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Information du festival :{{place.idFestival}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+      
+          <mat-list>
+              <mat-list-item></mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.tarifSansCateg}}</mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.nbPlacesSansCateg}}</mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+            </mat-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>
+</div>
+      
+<div class="col-md-6" >
+    <div class="example-container">
 
-
-
-<p-dataView #dv  [value]="places" [paginator]="true"
-[rows]="20"
-[sortField]="sortField" [sortOrder]="sortOrder"
-filterBy="id" [loading]="loading">
-
-
- <ng-template let-place pTemplate="listItem">
-  <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-
-    <div class="ui-g-12 ui-md-6 ui-md-offset-1 car-details">
-      <div class="ui-g">
-        <div ><h6>jour : <b> {{place.jour}}</b></h6></div>
-        <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesRestantesSansCateg {{place.nbPlacesRestantesSansCateg}}</h5>
-        </div>
-        <div class="ui-md-12" style="padding: 0em;"><h5>tarifSansCateg
-          : {{place.tarifSansCateg}}</h5></div>
-        <label for="tentacles">Choisix :</label>
-
-        <input type="number" id="tentacles0" name="tentacles"
-               min="0" max="{{place.nbPlacesRestantesSansCateg}}" (ngModel)="nbPlaceSanGateg">
-
-        <div  class="ui-md-12" style="padding: 0em;"><h5>nbPlacesCateg1 : {{place.nbPlacesCateg1}}</h5>
-        </div>
-
-        <div class="ui-md-12" style="padding: 0em;"><h5>tarifCateg1 : {{place.tarifCateg1}}</h5>
-        </div>
-        <label for="tentacles">Choisix :</label>
-
-        <input type="number" id="tentacles1" name="tentacles"
-               min="0" max="{{place.nbPlacesCateg1}}" (ngModel)="nbPlaceCateg1">
-
-        <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesRestantesCateg2 : {{place.nbPlacesRestantesCateg2}}</h5>
-        </div>
-        <div class="ui-md-12" style="padding: 0em;"><h5>tarifCateg2 : {{place.tarifCateg2}}</h5>
-        </div>
-        <label for="tentacles">Choisix :</label>
-
-        <input type="number" id="tentacles2" name="tentacles"
-               min="0" max="{{place.nbPlacesRestantesCateg2}}" (ngModel)="nbPlaceCateg2">
-
-        <div class="ui-md-12" style="padding: 0em;"><h5>idFestival : {{place.idFestival}}</h5>
-        </div>
-        <div>
-          <button pButton type="button" label="Danger" class="ui-button-danger"></button>
-          <button pButton type="button" label="Reserver" class="ui-button-success" (click)="onSubmit(place.jour)"></button>
-        </div>
-
+        <mat-form-field>
+            <mat-select placeholder="Choisir jour">
+              <mat-option value="option"  *ngFor="let place of places"  [(ngModel)]="jour" >{{place.jour}} </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder=" nombre de place sans categorie" type="number"
+                    min="0" value="0" name="" [(ngModel)]="nbPlacesSansCateg">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder=" nombre de place categorie 1" type="number"
+                      min="0" value="0" name="" [(ngModel)]="nbPlaceCateg1">
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder=" nombre de place categorie 2" type="number"
+                        min="0" value="0" name="" [(ngModel)]="nbPlaceCateg2">
+            </mat-form-field>
+            <button type="button" class="btn btn-success" (click)="onSubmit()">Reserver</button>
+            <button type="button" class="btn btn-danger" (click)=retour()>Annuler</button>
 
       </div>
-    </div>
-  </div>
-</ng-template> 
-
-
-</p-dataView>
+      
+</div>

@@ -32,7 +32,7 @@ import { HomeComponent } from './home/home.component';
 
 // importation des modules de material design
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule,} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatOptionModule, MatSelectModule, MatExpansionModule,} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -75,7 +75,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import { Ng5SliderModule } from 'ng5-slider';
 import { MatGridListModule, MatToolbarModule } from '@angular/material';
 import { EventEmitterService } from './service/event-emitter.service';
-import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { TruncateModule } from 'ng2-truncate';
 import {AccordionModule} from 'primeng/accordion';
@@ -97,33 +96,7 @@ import { AjoutFestivalComponent } from './ajout-festival/ajout-festival.componen
 
 import { PlaceComponent } from './AjoutPlaceFestivale/place.component';
 import { SelectFestivalComponent } from './home/select-festival/select-festival.component';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -142,9 +115,7 @@ import { SelectFestivalComponent } from './home/select-festival/select-festival.
         FactureDetailComponent,
         ConfirmerCommandeComponent,
         AjouterfestivalComponent,
-
         AjoutFestivalComponent,
-
         PlaceComponent,
         SelectFestivalComponent,
 
@@ -164,6 +135,9 @@ import { SelectFestivalComponent } from './home/select-festival/select-festival.
         AngularFireMessagingModule,
         AngularFireAuthModule,
         AngularFireDatabaseModule,
+        MatOptionModule,
+        MatExpansionModule,
+        MatSelectModule,
         AngularFirestoreModule,
         AngularFireModule.initializeApp(environment.firebase),
         BrowserAnimationsModule,

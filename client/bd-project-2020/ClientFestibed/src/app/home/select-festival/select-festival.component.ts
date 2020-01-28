@@ -16,6 +16,8 @@ export class SelectFestivalComponent implements OnInit {
     nbPlaceCateg1: number;
     nbPlaceCateg2: number;
     idf : string;
+    idUtilisateur= 8;
+    tabOption : number[];
 
     constructor(private festservice: FestivalService,private route : ActivatedRoute) {
     }
@@ -25,8 +27,7 @@ export class SelectFestivalComponent implements OnInit {
         this.idf = this.route.snapshot.paramMap.get('id');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
-        const nb1 = document.getElementById("nbPlace1");
-        console.log(nb1);
+       
     }
 
     async getPlace() {
@@ -43,26 +44,32 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     async addPlace() {
-        this.festservice.addPlace({
+        await this.festservice.addPlace({
             // variable que le serveur s'attend a recevoir
-
+            idUtilisateur: this.idUtilisateur,
             idFestival: this.idFestival,
             jour : this.numjour,
             nbPlaceSanGateg: this.nbPlaceSanGateg,
             nbPlaceCateg1: this.nbPlaceCateg1,
             nbPlaceCateg2: this.nbPlaceCateg2,
 
+        }).then(res =>{
+            console.log("succes")
         });
 
     }
 
-    // methode a appeler lors du clic sur reservation;
-    onSubmit(jour : number){
-        console.log('heyy')
-        console.log(this.nbPlaceSanGateg)
+    remplirTab(){
+        let i = 1;
+        for (let i = 1; i <this.places.length+1; i++){
+             this.tabOption[i] = i;
+           
+        }
+    }
 
-        this.numjour=jour;
-        console.log(jour);
+    // methode a appeler lors du clic sur reservation;
+    onSubmit(){
+        console.log('heyy Aly');
         this.addPlace();
     }
 }
