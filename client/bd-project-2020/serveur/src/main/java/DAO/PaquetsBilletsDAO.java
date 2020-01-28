@@ -118,18 +118,30 @@ public class PaquetsBilletsDAO extends SQLAble {
 			int nbPlaceCateg2) throws SQLException {
 		try {
 			connectToDatabase();
+			
 			int res = 0;
 			System.out.println("dans creerResbillet");
 			Statement ps = conn.createStatement();
 			idUtilisateur = "'" + idUtilisateur + "'";
+			
+		//creation du panier en premier	
+			int nb9 = ps.executeUpdate(
+					"INSERT INTO LesReservations ( idUtilisateur, prix) VALUES (" + idUtilisateur + "," + 0 + ")");
+			System.out.println("Nombre de lignes insérées dans panier = " + nb9);
+			
+			
+			
+			
+			
 			int idReservation = -1;
-
+			
 			String query = "SELECT max(idReservation) from LesReservations where idUtilisateur =" + idUtilisateur + "";
 			ResultSet rs = ps.executeQuery(query);
 			while (rs.next()) {
 				idReservation = rs.getInt(1);
 			}
 			System.out.println("idRes==="+idReservation);
+			//voir les dispo
 			String select = "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
 					+ jour + " and idFestival =" + idFestival + " for Update ";
 			ResultSet rs1 = ps.executeQuery(select);
@@ -137,9 +149,9 @@ public class PaquetsBilletsDAO extends SQLAble {
 			int tarifS = 0, tarifC1 = 0, tarifC2 = 0;
 
 			while (rs1.next()) {
-				nbSansC = rs1.getInt(1);
-				nbC1 = rs1.getInt(2);
-				nbC2 = rs1.getInt(3);
+				nbSansC = rs1.getInt(3);
+				nbC1 = rs1.getInt(1);
+				nbC2 = rs1.getInt(2);
 				tarifS = rs1.getInt(4);
 				tarifC1 = rs1.getInt(5);
 				tarifC2 = rs1.getInt(6);
@@ -166,25 +178,30 @@ public class PaquetsBilletsDAO extends SQLAble {
 				System.out.println("Nombre de lignes mises à jour dans update place = " + nb);
 				if(nb>0) {
 				// voir comment faire pour prix
+				
 				int nb2 = ps.executeUpdate(
 						"INSERT INTO LesReservationPaquetsPlaces (idReservation, idFestival, jour, nbPlacesSansCateg, "
 								+ " nbPlacesCateg1, nbPlacesCateg2, prixResPlace) VALUES (" + idReservation + ","
 								+ idFestival + "," + jour + "," + nbPlacesSansCateg + "," + nbPlaceCateg1 + ","
 								+ nbPlaceCateg2 + "," + prixTotal + ")");
 				System.out.println("Nombre de lignes insérées dans RESPAQUETPLACE = " + nb2);
+				
 				}
 				//upd.close();
 			} else {
-				int nb = ps.executeUpdate("Delete from LesReservations where idReservation =" + idReservation + "");
-				System.out.println("Nombre de lignes supprime dans LesReservations = " + nb);
+				
+				//int nb = ps.executeUpdate("Delete from LesReservations where idReservation =" + idReservation + "");
+				//System.out.println("Nombre de lignes supprime dans LesReservations = " + nb);
 				SQLAble.conn.rollback();
 			}
 
 			ps.close();
+			
 			this.disconnect();
 		} catch (SQLException e) {
 			// TODO: handle exception
-			e.printStackTrace();
+			//e.printStackTrace();
+			SQLAble.conn.rollback();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,7 +212,7 @@ public class PaquetsBilletsDAO extends SQLAble {
 	public void reserverBillets(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
 			int nbPlaceCateg1, int nbPlaceCateg2) {
 		try {
-			this.creerPanierRes(idUtilisateur);
+			//this.creerPanierRes(idUtilisateur);
 			this.creerResBillet(idUtilisateur, idFestival, jour, nbPlacesSansCateg, nbPlaceCateg1, nbPlaceCateg2);
 
 		} catch (SQLException e) {

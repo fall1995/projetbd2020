@@ -28,7 +28,7 @@ public abstract class SQLAble implements DataBaseAble {
             System.out.println("loaded");
             System.out.print("Connecting to the database... ");
             conn = DriverManager.getConnection( conn_url , user , password );
-            conn.setAutoCommit(true);
+            conn.setAutoCommit(false);
             System.out.println("connected \"" + user + "\"" );
         }
     }
