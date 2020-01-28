@@ -23,18 +23,18 @@ filterBy="id" [loading]="loading">
           : {{place.tarifSansCateg}}</h5></div>
         <label for="tentacles">Choisix :</label>
 
-        <input type="number" id="tentacles" name="tentacles"
-               min="0" max="{{place.nbPlacesRestantesSansCateg}}">
+        <input type="number" id="tentacles0" name="tentacles"
+               min="0" max="{{place.nbPlacesRestantesSansCateg}}" [(ngModel)]="nbPlaceSanGateg">
 
-        <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesCateg1 : {{place.nbPlacesCateg1}}</h5>
+        <div  class="ui-md-12" style="padding: 0em;"><h5>nbPlacesCateg1 : {{place.nbPlacesCateg1}}</h5>
         </div>
 
         <div class="ui-md-12" style="padding: 0em;"><h5>tarifCateg1 : {{place.tarifCateg1}}</h5>
         </div>
         <label for="tentacles">Choisix :</label>
 
-        <input type="number" id="tentacles" name="tentacles"
-               min="0" max="{{place.nbPlacesCateg1}}">
+        <input type="number" id="tentacles1" name="tentacles"
+               min="0" max="{{place.nbPlacesCateg1}}" [(ngModel)]="nbPlaceCateg1">
 
         <div class="ui-md-12" style="padding: 0em;"><h5>nbPlacesRestantesCateg2 : {{place.nbPlacesRestantesCateg2}}</h5>
         </div>
@@ -42,9 +42,14 @@ filterBy="id" [loading]="loading">
         </div>
         <label for="tentacles">Choisix :</label>
 
-        <input type="number" id="tentacles" name="tentacles"
-               min="0" max="{{place.nbPlacesRestantesCateg2}}">
+        <input type="number" id="tentacles2" name="tentacles"
+               min="0" max="{{place.nbPlacesRestantesCateg2}}" [(ngModel)]="nbPlaceCateg2">
+
         <div class="ui-md-12" style="padding: 0em;"><h5>idFestival : {{place.idFestival}}</h5>
+        </div>
+        <div>
+          <button pButton type="button" label="Danger" class="ui-button-danger"></button>
+          <button pButton type="button" label="Reserver" class="ui-button-success" (click)="onSubmit(place)"></button>
         </div>
 
 

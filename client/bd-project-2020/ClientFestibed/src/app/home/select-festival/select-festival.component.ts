@@ -21,12 +21,12 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     ngOnInit() {
-      
 
         this.idf = this.route.snapshot.paramMap.get('id');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
-
+        const nb1 = document.getElementById("nbPlace1");
+        console.log(nb1);
     }
 
     async getPlace() {
@@ -47,7 +47,7 @@ export class SelectFestivalComponent implements OnInit {
             // variable que le serveur s'attend a recevoir
 
             idFestival: this.idFestival,
-            numjour: this.numjour,
+            jour : this.numjour,
             nbPlaceSanGateg: this.nbPlaceSanGateg,
             nbPlaceCateg1: this.nbPlaceCateg1,
             nbPlaceCateg2: this.nbPlaceCateg2,
@@ -57,11 +57,10 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     // methode a appeler lors du clic sur reservation;
-    onSubmit(jour : number,nbPlaceSanGateg : number, nbPlaceCateg1 : number, nbPlaceCateg2 : number){
+    onSubmit(jour : number){
+        console.log('heyy')
         this.numjour=jour;
-        this.nbPlaceSanGateg=nbPlaceSanGateg;
-        this.nbPlaceCateg1= nbPlaceCateg1;
-        this.nbPlaceCateg2 = nbPlaceCateg2;
+        console.log(jour);
         this.addPlace();
     }
 }

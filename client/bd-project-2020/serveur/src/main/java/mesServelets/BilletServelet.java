@@ -76,7 +76,7 @@ public class BilletServelet extends HttpServlet{
 	 @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        System.out.println( "================================================== BilletServlet [doPost] ==================================================" );
-	        System.out.print(" ...");
+	       
 	        response.setContentType("application/json");
 	        response.addHeader("Access-Control-Allow-Origin", "*");
 	        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
@@ -102,6 +102,10 @@ public class BilletServelet extends HttpServlet{
 				String nbPlaceS = parametres.get("nbPlaceSansCateg");
 				String nbPlaceC1 = parametres.get("nbPlaceCateg1");
 				String nbPlaceC2 = parametres.get("nbPlaceCateg2");
+				System.out.println("nbPlaceS ="+nbPlaceS);
+				System.out.println("nbPlaceC1 ="+nbPlaceC1);
+				System.out.println("jour ="+j);
+				
 				
 				 int idFestival = Integer.parseInt(idF);
 				 int jour = Integer.parseInt(j);
