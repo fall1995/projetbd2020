@@ -11,6 +11,7 @@ import DAOInterfaces.LogementInterface;
 import connexionBase.SQLAble;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import mesClassesMetier.EmplacementsChambres;
 import mesClassesMetier.Festival;
 import mesClassesMetier.Hebergement;
 import mesClassesMetier.Logement;
@@ -32,8 +33,26 @@ public class EmplacementVillageDAO extends SQLAble implements LogementInterface{
     }
 
     @Override
-    public ArrayList<Logement> getLogement(int iDFestival, String dateDF, String dateFF, int idHebergement) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Logement> getLogement(String iDFestival, String dateDF, String dateFF, String idHebergement) {
+        int idH; 
+        idH = Integer.parseInt(idHebergement);
+        EmplacementsChambresDAO e = new EmplacementsChambresDAO();
+        ArrayList<Logement> emplacementC = new ArrayList<Logement>();
+        emplacementC = e.getLogement(iDFestival, dateDF, dateFF, idHebergement);
+        
+        EmplacementsCollectifsDAO ec = new EmplacementsCollectifsDAO();
+        ArrayList<Logement> emplacementColl = new ArrayList<Logement>();
+        emplacementColl = ec.getLogement(iDFestival, dateDF, dateFF, idHebergement);
+        
+        ArrayList<Logement> liste = new ArrayList<Logement>(); 
+        for(int i = 0; i < emplacementC.size(); i++){
+            liste.add(emplacementC.get(i));
+        }
+        
+        for(int j = 0 ; j < emplacementC.size(); j++){
+            liste.add(emplacementColl.get(j));
+        }
+        return liste;
     }
 
     

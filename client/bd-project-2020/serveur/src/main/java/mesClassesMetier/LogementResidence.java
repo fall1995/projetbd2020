@@ -14,7 +14,7 @@ public class LogementResidence extends Logement{
      int nbPersonneConseille ;
      int idHebergement ;
 
-    public LogementResidence(int tarif, int nbPersonneConseille, int idHebergement, int numLogement) {
+    public LogementResidence(int numLogement, int tarif, int nbPersonneConseille, int idHebergement ) {
         super(numLogement);
         this.tarif = tarif;
         this.nbPersonneConseille = nbPersonneConseille;

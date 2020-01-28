@@ -16,7 +16,7 @@ public class EmplacementsCollectifs extends EmplacementsVillages{
         super(numLogement);
     }
 
-    public EmplacementsCollectifs(int tarif, int idHebergement, int numLogement) {
+    public EmplacementsCollectifs(int numLogement, int tarif, int idHebergement) {
         super(numLogement);
         this.tarif = tarif;
         this.idHebergement = idHebergement;

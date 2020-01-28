@@ -14,7 +14,7 @@ public class LogementCamping extends Logement{
     int idHebergement;  
     
 
-    public LogementCamping(int tarif, int idHebergement, int numLogement) {
+    public LogementCamping(int numLogement , int tarif, int idHebergement ) {
         super(numLogement);
         this.tarif = tarif;
         this.idHebergement = idHebergement;

@@ -16,7 +16,7 @@ public class EmplacementsChambres extends EmplacementsVillages{
     int nbEnfants ;
     int idHebergement ;
 
-    public EmplacementsChambres(int tarifAdulte, int tarifEnfant, int nbAdultes, int nbEnfants, int idHebergement, int numLogement) {
+    public EmplacementsChambres(int numLogement, int tarifAdulte, int tarifEnfant, int nbAdultes, int nbEnfants, int idHebergement ) {
         super(numLogement);
         this.tarifAdulte = tarifAdulte;
         this.tarifEnfant = tarifEnfant;

@@ -2,11 +2,14 @@ package mesServelets;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,36 +44,27 @@ public class FestivalServelet extends HttpServlet{
         ville = parametres.get("ville");
         datedebut = parametres.get("dateDebut");
         datefin = parametres.get("dateFin");
-       /* SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        java.util.Date newDateDebut;
-        java.util.Date newDateFin;
-        try {
-			newDateDebut = sdf1.parse(datedebut);
-			newDateFin = sdf1.parse(datefin);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+     
         
         
         /*
          * Dans cette partie faudra transformer datedebut et datefin en Date
          */
+        
+        //decommenter ca pour affiner
         ArrayList<Festival> resultat = new ArrayList<Festival>();
+      
+        
+        //boolean resultat ;
         FestivalDAO festDao = new FestivalDAO();
-        // la methode suivante ne va pas marcher a cause du type Date 
-        // 
 
-        // resultat = festDao.getFestival(domaine, datedebut, datefin, ville);
-        // String json = new Gson().toJson(resultat);
-
-
-        
+  
         
 
-        //resultat = festDao.getFestival();
+       //decommenter ca pour affiner
         resultat = festDao.affiner(domaine,datedebut, datefin, ville);
-        //System.out.println("apres \n");
+       // resultat = festDao.supprimerFestival(idFestival);
+        System.out.println("apres appelle a resultat");
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println( new Gson().toJson(resultat));
@@ -78,5 +72,39 @@ public class FestivalServelet extends HttpServlet{
 
 
     }
+	
+	 protected void doPut(HttpServletRequest request, HttpServletResponse response)
+	            throws ServletException, IOException {
+
+	        System.out.println( "================================================== ClientAuthentificationServlet [doPut] ==================================================" );
+	        System.out.print("Modification des données du client ..." );
+	        Enumeration<String> P = request.getParameterNames();
+	        HashMap<String, String> parametres = new HashMap();
+	        
+	        while (P.hasMoreElements()) {
+	            String p = P.nextElement();
+	            parametres.put(p, request.getParameter( p ));
+	        }
+	        
+	        String idFestival ;
+	        idFestival = parametres.get("idFestival");
+	        boolean resultat ;
+	        FestivalDAO festDao = new FestivalDAO();
+	        resultat = festDao.supprimerFestival(idFestival);
+	        
+	     
+	          
+
+	         
+
+	            response.addHeader("Access-Control-Allow-Origin", "*");
+	            response.setStatus(HttpServletResponse.SC_OK);
+	            response.getWriter().println("suppression");
+	            System.out.println("la suppression est éffectuée avec succès !");
+	            
+	    }
+	     
+
+	
 }
 

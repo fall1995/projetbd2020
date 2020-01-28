@@ -19,7 +19,7 @@ public class ChambreHotel extends Logement{
 
   
 
-    public ChambreHotel(int tarifAdulte, int tarifEnfant, int nbAdultes, int nbEnfants, char typeChambre, int idHebergement, int numLogement) {
+    public ChambreHotel( int numLogement, int tarifAdulte, int tarifEnfant, int nbAdultes, int nbEnfants, char typeChambre, int idHebergement) {
         super(numLogement);
         this.tarifAdulte = tarifAdulte;
         this.tarifEnfant = tarifEnfant;

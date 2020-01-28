@@ -81,7 +81,7 @@ public class RemplissageDisponibilité {
                 numLogement2 = "'" + numLogement2 + "'";
                 int alea = randBetween(1, 365);
                 System.out.println("Aleatoire ---------------------------->"+alea);
-                for (int i = 0; i < 1; i++) {
+                for (int i = 0; i < alea; i++) {
                     
                     //Générer une date aléatoire
                     GregorianCalendar gc = new GregorianCalendar();
