@@ -43,14 +43,14 @@
 <div class="col-md-6" >
     <div class="example-container">
 
-        <mat-form-field>
-            <mat-select placeholder="Choisir jour">
-              <mat-option value="option"  *ngFor="let place of places"  [(ngModel)]="jour" >{{place.jour}} </mat-option>
+        <mat-form-field >
+            <mat-select placeholder="Choisir jour" [(ngModel)]="jour">
+              <mat-option value="option" *ngFor="let opt of tabOption"  >{{opt}} </mat-option>
             </mat-select>
           </mat-form-field>
         <mat-form-field>
           <input matInput placeholder=" nombre de place sans categorie" type="number"
-                    min="0" value="0" name="" [(ngModel)]="nbPlacesSansCateg">
+                    min="0" value="0" name="" [(ngModel)]="nbPlaceSansCateg">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder=" nombre de place categorie 1" type="number"

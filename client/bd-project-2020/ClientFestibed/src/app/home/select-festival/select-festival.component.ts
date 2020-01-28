@@ -11,8 +11,8 @@ import {ActivatedRoute} from "@angular/router";
 export class SelectFestivalComponent implements OnInit {
     places: Place[];
      idFestival: number;
-    numjour: number;
-    nbPlaceSanGateg: number;
+    jour: number;
+    nbPlaceSansCateg: number;
     nbPlaceCateg1: number;
     nbPlaceCateg2: number;
     idf : string;
@@ -27,6 +27,9 @@ export class SelectFestivalComponent implements OnInit {
         this.idf = this.route.snapshot.paramMap.get('id');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
+       
+        this.remplirTab();
+        console.log(this.tabOption.length);
        
     }
 
@@ -48,13 +51,23 @@ export class SelectFestivalComponent implements OnInit {
             // variable que le serveur s'attend a recevoir
             idUtilisateur: this.idUtilisateur,
             idFestival: this.idFestival,
-            jour : this.numjour,
-            nbPlaceSanGateg: this.nbPlaceSanGateg,
+            jour : this.jour,
+            nbPlaceSansCateg: this.nbPlaceSansCateg,
             nbPlaceCateg1: this.nbPlaceCateg1,
-            nbPlaceCateg2: this.nbPlaceCateg2,
+            nbPlaceCateg2: this.nbPlaceCateg2
+
 
         }).then(res =>{
             console.log("succes")
+        }).catch(error =>{
+            console.log(error);
+            console.log(this.idUtilisateur);
+            console.log(this.idFestival);
+            console.log(this.nbPlaceSansCateg);
+            console.log(this.nbPlaceCateg1);
+            console.log(this.nbPlaceCateg2);
+            console.log(this.jour);
+            
         });
 
     }
@@ -69,7 +82,9 @@ export class SelectFestivalComponent implements OnInit {
 
     // methode a appeler lors du clic sur reservation;
     onSubmit(){
+        
         console.log('heyy Aly');
+        console.log(this.tabOption.length);
         this.addPlace();
     }
 }
