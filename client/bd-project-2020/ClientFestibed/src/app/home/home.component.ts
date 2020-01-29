@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
       Ville : this.VilleSelect,
       dateDebut : this.Datedebut,
       dateFin : this.DateFin,
-    });
+    })
 
   }
   selectdetails(fes: Festival) {
@@ -62,9 +62,7 @@ export class HomeComponent implements OnInit {
     this.displayeD=false;
   }
 
-  changementDePage() {
-    this.router.navigate(['AjoutPlaceFestivale']);
-  }
+  
 
   async init(){
     await this.getFestivals();

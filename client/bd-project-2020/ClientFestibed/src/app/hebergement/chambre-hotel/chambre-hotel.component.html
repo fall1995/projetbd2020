@@ -11,31 +11,27 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-primary">
         <div class="panel panel-heading">
-          <h3 class="panel-title"> List des Hebegements en fonction des types </h3>
+          <h3 class="panel-title"> List des Chambres De l'hotel</h3>
         </div>
         <div class="panel panel-body">
          
           <div class="table-responsive">
-              <mat-form-field >
-                  <mat-select placeholder="Choisir le type d'hebergement" (change)="getHebergement()" [(ngModel)]="selectedType">
-                      <mat-option *ngFor="let typeHeb of typeHebergement" [value]="typeHeb">{{typeHeb}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-            <p-table [value]="tabHotels" >
+              
+            <p-table [value]="tabChambre" >
                 
               <ng-template pTemplate="header">
                 <tr>
-                  <th>Nom Commercial #</th>
-                  <th>Num Tel</th>
-                  <th>Id Hebegements</th>
+                  <th>tarif Adulte</th>
+                  <th>tarifEnfant</th>
+                  <th>nbAdultes</th>
                   <th>Action</th>
                 </tr>
               </ng-template>
               <ng-template pTemplate="body" let-c>
                 <tr>
-                  <td>{{c.nomCommercial}}</td>
-                  <td>{{c.numTel}}</td>
-                  <td>{{c.idHebergement}}</td>
+                  <td>{{c.tarifAdulte}}</td>
+                  <td>{{c.tarifEnfant}}</td>
+                  <td>{{c.nbAdultes}}</td>
 
 
                   <td >

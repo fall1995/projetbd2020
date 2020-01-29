@@ -20,6 +20,8 @@ export class SelectFestivalComponent implements OnInit {
     idf : any;
     idUtilisateur : any;
     tabOption : any[];
+    dated: string;
+    datef: string;
 
     constructor(private festservice: FestivalService,private route : ActivatedRoute,
                 private ip:IpServiceService, private router : Router) {
@@ -28,6 +30,8 @@ export class SelectFestivalComponent implements OnInit {
     ngOnInit() {
 
         this.idf = this.route.snapshot.paramMap.get('id');
+        this.dated = this.route.snapshot.paramMap.get('dated');
+        this.datef = this.route.snapshot.paramMap.get('datef');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
         this.getIP();
@@ -45,7 +49,8 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     hebergement(){
-        this.router.navigate(['Hebergement',this.idFestival]);
+        this.router.navigate(['Hebergement',this.idFestival,this.dated,this.datef]);
+       
     }
 
     async init() {

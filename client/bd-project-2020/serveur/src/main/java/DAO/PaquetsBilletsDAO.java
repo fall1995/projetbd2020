@@ -128,12 +128,18 @@ public class PaquetsBilletsDAO extends SQLAble {
 			 * DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); Date date =
 			 * new Date();
 			 */
+
 			/*
 			 * String select =
 			 * "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
 			 * + jour + " and idFestival =" + idFestival + " for Update ";
 			 */
 			// ResultSet rs1 = ps.executeQuery(select);
+
+		//	String select = "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
+			//		+ jour + " and idFestival =" + idFestival + " for Update ";
+		//	ResultSet rs1 = ps.executeQuery(select);
+
 			ps.close();
 			this.disconnect();
 		} catch (Exception e) {

@@ -99,7 +99,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 				commune = resultats.getString(10);
 				 //System.out.println("commune = "+commune + "\n");
 				dateDebut = resultats.getDate(11);
-				// System.out.println("dateDebut = "+dateDebut + "\n");
+				//System.out.println("dateDebut = "+dateDebut + "\n");
 				dateFin = resultats.getDate(12);
 				// System.out.println("dateFin = "+dateFin + "\n");
 				dateCreation = resultats.getDate(13);
@@ -125,7 +125,11 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 						periodicite, moiHabDebut, siteWeb, commune, dateDebut, dateFin, dateCreation, codepost,
 						codeINSEE, coord1, coord2, nomDepartement, nbPlaceLouees, dateAjout, idUtilisateur);
 				// System.out.println("Element de ma liste "+ fest.getIdUtilisateur());
-				festivals.add(fest);
+                               // System.out.println("avant d'ajouter");
+				if(dateDebut != null || dateFin != null){
+                                  //  System.out.println("dedans");
+                                festivals.add(fest);
+                                }
 			}
 			resultats.close();
 

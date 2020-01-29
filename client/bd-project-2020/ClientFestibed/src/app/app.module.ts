@@ -98,6 +98,7 @@ import { PlaceComponent } from './AjoutPlaceFestivale/place.component';
 import { SelectFestivalComponent } from './home/select-festival/select-festival.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { HebergementComponent } from './hebergement/hebergement.component';
+import { ChambreHotelComponent } from './hebergement/chambre-hotel/chambre-hotel.component';
 
 
 @NgModule({
@@ -120,6 +121,7 @@ import { HebergementComponent } from './hebergement/hebergement.component';
         PlaceComponent,
         SelectFestivalComponent,
         HebergementComponent,
+        ChambreHotelComponent,
 
 
 
