@@ -62,9 +62,7 @@ export class HomeComponent implements OnInit {
     this.displayeD=false;
   }
 
-  changementDePage() {
-    this.router.navigate(['AjoutPlaceFestivale']);
-  }
+  
 
   async init(){
     await this.getFestivals();

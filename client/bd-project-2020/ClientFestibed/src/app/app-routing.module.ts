@@ -14,6 +14,7 @@ import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.comp
 import {SelectFestivalComponent} from "./home/select-festival/select-festival.component";
 import {HebergementComponent} from './hebergement/hebergement.component' 
 import { from } from 'rxjs';
+import { ChambreHotelComponent } from './hebergement/chambre-hotel/chambre-hotel.component';
 
 
 const routes: Routes = [
@@ -21,8 +22,9 @@ const routes: Routes = [
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
     {path: 'AjoutFestival', component: AjouterfestivalComponent},
-    {path: 'AjoutPlaceFestivale/:id', component: SelectFestivalComponent},
-    {path: 'Hebergement/:id', component: HebergementComponent},
+    {path: 'AjoutPlaceFestivale/:id/:dated/:datef', component: SelectFestivalComponent},
+    {path: 'Hebergement/:id/:dated/:datef', component: HebergementComponent},
+    {path: 'ChambreHotel/:id/:idheber/:type/:dated/:datef', component: ChambreHotelComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },
