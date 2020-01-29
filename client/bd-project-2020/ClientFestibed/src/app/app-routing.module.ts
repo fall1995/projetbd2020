@@ -15,6 +15,7 @@ import {SelectFestivalComponent} from "./home/select-festival/select-festival.co
 import {HebergementComponent} from './hebergement/hebergement.component' 
 import { from } from 'rxjs';
 import { ChambreHotelComponent } from './hebergement/chambre-hotel/chambre-hotel.component';
+import { ListeChambreComponent } from './hebergement/liste-chambre/liste-chambre.component';
 
 
 const routes: Routes = [
@@ -25,11 +26,11 @@ const routes: Routes = [
     {path: 'AjoutPlaceFestivale/:id/:dated/:datef', component: SelectFestivalComponent},
     {path: 'Hebergement/:id/:dated/:datef', component: HebergementComponent},
     {path: 'ChambreHotel/:id/:idheber/:type/:dated/:datef', component: ChambreHotelComponent},
-    {path: 'user/dashbord', component: UserProfilComponent },
+    
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },
     {path: 'user/panier', component: PanierComponent },
-    {path: 'confirmer-commande', component: ConfirmerCommandeComponent },
+    {path: 'chambre-liste/:numloge', component: ListeChambreComponent },
     {path: '', component: HomeComponent },
     {path: 'commande/facture/:idCommande', component: FactureDetailComponent},
     {path: '', redirectTo: 'films', pathMatch: 'full'},
