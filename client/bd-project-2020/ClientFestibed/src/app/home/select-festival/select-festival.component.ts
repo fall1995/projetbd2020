@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Place} from "../../Place-data/Place";
 import {FestivalService} from "../../service/Festival.service";
 import {ActivatedRoute} from "@angular/router";
+import {IpServiceService} from "../../ip-service.service";
 
 @Component({
   selector: 'app-select-festival',
@@ -9,17 +10,18 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./select-festival.component.scss']
 })
 export class SelectFestivalComponent implements OnInit {
+    ipAddress:string;
     places: Place[];
-     idFestival: number;
-    jour: number;
-    nbPlaceSansCateg: number;
-    nbPlaceCateg1: number;
-    nbPlaceCateg2: number;
-    idf : string;
-    idUtilisateur= 8;
-    tabOption : number[];
+    idFestival: any;
+    jour: any;
+    nbPlaceSansCateg: any;
+    nbPlaceCateg1: any;
+    nbPlaceCateg2: any;
+    idf : any;
+    idUtilisateur : any;
+    tabOption : any[];
 
-    constructor(private festservice: FestivalService,private route : ActivatedRoute) {
+    constructor(private festservice: FestivalService,private route : ActivatedRoute, private ip:IpServiceService) {
     }
 
     ngOnInit() {
@@ -27,9 +29,9 @@ export class SelectFestivalComponent implements OnInit {
         this.idf = this.route.snapshot.paramMap.get('id');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
-       
-        this.remplirTab();
-        console.log(this.tabOption.length);
+        this.getIP();
+        //this.remplirTab();
+       // console.log(this.tabOption.length);
        
     }
 
@@ -74,7 +76,7 @@ export class SelectFestivalComponent implements OnInit {
 
     remplirTab(){
         let i = 1;
-        for (let i = 1; i <this.places.length+1; i++){
+        for (i = 1; i <this.places.length+1; i++){
              this.tabOption[i] = i;
            
         }
@@ -84,7 +86,16 @@ export class SelectFestivalComponent implements OnInit {
     onSubmit(){
         
         console.log('heyy Aly');
-        console.log(this.tabOption.length);
+
         this.addPlace();
     }
-}
+
+    getIP() {
+        this.ip.getIPAddress().subscribe((res: any) => {
+            this.ipAddress = res.ip;
+            this.idUtilisateur = this.ipAddress;
+        });
+    }
+
+
+    }

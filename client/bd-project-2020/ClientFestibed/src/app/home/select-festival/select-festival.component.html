@@ -34,7 +34,7 @@
         <mat-expansion-panel (opened)="panelOpenState = true"
                              (closed)="panelOpenState = false">
           
-          <p>I'm visible because I am open</p>
+          <p></p>
         </mat-expansion-panel>
       </mat-accordion>
 </div>
@@ -45,7 +45,7 @@
 
         <mat-form-field >
             <mat-select placeholder="Choisir jour" [(ngModel)]="jour">
-              <mat-option value="option" *ngFor="let opt of tabOption"  >{{opt}} </mat-option>
+                <mat-option *ngFor="let place of places" [value]="place.jour">{{ place.jour }}</mat-option>
             </mat-select>
           </mat-form-field>
         <mat-form-field>
@@ -64,5 +64,12 @@
             <button type="button" class="btn btn-danger" (click)=retour()>Annuler</button>
 
       </div>
+      <br>
+      <br>
+      <a [routerLink]="['Hebergement',{{idFestival}}]">
+          <span style=" margin-left: 10px; margin-top: 10px">
+          </span>
+                              <p>Reserver Hebergement</p>
+                          </a>
       
 </div>
