@@ -61,12 +61,12 @@
                         min="0" value="0" name="" [(ngModel)]="nbPlaceCateg2">
             </mat-form-field>
             <button type="button" class="btn btn-success" (click)="onSubmit()">Reserver</button>
-            <button type="button" class="btn btn-danger" (click)=retour()>Annuler</button>
+            <button type="button" class="btn btn-danger" >Annuler</button>
 
       </div>
       <br>
       <br>
-      <a [routerLink]="['Hebergement',{{idFestival}}]">
+      <a [routerLink]="['Hebergement',idFestival]">
           <span style=" margin-left: 10px; margin-top: 10px">
           </span>
                               <p>Reserver Hebergement</p>
