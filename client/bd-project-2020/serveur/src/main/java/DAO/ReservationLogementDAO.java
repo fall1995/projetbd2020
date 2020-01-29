@@ -13,7 +13,7 @@ import mesClassesMetier.PaquetsBillets;
 import connexionBase.SQLAble;
 import DAOInterfaces.FestivalInterface;
 
-public class PaquetsBilletsDAO extends SQLAble {
+public class ReservationLogementDAO extends SQLAble {
 
 	public ArrayList<PaquetsBillets> billetFestivalSql(int idFestival) {
 
@@ -141,23 +141,29 @@ public class PaquetsBilletsDAO extends SQLAble {
 		}
 
 	}
-
-	public boolean creerResBillet(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
-			int nbPlaceCateg1, int nbPlaceCateg2) throws SQLException {
+	String idUtilisateur = parametres.get("idUtilisateur");
+    String numLogement = parametres.get("numLogement");
+    String jour = parametres.get("jour");
+    String nbPlaceAdulte = parametres.get("nbPlaceAdulte");
+    String nbPlaceEnfant = parametres.get("nbPlaceEnfant");
+	public boolean creerResLogement(String idUtilisateur, int numLogement, int jour, int nbPlaceAdulte,
+			int nbPlaceEnfant) throws SQLException {
 		/*
 		 * System.out.println("nbcommandeS  ="+ nbPlacesSansCateg);
 		 * System.out.println("nbcommandeC1  ="+ nbPlaceCateg1);
 		 * System.out.println("nbcommandeC2  ="+ nbPlaceCateg2);
 		 */
-		System.out.println("-------------->" + nbPlacesSansCateg);
-		System.out.println("-------------->" + nbPlaceCateg1);
-		System.out.println("-------------->" + nbPlaceCateg2);
+		System.out.println("-------------->" + idUtilisateur);
+		System.out.println("-------------->" + numLogement);
+		System.out.println("-------------->" + jour);
+		System.out.println("-------------->" + nbPlaceAdulte);
+		System.out.println("-------------->" + nbPlaceEnfant);
 
 		try {
 			connectToDatabase();
 			int count =0;
 			int res = 0;
-			System.out.println("dans creerResbillet");
+			System.out.println("dans creerResLogement");
 			Statement ps = conn.createStatement();
 			idUtilisateur = "'" + idUtilisateur + "'";
 			System.out.println("id Utilisateur ="+idUtilisateur);

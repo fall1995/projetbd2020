@@ -109,7 +109,7 @@ public class BilletServelet extends HttpServlet {
         insert = paquetDAO.reserverBillets(idUtilisateur, idFestival, jour, nbPlaceSansCateg, nbPlaceCateg1, nbPlaceCateg2);
       
         //creer timer pour supprimer resa 
-        if (insert == true) {
+       /* if (insert == true) {
         	//timer 
         	TimerT t1 = new TimerT();
         	Timer t = new Timer();
@@ -118,7 +118,7 @@ public class BilletServelet extends HttpServlet {
         	//t.schedule(t1, 10000);
         	
         	
-        }
+        }*/
         
         
         //LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
