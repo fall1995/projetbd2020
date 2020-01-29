@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Place} from "../../Place-data/Place";
 import {FestivalService} from "../../service/Festival.service";
 import {ActivatedRoute} from "@angular/router";
+import {IpServiceService} from "../../ip-service.service";
 
 @Component({
   selector: 'app-select-festival',
@@ -9,15 +10,18 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./select-festival.component.scss']
 })
 export class SelectFestivalComponent implements OnInit {
+    ipAddress:string;
     places: Place[];
-     idFestival: number;
-    numjour: number;
-    nbPlaceSanGateg: number;
-    nbPlaceCateg1: number;
-    nbPlaceCateg2: number;
-    idf : string;
+    idFestival: any;
+    jour: any;
+    nbPlaceSansCateg: any;
+    nbPlaceCateg1: any;
+    nbPlaceCateg2: any;
+    idf : any;
+    idUtilisateur : any;
+    tabOption : any[];
 
-    constructor(private festservice: FestivalService,private route : ActivatedRoute) {
+    constructor(private festservice: FestivalService,private route : ActivatedRoute, private ip:IpServiceService) {
     }
 
     ngOnInit() {
@@ -25,8 +29,10 @@ export class SelectFestivalComponent implements OnInit {
         this.idf = this.route.snapshot.paramMap.get('id');
         this.idFestival = parseInt(this.idf, 10);
         this.init();
-        const nb1 = document.getElementById("nbPlace1");
-        console.log(nb1);
+        this.getIP();
+        //this.remplirTab();
+       // console.log(this.tabOption.length);
+       
     }
 
     async getPlace() {
@@ -43,26 +49,53 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     async addPlace() {
-        this.festservice.addPlace({
+        await this.festservice.addPlace({
             // variable que le serveur s'attend a recevoir
-
+            idUtilisateur: this.idUtilisateur,
             idFestival: this.idFestival,
-            jour : this.numjour,
-            nbPlaceSanGateg: this.nbPlaceSanGateg,
+            jour : this.jour,
+            nbPlaceSansCateg: this.nbPlaceSansCateg,
             nbPlaceCateg1: this.nbPlaceCateg1,
-            nbPlaceCateg2: this.nbPlaceCateg2,
+            nbPlaceCateg2: this.nbPlaceCateg2
 
+
+        }).then(res =>{
+            console.log("succes")
+        }).catch(error =>{
+            console.log(error);
+            console.log(this.idUtilisateur);
+            console.log(this.idFestival);
+            console.log(this.nbPlaceSansCateg);
+            console.log(this.nbPlaceCateg1);
+            console.log(this.nbPlaceCateg2);
+            console.log(this.jour);
+            
         });
 
     }
 
-    // methode a appeler lors du clic sur reservation;
-    onSubmit(jour : number){
-        console.log('heyy')
-        console.log(this.nbPlaceSanGateg)
+    remplirTab(){
+        let i = 1;
+        for (i = 1; i <this.places.length+1; i++){
+             this.tabOption[i] = i;
+           
+        }
+    }
 
-        this.numjour=jour;
-        console.log(jour);
+    // methode a appeler lors du clic sur reservation;
+    onSubmit(){
+        
+        console.log('heyy Aly');
+
         this.addPlace();
     }
-}
+
+    getIP() {
+        this.ip.getIPAddress().subscribe((res: any) => {
+            this.ipAddress = res.ip;
+            this.idUtilisateur = this.ipAddress;
+        });
+    }
+
+
+    }

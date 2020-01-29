@@ -12,6 +12,8 @@ import {FactureDetailComponent} from './commande/facture-detail/facture-detail.c
 import {ConfirmerCommandeComponent} from './confirmer-commande/confirmer-commande.component';
 import { AjouterfestivalComponent } from './ajouterfestival/ajouterfestival.component';
 import {SelectFestivalComponent} from "./home/select-festival/select-festival.component";
+import {HebergementComponent} from './hebergement/hebergement.component' 
+import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -20,6 +22,7 @@ const routes: Routes = [
     {path: 'menus', component: MenusComponent},
     {path: 'AjoutFestival', component: AjouterfestivalComponent},
     {path: 'AjoutPlaceFestivale/:id', component: SelectFestivalComponent},
+    {path: 'Hebergement/:id', component: HebergementComponent},
     {path: 'user/dashbord', component: UserProfilComponent },
     {path: 'ajoutfestival', component: AjouterfestivalComponent },
     {path: 'user/commande', component: CommandeComponent },

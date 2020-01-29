@@ -51,7 +51,7 @@ public class FestivalDAO extends SQLAble implements FestivalInterface {
 			Statement ps = conn.createStatement();
 			System.out.println("avant select \n");
 			// ps = conn.prepareStatement("SELECT * FROM LesFestivals");
-			String query = "SELECT * FROM LesFestivals natural Join LesPaquetsPlaces where (nbPlacesRestantesCateg1 > 0 or nbPlacesRestantesCateg2 > 0 or nbPlacesRestantesSansCateg > 0) ";
+			String query = "SELECT * FROM ( select distinct(idFestival) from LesFestivals natural join LesPaquetsPlaces where nbPlacesRestantesCateg1 > 0 or nbPlacesRestantesCateg2 > 0 or nbPlacesRestantesSansCateg > 0) A NATURAL JOIN (select * from LesFestivals) B";
 			// ps.setInt(1, 0);
 			
 			ResultSet resultats = ps.executeQuery(query);
