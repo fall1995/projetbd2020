@@ -37,6 +37,11 @@ public class LogementDAO extends SQLAble implements LogementInterface {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        System.out.println("------> "+iDFestival);
+        System.out.println("------> "+dateDF);
+        System.out.println("------> "+dateFF);
+        System.out.println("------> "+idHebergement);
+        System.out.println("------> "+typeHebergement);
         int idFestivalInt = Integer.parseInt(iDFestival);
         String typeHebergementUpperCase = typeHebergement.toUpperCase();
         ArrayList<Logement> logements = new ArrayList<Logement>();// Liste pour recuperer mon resultat
@@ -45,7 +50,7 @@ public class LogementDAO extends SQLAble implements LogementInterface {
         idH = Integer.parseInt(idHebergement);
         switch (typeHebergementUpperCase) {
             case "HOTEL":
-               
+               System.out.println("-------------------------------------ici hotel>");
                 ChambreHotelDAO chd = new ChambreHotelDAO();
                 logements = chd.getLogement(iDFestival, dateDF, dateFF, idHebergement);
                 break;

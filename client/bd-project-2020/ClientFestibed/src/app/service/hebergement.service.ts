@@ -36,15 +36,19 @@ export class hebergementService {
 
     }
 
-   
-
-    
-
     async getHebergement(params:  {[key: string]: string}) : Promise<any[]>  {
         this.serverUrl= "http://localhost:8090/api/hebergements";
         const url = this.serverUrl;
         const res = await this.get<any[]>(url, params);
-        console.log('recuperation places festivals.service')
+        console.log('recuperation hebergements')
+        return res.body;
+    }
+
+    async getchambres(params:  {[key: string]: any}) : Promise<any[]>  {
+        this.serverUrl= "http://localhost:8090/api/logements";
+        const url = this.serverUrl;
+        const res = await this.get<any[]>(url, params);
+        console.log('recuperation chambres')
         return res.body;
     }
 

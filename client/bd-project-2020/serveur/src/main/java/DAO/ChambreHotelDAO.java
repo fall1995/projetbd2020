@@ -48,6 +48,8 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
         }
         int idH;
         idH = Integer.parseInt(idHebergement);
+        
+        System.out.println("-------IDH>"+idH);
         // String nomDepartementUpper = nomDepartement.toUpperCase();
         //nomDepartementUpper = "'" + nomDepartementUpper + "'";
         //float diffDate = this.diffrenecEnetreDates(dateDF, dateFF);
@@ -69,9 +71,7 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
             int idHebergementInt;
             dateDF = "'" + dateDF + "'";
             dateFF = "'" + dateFF + "'";
-            System.out.println("------------->" + dateDF);
-            System.out.println("------------->" + dateFF);
-            System.out.println("------------->" + idH);
+            
             
             /*String query = "SELECT numLogement, tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement\n"
                     + "FROM ( select * from LesChambres natural join LesHotels where idHebergement =" + idH + " )\n"
@@ -83,9 +83,10 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
 */
   String query = "SELECT numLogement, tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement FROM ( select * from LesChambres natural join LesHotels where idHebergement = "+idH+" ) A NATURAL JOIN (select numLogement, count(*) from LesPeriodeDeDisponibilites where (dateDispo >= TO_DATE("+dateDF+",'DD-MM-YYYY') and dateDispo <= TO_DATE("+dateFF+",'DD-MM-YY')) group by (numLogement) having count(*) >= TO_DATE("+dateFF+",'DD-MM-YY') -  TO_DATE("+dateDF+",'DD-MM-YY') + 1) B";
           
-            
+            System.out.println("après req");
             ResultSet resultats = ps.executeQuery(query);
             while (resultats.next()) {
+            	System.out.println("icccccccccccccci");
                 System.out.println("dans le while");
                 numLogement = resultats.getInt(1);
                 System.out.println("numLog = " + numLogement + "\n");
