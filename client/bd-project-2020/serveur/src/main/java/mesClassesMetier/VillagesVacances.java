@@ -14,7 +14,7 @@ import java.sql.Date;
 public class VillagesVacances extends Hebergement{
     int capaciteAcc;
     int nbUniteHabitationVil;
-    public VillagesVacances(int idHebergement, Date dateDePublication, String nomCommercial, Date dateDeClassement, String nomCategorie, String classement, String adresse, String codePostal, String commune, String numTel, String courreil, String siteNet, float coordonnee1, float coordonnee2, String nomDep, String nomRegion, String description, Date dateAjout, int idUtilisateur, int capaciteAcc, int nbUniteHabitationVil) {
+    public VillagesVacances(int idHebergement, Date dateDePublication, String nomCommercial, Date dateDeClassement, String nomCategorie, String classement, String adresse, String codePostal, String commune, String numTel, String courreil, String siteNet, float coordonnee1, float coordonnee2, String nomDep, String nomRegion, String description, Date dateAjout, String idUtilisateur, int capaciteAcc, int nbUniteHabitationVil) {
         super(idHebergement, dateDePublication, nomCommercial, dateDeClassement, nomCategorie, classement, adresse, codePostal, commune, numTel, courreil, siteNet, coordonnee1, coordonnee2, nomDep, nomRegion, description, dateAjout, idUtilisateur);
         this.capaciteAcc = capaciteAcc;
         this.nbUniteHabitationVil = nbUniteHabitationVil;

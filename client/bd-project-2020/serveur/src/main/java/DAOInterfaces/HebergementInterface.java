@@ -13,5 +13,5 @@ public interface HebergementInterface {
 	//public abstract ArrayList<Hebergement>  getHebergementsProches(int iDFestival);
 	public abstract void getOneHebergement(Hebergement h);
        // public abstract ArrayList<Hebergement> getHebergementsProches(int iDFestival, String dateDebutF, String dateFinF);
-       public abstract ArrayList<Hebergement> getHebergementsProchesPartiel(int iDFestival, String nomDepartement);
+       public abstract ArrayList<Hebergement> getHebergementsProchesPartiel(String iDFestival);
 }
