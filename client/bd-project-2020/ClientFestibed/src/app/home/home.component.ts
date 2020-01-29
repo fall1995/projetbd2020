@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
       Ville : this.VilleSelect,
       dateDebut : this.Datedebut,
       dateFin : this.DateFin,
-    })
+    });
 
   }
   selectdetails(fes: Festival) {

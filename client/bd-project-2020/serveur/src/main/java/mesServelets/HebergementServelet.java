@@ -38,9 +38,8 @@ public class HebergementServelet extends HttpServlet{
         }
        
 
-        String  idFestival, nomDepartement, typeHebergement, classement ;
+        String  idFestival, typeHebergement, classement ;
         idFestival = parametres.get("idFestival"); 
-        nomDepartement = parametres.get("nomDepartement");
         typeHebergement = parametres.get("typeHebergement");
         classement = parametres.get("classement");
        
@@ -59,7 +58,7 @@ public class HebergementServelet extends HttpServlet{
         /*
          * Dans cette partie faudra transformer datedebut et datefin en Date
          */
-        ArrayList<ArrayList<Hebergement>> resultat = new ArrayList<ArrayList<Hebergement>> ();
+        ArrayList<Hebergement> resultat = new ArrayList<Hebergement> ();
         HebergementDAO HebDao = new HebergementDAO();
         // la methode suivante ne va pas marcher a cause du type Date 
         // 
@@ -72,7 +71,7 @@ public class HebergementServelet extends HttpServlet{
         
 System.out.println("avant \n");
         //resultat = festDao.getFestival();
-        resultat = HebDao.affiner(idFestival, nomDepartement, typeHebergement, classement);
+        resultat = HebDao.affiner(idFestival, typeHebergement, classement);
         System.out.println("apres \n");
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);

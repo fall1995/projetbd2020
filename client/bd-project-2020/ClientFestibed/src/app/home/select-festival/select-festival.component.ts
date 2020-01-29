@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Place} from "../../Place-data/Place";
 import {FestivalService} from "../../service/Festival.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from '@angular/router';
 import {IpServiceService} from "../../ip-service.service";
 
 @Component({
@@ -21,7 +21,8 @@ export class SelectFestivalComponent implements OnInit {
     idUtilisateur : any;
     tabOption : any[];
 
-    constructor(private festservice: FestivalService,private route : ActivatedRoute, private ip:IpServiceService) {
+    constructor(private festservice: FestivalService,private route : ActivatedRoute,
+                private ip:IpServiceService, private router : Router) {
     }
 
     ngOnInit() {
@@ -41,6 +42,10 @@ export class SelectFestivalComponent implements OnInit {
 
         });
 
+    }
+
+    hebergement(){
+        this.router.navigate(['Hebergement',this.idFestival]);
     }
 
     async init() {

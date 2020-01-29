@@ -20,6 +20,7 @@ function AlxToObjectString(data?: object): { [key: string]: string } {
     providedIn: 'root'
 })
 
+
 export class hebergementService {
     serverUrl = 'http://localhost:8090/api/hebergements';
 
@@ -39,7 +40,7 @@ export class hebergementService {
 
     
 
-    async getHotel(params:  {[key: string]: string}) : Promise<any[]>  {
+    async getHebergement(params:  {[key: string]: string}) : Promise<any[]>  {
         this.serverUrl= "http://localhost:8090/api/hebergements";
         const url = this.serverUrl;
         const res = await this.get<any[]>(url, params);
