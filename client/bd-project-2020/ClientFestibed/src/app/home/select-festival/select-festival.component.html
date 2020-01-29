@@ -1,6 +1,4 @@
-
-
-
+++-
 
 <div class="col-md-6">
 <div *ngFor="let place of places">
@@ -66,10 +64,8 @@
       </div>
       <br>
       <br>
-      <a [routerLink]="['Hebergement',idFestival]">
-          <span style=" margin-left: 10px; margin-top: 10px">
-          </span>
-                              <p>Reserver Hebergement</p>
-                          </a>
-      
+    <button class="btn btn-default" (click)="hebergement()">Hebergement</button>
+
+
+
 </div>

@@ -62,6 +62,7 @@ export class HebergementComponent implements OnInit {
       });
       this.tabCamping= [];
       this.tabCamping=[];
+      this.tabVillageVaccance=[];
 
     }
     else if (this.selectedType===this.camping){
@@ -69,12 +70,18 @@ export class HebergementComponent implements OnInit {
         idFestival : this.idFestival,
         type : this.selectedType,
       });
+        this.tabResidence=[];
+       this.tabHotels=[];
+        this.tabVillageVaccance=[];
     }
     else if (this.selectedType===this.vilalageVaca){
       this.tabVillageVaccance = await this.hebergServ.getHebergement({
         idFestival : this.idFestival,
         type : this.selectedType,
       });
+      this.tabResidence=[];
+      this.tabHotels=[];
+      this.tabCamping=[];
     }
   }
 
