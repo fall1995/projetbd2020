@@ -23,13 +23,13 @@ public class Hebergement {
 	String nomRegion;
 	String Description;
 	Date dateAjout;
-	int idUtilisateur;
+	String idUtilisateur;
 	
 	
 	public Hebergement(int idHebergement, Date dateDePublication, String nomCommercial, Date dateDeClassement,
 			String nomCategorie, String classement, String adresse, String codePostal, String commune,
 			String numTel, String courreil, String siteNet, float coordonnee1, float coordonnee2, String nomDep,
-			String nomRegion, String description, Date dateAjout, int idUtilisateur) {
+			String nomRegion, String description, Date dateAjout, String idUtilisateur) {
 		super();
 		this.idHebergement = idHebergement;
 		this.dateDePublication = dateDePublication;
@@ -235,12 +235,12 @@ public class Hebergement {
 	}
 
 
-	public int getIdUtilisateur() {
+	public String getIdUtilisateur() {
 		return idUtilisateur;
 	}
 
 
-	public void setIdUtilisateur(int idUtilisateur) {
+	public void setIdUtilisateur(String idUtilisateur) {
 		this.idUtilisateur = idUtilisateur;
 	}
 

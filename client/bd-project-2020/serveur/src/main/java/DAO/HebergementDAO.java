@@ -63,7 +63,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 */
     }
 
-    public ArrayList<ArrayList<Hebergement>> getHebergementsProches(String iDFestival, String nomDepartement) {
+    public ArrayList<Hebergement> getHebergementsProches(String iDFestival) {
          //To change body of generated methods, choose Tools | Templates.
          try {
 			connectToDatabase();
@@ -73,22 +73,35 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 		}
          
          String s = "null";
-	ArrayList<ArrayList<Hebergement>>  hebergementsProches = new ArrayList<ArrayList<Hebergement>> ();
+	ArrayList<Hebergement>  hebergementsProches = new ArrayList<Hebergement> ();
         
 			
                     HotelDAO h =  new HotelDAO();
                     ResidenceDAO r =  new ResidenceDAO();
                     CampingDAO c =  new CampingDAO();
                     VillagesVacancesDAO v =  new VillagesVacancesDAO();
-                    int iDFestivalInt = Integer.parseInt(iDFestival);
+                    //int iDFestivalInt = Integer.parseInt(iDFestival);
                     
-                    //ArrayList<Hebergement> listeH = h.getHebergementsProchesPartiel(iDFestival, nomDepartement);
-                    hebergementsProches.add(h.getHebergementsProchesPartiel(iDFestivalInt, nomDepartement));
-                  
+                    ArrayList<Hebergement> listeH = h.getHebergementsProchesPartiel(iDFestival);
+                    for(int i =0; i <listeH.size(); i++ ){
+                        hebergementsProches.add(listeH.get(i));
+                    }
                     
-                   hebergementsProches.add(r.getHebergementsProchesPartiel(iDFestivalInt, nomDepartement));
-                    hebergementsProches.add(c.getHebergementsProchesPartiel(iDFestivalInt, nomDepartement));
-                    hebergementsProches.add(v.getHebergementsProchesPartiel(iDFestivalInt, nomDepartement));
+                    ArrayList<Hebergement> listeR = r.getHebergementsProchesPartiel(iDFestival);
+                    for(int i =0; i <listeR.size(); i++ ){
+                        hebergementsProches.add(listeR.get(i));
+                    }
+                    
+                      ArrayList<Hebergement> listeC = c.getHebergementsProchesPartiel(iDFestival);
+                    for(int i =0; i <listeC.size(); i++ ){
+                        hebergementsProches.add(listeC.get(i));
+                    }
+                    
+                      ArrayList<Hebergement> listeV = v.getHebergementsProchesPartiel(iDFestival);
+                    for(int i =0; i <listeV.size(); i++ ){
+                        hebergementsProches.add(listeV.get(i));
+                    }
+                    
                 
                     return hebergementsProches;       
         
@@ -105,16 +118,12 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 
     }
 
-    @Override
-    public ArrayList<Hebergement> getHebergementsProchesPartiel(int iDFestival, String nomDepartement) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
     
     
     
-    public ArrayList<Hebergement> filtreTypeHebergementSQL(String idFestival,String nomDepartement , String typeHebergement) {
+    public ArrayList<Hebergement> filtreTypeHebergementSQL(String idFestival, String typeHebergement) {
 
 		// connection à la base
 		try {
@@ -123,25 +132,25 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-                int idFestivalInt = Integer.parseInt(idFestival);
+                //int idFestivalInt = Integer.parseInt(idFestival);
 		String typeHebergementUpperCase = typeHebergement.toUpperCase();
 		ArrayList<Hebergement> hebergements = new ArrayList<Hebergement>();// Liste pour recuperer mon resultat
         switch (typeHebergementUpperCase) {
             case "HOTEL":
                 HotelDAO h = new HotelDAO();
-                hebergements = h.getHebergementsProchesPartiel(idFestivalInt, nomDepartement);
+                hebergements = h.getHebergementsProchesPartiel(idFestival);
                 break;
             case "RESIDENCE":
                 ResidenceDAO r = new ResidenceDAO();
-                hebergements = r.getHebergementsProchesPartiel(idFestivalInt, nomDepartement);
+                hebergements = r.getHebergementsProchesPartiel(idFestival);
                 break;
             case "CAMPING":
                 CampingDAO c = new CampingDAO();
-                hebergements = c.getHebergementsProchesPartiel(idFestivalInt, nomDepartement);
+                hebergements = c.getHebergementsProchesPartiel(idFestival);
                 break;
             default:
                 VillagesVacancesDAO v = new VillagesVacancesDAO();
-                hebergements = v.getHebergementsProchesPartiel(idFestivalInt, typeHebergement);
+                hebergements = v.getHebergementsProchesPartiel(idFestival);
                 break;
         }
                 return hebergements;
@@ -152,7 +161,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
     
     
     
-    public ArrayList<ArrayList<Hebergement>> filtreClassementSQL(String idFestival,String nomDepartement, String classement) {
+    public ArrayList<Hebergement> filtreClassementSQL(ArrayList<Hebergement> l, String classement) {
 
 		try {
 			connectToDatabase();
@@ -164,89 +173,26 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 		
 		char charC = classement.charAt(0);
                 System.out.println(charC);
-		ArrayList<ArrayList<Hebergement>> hebergements = new ArrayList<ArrayList<Hebergement>>();// Liste pour recuperer mon resultat
-                hebergements = this.getHebergementsProches(idFestival, nomDepartement);
-                 
-                ArrayList<Hebergement> hebergementsHotelClassement = new ArrayList<Hebergement>();
-                hebergementsHotelClassement = hebergements.get(0);
-                ArrayList<Hebergement> hebergementsHotelClassementApresSuppression = new ArrayList<Hebergement>();
-                for(int i = 0; i < hebergementsHotelClassement.size(); i++){
-                    char c = hebergementsHotelClassement.get(i).getClassement().charAt(0);
+		ArrayList<Hebergement> hebergementsApreC = new ArrayList<Hebergement>();// Liste pour recuperer mon resultat
+                
+                
+                for(int i = 0; i < l.size(); i++){
+                    char c = l.get(i).getClassement().charAt(0);
                   
                     if(c == charC) {
                         //System.out.println("charC      c "+charC+"     "+c);
                         //System.out.println("hebergementsHotelClassement---->"+hebergementsHotelClassement.get(i).getClassement()  );
-                        hebergementsHotelClassementApresSuppression.add(hebergementsHotelClassement.get(i));
+                        hebergementsApreC.add(l.get(i));
                     }
                 }
                 
-                for(int j = 0; j<hebergementsHotelClassementApresSuppression.size();j++ ){
-                    System.out.println("Apres supression hebergementsHotelClassement---->"+hebergementsHotelClassementApresSuppression.get(j).getClassement()  );
-                }
-                
-                ArrayList<Hebergement> hebergementsResidenceClassement = new ArrayList<Hebergement>();
-                hebergementsResidenceClassement = hebergements.get(1);
-                ArrayList<Hebergement> hebergementsRClassementApresSuppression = new ArrayList<Hebergement>();
-                for(int i = 0; i < hebergementsResidenceClassement.size(); i++){
-                    char c = hebergementsResidenceClassement.get(i).getClassement().charAt(0);
-                    System.out.println("charC      c "+charC+"  ++++++++   "+c);
-                    
-                    if(c == charC) {
-                        //System.out.println("charC      c "+charC+"     "+c);
-                        //System.out.println("hebergementsHotelClassement---->"+hebergementsHotelClassement.get(i).getClassement()  );
-                        hebergementsRClassementApresSuppression.add(hebergementsResidenceClassement.get(i));
-                    }
+                for(int j = 0; j<hebergementsApreC.size();j++ ){
+                    System.out.println("Apres supression hebergementsClassement---->"+hebergementsApreC.get(j).getIdHebergement());
                 }
                 
                 
-                 for(int j = 0; j<hebergementsRClassementApresSuppression.size();j++ ){
-                    System.out.println("Apres supression hebergementsHotelClassement---->"+hebergementsRClassementApresSuppression.get(j).getClassement()  );
-                }
                 
-                
-                ArrayList<Hebergement> hebergementsCampiingClassement = new ArrayList<Hebergement>();
-                hebergementsCampiingClassement = hebergements.get(2);
-                
-                ArrayList<Hebergement> hebergementsCClassementApresSuppression = new ArrayList<Hebergement>();
-                for(int i = 0; i < hebergementsCampiingClassement.size(); i++){
-                    char c = hebergementsCampiingClassement.get(i).getClassement().charAt(0);
-                    System.out.println("charC      c "+charC+c);
-                    if(c == charC){
-                         //System.out.println("hebergementsCampingClassement---->"+hebergementsCampiingClassement.get(i).getClassement()  );
-                       // hebergementsCampiingClassement.remove(i);
-                       hebergementsCClassementApresSuppression.add(hebergementsCampiingClassement.get(i));
-                    }
-                }
-                
-                 for(int j = 0; j<hebergementsCClassementApresSuppression.size();j++ ){
-                    System.out.println("Apres supression hebergementsHotelClassement---->"+hebergementsCClassementApresSuppression.get(j).getClassement()  );
-                }
-                
-                ArrayList<Hebergement> hebergementsVillageClassement = new ArrayList<Hebergement>();
-                hebergementsVillageClassement = hebergements.get(3);
-                ArrayList<Hebergement> hebergementsVVClassementApresSuppression = new ArrayList<Hebergement>();
-                for(int i = 0; i < hebergementsVillageClassement.size(); i++){
-                   char c = hebergementsVillageClassement.get(i).getClassement().charAt(0);
-                   System.out.println("charC      c "+charC+c);
-                    if(c == charC){
-                        System.out.println("hebergementsVillageClassement---->"+hebergementsVillageClassement.get(i).getClassement()  );
-                        hebergementsVillageClassement.remove(i);
-                         hebergementsVVClassementApresSuppression.add(hebergementsVillageClassement.get(i));
-                    }
-                }
-                
-                
-                 for(int j = 0; j<hebergementsVVClassementApresSuppression.size();j++ ){
-                    System.out.println("Apres supression hebergementsHotelClassement---->"+hebergementsVVClassementApresSuppression.get(j).getClassement()  );
-                }
-                ArrayList<ArrayList<Hebergement>> hebergementsFiltrClassement = new ArrayList<ArrayList<Hebergement>>();// Liste pour recuperer mon resultat
-                hebergementsFiltrClassement.add(hebergementsHotelClassementApresSuppression);
-                hebergementsFiltrClassement.add(hebergementsRClassementApresSuppression);
-                hebergementsFiltrClassement.add(hebergementsCClassementApresSuppression);
-                hebergementsFiltrClassement.add(hebergementsVVClassementApresSuppression);
-               
-                
-        return hebergementsFiltrClassement;
+        return hebergementsApreC;
 	}
     
     
@@ -256,7 +202,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
     
     
     
-    public ArrayList<Hebergement> filtreTypeHebergementClassementSql(String iDFestival, String nomDepartement, String typeHebergement, String classement) {
+    public ArrayList<Hebergement> filtreTypeHebergementClassementSql(String iDFestival, String typeHebergement, String classement) {
         System.out.println("ici ---------------------->filtreTypeHebergementClassementSql");
 		// connection à la base
 		try {
@@ -265,23 +211,25 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-                ArrayList<Hebergement> hebergementClassement = new ArrayList<Hebergement>();
-                hebergementClassement = this.filtreTypeHebergementSQL(iDFestival, nomDepartement,typeHebergement);
                 
-                for(int i = 0; i < hebergementClassement.size(); i++){
-                    if(hebergementClassement.get(i).getClassement().equals(classement) == false){
-                        hebergementClassement.remove(i);
-                    }
-                }
+                ArrayList<Hebergement> liste = new ArrayList<Hebergement>();
+                liste = this.filtreTypeHebergementSQL(iDFestival, typeHebergement);
                 
-		return hebergementClassement;
+                ArrayList<Hebergement> listeAprC = new ArrayList<Hebergement>();
+                
+                listeAprC = this.filtreClassementSQL(liste, classement);
+                
+                
+
+                
+		return listeAprC;
 		// return null;
         
 	}
 
 	
     
-    
+    /*
     public ArrayList<Hebergement> filtreClassementTypeHebergementSql(String iDFestival, String nomDepartement, String typeHebergement, String classement) {
 
 		// connection à la base
@@ -316,6 +264,7 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
 	}
     
     
+    */
     
     
     
@@ -329,49 +278,34 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
     
     
     
-    
-    public ArrayList<ArrayList<Hebergement>> affiner(String iDFestival, String nomDepartement, String typeHebergement, String classement) {
+    public ArrayList<Hebergement> affiner(String iDFestival, String typeHebergement, String classement) {
 		System.out.println("iDFestival = " + iDFestival + "\n");
-		System.out.println("nomDepartement = " + nomDepartement + "\n");
 		System.out.println("typeHebergement = " + typeHebergement + "\n");
 		System.out.println("classement = " + classement + "\n");
-                ArrayList<ArrayList<Hebergement>> hebergements = new ArrayList<ArrayList<Hebergement>>();
+                ArrayList<Hebergement> hebergements = new ArrayList<Hebergement>();
 		
                 
-                if (aucunFiltre(iDFestival, nomDepartement, typeHebergement, classement)) {
+                if (aucunFiltre(iDFestival, typeHebergement, classement)) {
 		
-                    
                    
-			hebergements = this.getHebergementsProches(iDFestival, nomDepartement);
+			hebergements = this.filtreTypeHebergementSQL(iDFestival, typeHebergement);
                         
 			return hebergements;
 		}
 		// System.out.println("apres aucun filtre");
 		// filtre uniquement sur ville
 
-		if (typeHebergementFiltre(iDFestival, nomDepartement, typeHebergement, classement)) {
-                    
+		if (TypeHeberegementClassementFiltre(iDFestival, typeHebergement, classement)) {
+                    System.out.println("TypeHeberegementClassementFiltre");
                     
                     ArrayList<Hebergement> h = new ArrayList<Hebergement>();
-			h = this.filtreTypeHebergementSQL(iDFestival,nomDepartement, typeHebergement);
-			hebergements.add(h);
-                        return hebergements;
+			h = this.filtreTypeHebergementClassementSql(iDFestival, typeHebergement, classement);
+			
+                        return h;
 		}
 		// filtre uniquement sur domaine
-		if (classementFiltre(iDFestival, nomDepartement, typeHebergement, classement)) {
-		System.out.println("-------typeHebergementFiltre----------------");
-                    hebergements = this.filtreClassementSQL(iDFestival, nomDepartement, classement);
-			return hebergements;
-			
-		}
+		
 		// filtre uniquement sur date debut et fin
-		if (TypeHeberegementClassementFiltre(iDFestival, nomDepartement, typeHebergement, classement)) {
-			System.out.println("ici----------Less Deux tzzzzzzz");	
-			ArrayList<Hebergement> hTypeHClassement = new ArrayList<Hebergement>();
-			hTypeHClassement = this.filtreClassementTypeHebergementSql(iDFestival, nomDepartement, typeHebergement, classement);
-			hebergements.add(hTypeHClassement);
-                        return hebergements;
-		}
 		
                 
                 return null;
@@ -379,30 +313,29 @@ public class HebergementDAO extends SQLAble implements HebergementInterface {
     
         
     
-    boolean aucunFiltre(String idFestival, String nomDepartement, String typeHebergement, String classement) {
-	return ((idFestival != null && !idFestival.isEmpty()) && (idFestival != null || !idFestival.isEmpty())
-				&& (typeHebergement == null || typeHebergement.isEmpty()) && (classement == null || classement.isEmpty()));
+    boolean aucunFiltre(String idFestival, String typeHebergement, String classement) {
+	return ((idFestival != null && !idFestival.isEmpty()) && (typeHebergement != null || !typeHebergement.isEmpty()) && (classement == null || classement.isEmpty()));
 
 	}
 
-	boolean typeHebergementFiltre(String idFestival, String nomDepartement, String typeHebergement, String classement) {
-		// System.out.println("dans boolean");
-		return ((idFestival != null && !idFestival.isEmpty()) && (idFestival != null || !idFestival.isEmpty())
-				&& (typeHebergement != null || !typeHebergement.isEmpty()) && (classement == null || classement.isEmpty()));
-	}
 
-	boolean classementFiltre(String idFestival, String nomDepartement, String typeHebergement, String classement) {
+	/*boolean classementFiltre(String idFestival, String typeHebergement, String classement) {
 		System.out.println("classementFiltreeeeeeeeeeeeeeeeee");
 		return ((idFestival != null && !idFestival.isEmpty()) && (idFestival != null || !idFestival.isEmpty())
 				&& (typeHebergement == null || typeHebergement.isEmpty()) && (classement != null || !classement.isEmpty()));
-	}
+	}*/
 
 	
-        boolean TypeHeberegementClassementFiltre(String idFestival, String nomDepartement, String typeHebergement, String classement) {
-		System.out.println("prq iciciciciciicicicici");
+        boolean TypeHeberegementClassementFiltre(String idFestival, String typeHebergement, String classement) {
+		 System.out.println("TypeHeberegementClassementFiltre");
 		return ((idFestival != null && !idFestival.isEmpty()) && (idFestival != null || !idFestival.isEmpty())
 				&& (typeHebergement != null || !typeHebergement.isEmpty()) && (classement != null || !classement.isEmpty()));
 	}
+
+    @Override
+    public ArrayList<Hebergement> getHebergementsProchesPartiel(String iDFestival) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
