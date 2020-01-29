@@ -113,6 +113,31 @@ public class PaquetsBilletsDAO extends SQLAble {
 		}
 
 	}
+	
+	public void supprimerResaTimer(String idUtilisateur) throws SQLException {
+		try {
+			connectToDatabase();
+			int res = 0;
+			System.out.println("supprimerResaTimer");
+
+			Statement ps = conn.createStatement();
+			idUtilisateur = "'" + idUtilisateur + "'";
+
+			// pour rajouter timerr
+			/*
+			 * DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); Date date =
+			 * new Date();
+			 */
+			String select = "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
+					+ jour + " and idFestival =" + idFestival + " for Update ";
+			ResultSet rs1 = ps.executeQuery(select);
+			ps.close();
+			this.disconnect();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
 
 	public boolean creerResBillet(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
 			int nbPlaceCateg1, int nbPlaceCateg2) throws SQLException {
@@ -143,9 +168,14 @@ public class PaquetsBilletsDAO extends SQLAble {
 			System.out.println("Nombre de lignes insérées dans LesClients = " + nb7);
 
 			// creation du panier
-			int nb9 = ps.executeUpdate(
-					"INSERT INTO LesReservations ( idUtilisateur, prix) VALUES (" + idUtilisateur + "," + 0 + ")");
-			System.out.println("Nombre de lignes insérées dans panier = " + nb9);
+			
+			  DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			  Date date = new Date();
+			 
+			
+		//	int nb9 = ps.executeUpdate(
+			//		"INSERT INTO LesReservations ( idUtilisateur, prix, status, d) VALUES (" + idUtilisateur + "," + 0 +","+" 'N' ,"+ +")");
+			//System.out.println("Nombre de lignes insérées dans panier = " + nb9);
 
 			int idReservation = -1;
 

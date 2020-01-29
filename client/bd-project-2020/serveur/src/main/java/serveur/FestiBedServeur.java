@@ -1,11 +1,15 @@
 package serveur;
 
 import javax.servlet.http.HttpServlet;
+import java.util.*;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+
+import Timer.TimerT;
 import mesServelets.*;
 
 /**
@@ -46,8 +50,14 @@ public class FestiBedServeur extends HttpServlet {
 
         servletHandler.addServletWithMapping(BilletServelet.class, "/api/billets");
      
+       /* TimerT t1 = new TimerT();
+        Timer t = new Timer();
+        t.schedule(t1, 10000); //  executes for every 10 seconds*/
+        
         
         server.start();
+        
+        
     }
 
     /**

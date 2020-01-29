@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +22,7 @@ import com.google.gson.Gson;
 import DAO.FestivalDAO;
 import DAO.PaquetsBilletsDAO;
 import DAO.UtilisateurAuthenficationDAO;
+import Timer.TimerT;
 import mesClassesMetier.Festival;
 import mesClassesMetier.LesUtilisateurs;
 import mesClassesMetier.PaquetsBillets;
@@ -105,7 +107,20 @@ public class BilletServelet extends HttpServlet {
         /*	if (postValide(parametres, id,nom,prenom )) {*/
         PaquetsBilletsDAO paquetDAO = new PaquetsBilletsDAO();
         insert = paquetDAO.reserverBillets(idUtilisateur, idFestival, jour, nbPlaceSansCateg, nbPlaceCateg1, nbPlaceCateg2);
-
+      
+        //creer timer pour supprimer resa 
+        if (insert == true) {
+        	//timer 
+        	TimerT t1 = new TimerT();
+        	Timer t = new Timer();
+        	
+        	//appeler la methode pour check et supprimer si il faut
+        	//t.schedule(t1, 10000);
+        	
+        	
+        }
+        
+        
         //LesUtilisateurs utilisateur = new LesUtilisateurs(id, nom, prenom);
         response.setStatus(HttpServletResponse.SC_OK);
         // response.getWriter().println(new Gson().toJson(utilisateur));

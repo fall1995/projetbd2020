@@ -19,6 +19,7 @@
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/FestivalDAO.java
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/DatabaseAccesProperties.java
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/LogementCampingDAO.java
+/Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/Timer/TimerT.java
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/ChambreHotelDAO.java
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Hebergement.java
 /Users/ilyes/Documents/FAC/ProjetBd/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/LogementInterface.java
