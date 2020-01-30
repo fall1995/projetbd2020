@@ -168,7 +168,7 @@ public class PaquetsBilletsDAO extends SQLAble {
 			idUtilisateur = "'" + idUtilisateur + "'";
 			System.out.println("id Utilisateur ="+idUtilisateur);
 			
-			String query15 = "select count(idUtilisateur) from LesUtilisateurs where idUtilisateur = "+idUtilisateur+"";
+			/*String query15 = "select count(idUtilisateur) from LesUtilisateurs where idUtilisateur = "+idUtilisateur+"";
 			ResultSet rs8 = ps.executeQuery(query15);
 			while (rs8.next()) {
 				count = rs8.getInt(1);
@@ -186,7 +186,7 @@ public class PaquetsBilletsDAO extends SQLAble {
 			// creer nouveau client
 			int nb7 = ps.executeUpdate("INSERT INTO LesClients ( idUtilisateur) VALUES (" + idUtilisateur + ")");
 			System.out.println("Nombre de lignes insérées dans LesClients = " + nb7);
-			}
+			}*/
 			// creation du panier
 			
 			  DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

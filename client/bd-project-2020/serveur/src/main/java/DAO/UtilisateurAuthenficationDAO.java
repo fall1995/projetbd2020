@@ -59,12 +59,23 @@ public class UtilisateurAuthenficationDAO extends SQLAble implements Utilisateur
 			System.out.println("id Client = "+ idclient);
 			System.out.println("prenom = "+ prenom);
 			System.out.println("nom = "+ nom);
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
-			ps.setString(1, idclient);
-			ps.setString(2, nom);
-			ps.setString(3, prenom);
-			ps.executeQuery();
-			System.out.println("apres insert");
+		//	PreparedStatement ps = conn.prepareStatement("INSERT INTO LesUtilisateurs (idUtilisateur,nom ,prenom) VALUES (?,?,?)");
+		//	ps.setString(1, idclient);
+		//	ps.setString(2, nom);
+			
+			//ps.setString(3, prenom);
+			Statement ps1 = conn.createStatement();
+			Statement ps = conn.createStatement();
+			
+			int nb8 = ps1.executeUpdate("INSERT INTO LesUtilisateurs ( idUtilisateur,nom,prenom) VALUES (" + idclient +","+nom+","+prenom+ ")");
+			System.out.println("insert utilis =="+ nb8);
+			int nb7 = ps.executeUpdate("INSERT INTO LesClients ( idUtilisateur) VALUES (" + idclient + ")");
+			System.out.println("insert clients =="+ nb7);
+			
+			conn.commit();
+			ps.close();
+			ps1.close();
+
 			
 		} catch (SQLException se) {
 			// log the exception
