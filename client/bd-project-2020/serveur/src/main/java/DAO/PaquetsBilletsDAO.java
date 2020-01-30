@@ -273,6 +273,7 @@ public class PaquetsBilletsDAO extends SQLAble {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			 e.printStackTrace();
+			 System.out.println("Rollback");
 			SQLAble.conn.rollback();
 			return false;
 		} catch (ClassNotFoundException e) {

@@ -26,8 +26,6 @@ export class ListeChambreComponent implements OnInit {
 
   ngOnInit() {
     this.numLogement = this.route.snapshot.paramMap.get('numloge');
-
-    console.log("bug");
     this.idutilisa();
    
     this.init();
