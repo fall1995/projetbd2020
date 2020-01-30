@@ -8,7 +8,9 @@ import {User} from '../tmdb-data/user';
 import {AuthService} from '../service/auth.service';
 import {TmdbService} from '../service/tmdb.service';
 import { EventEmitterService } from '../service/event-emitter.service'; 
-
+import { Reservation } from '../Reservation-DATA/Reservation';
+import { panierService } from '../service/panier.service';
+import {IpServiceService} from "./../ip-service.service";
 
 
 
@@ -19,24 +21,36 @@ import { EventEmitterService } from '../service/event-emitter.service';
 })
 export class PanierComponent implements OnInit {
 
+
+    isAuth: boolean; // boolean indiquant s'il est connecté
+    
+    afficherDialog = false;
+    user: User; // l'utilisateur courant
+    tabResFest : Reservation[];
+    tabResLogement : any[];
+
+    prevScrollpos:any;
+    ipAddress: any;
+    idUtilisateur: any;
+
     // tslint:disable-next-line:max-line-length
-    constructor( private tmdbService: TmdbService, private storageService: StorageService, private route: Router, private message: MessageService,
+    constructor( private route: Router, private message: MessageService,
                 private commandeService: CommandeService, private afAuth: AngularFireAuth,
-                private authService: AuthService, private eventEmitterService: EventEmitterService) {
+                private authService: AuthService, private eventEmitterService: EventEmitterService, private panierServ : panierService,  private ip:IpServiceService) {
 
     }
 
-    panier: any[]; // variable qui stocke le tableaux de plat
-    movie: any[]; // variable qui stock les films selectionnées
-    //commande: any;
-    isAuth: boolean; // boolean indiquant s'il est connecté
-    adresse: any;
-    afficherDialog = false;
-    user: User; // l'utilisateur courant
-    totalMenu: any;
-    totalMovie: any;
-    total: number = 0;
-    prevScrollpos:any;
+
+    getIP() {
+        this.ip.getIPAddress().subscribe((res: any) => {
+            this.ipAddress = res.ip;
+            this.idUtilisateur = this.ipAddress;
+        });
+    }
+
+    
+  
+   
 
 
     ngOnInit() {
@@ -50,89 +64,28 @@ export class PanierComponent implements OnInit {
                 }
             }
         );
-        this.initDialog();
-        this.totalPanier();
-        this.prevScrollpos = window.pageYOffset;
-
+       
     }
 
     init() {
-        this.panier = this.storageService.getMenu();
-        this.movie = this.storageService.getMieuNote();
-        this.adresse = localStorage.getItem('adresse');
+      
     }
 
-    totalPanier() {
-        if(this.movie){
-            this.totalMovie = this.movie.length*3.79;
-        }else{
-            this.totalMovie=0;
-        }
-        this.totalMovie = Math.round(this.totalMovie*100)/100;
-        this.totalMenu = 0;
-        let i: number;
-        let tabPrixMenu = JSON.parse(localStorage.getItem('totalMenu'));
-        if(tabPrixMenu){
-            for (i = 0; i < tabPrixMenu.length; i++) {
-                this.totalMenu += +tabPrixMenu[i];
-            }
-        }
-        this.total = this.totalMenu+this.totalMovie;
-        this.total = Math.round(this.total*100)/100;
-    }
-
-    async initDialog() {
-        await this.afAuth.user.subscribe(u => {
-            if (u) {
-                this.authService.getUser(u.uid).then(res => {
-                    this.user = res;
-                    console.log(this.user)
-                }, r => {
-                    console.log('errr' + r);
-                });
-            }
-        });
-    }
-
-
-    /**
-     * effacer l'élément sélectionné(plat)
-     * @param index
-     */
-    deleteMenusSelected(index) {
-        this.storageService.delete(index);
-        this.init();
-        this.totalPanier();
-        this.eventEmitterService.refreshPanier();    
-    }
-
-    /**
-     * effacer l'élément selectionné(movie)
-     * @param index
-     */
-    deleteMovieSelected(index: number) {
-        this.storageService.deleteMovie(index);
-        this.init();
-        this.totalPanier();
-        this.eventEmitterService.refreshPanier();    
-    }
-    
-    @HostListener('window:scroll', ['$event']) 
-    scrollHandler(event) {
-            let currentScrollPos = window.pageYOffset;
-            if ($( window ).width() > 900) {
-                if (this.prevScrollpos > currentScrollPos) {
-                    if( currentScrollPos >34){
-                        $("#infosClients").stop().animate({"marginTop": ($(window).scrollTop()-50) + "px"});
-                    }
-                } else{
-                    if( this.prevScrollpos >80){
-                        $("#infosClients").stop().animate({"marginTop": ($(window).scrollTop()-70) + "px"});
-                    }
-                }
-            }
-            this.prevScrollpos = currentScrollPos;
+    async getReservation(){
+        this.tabResFest = await this.panierServ.getResFestivales({
+            idFestival : this.idUtilisateur
+           
+          })
     }
 
 }
+
+   
+    
+
+
+   
+
+   
+
 
