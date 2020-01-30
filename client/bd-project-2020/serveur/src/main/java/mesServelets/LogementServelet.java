@@ -25,6 +25,7 @@ import DAO.FestivalDAO;
 import DAO.HebergementDAO;
 import DAO.LogementDAO;
 import DAO.PaquetsBilletsDAO;
+import DAO.ReservationLogementDAO;
 import Timer.TimerT;
 import mesClassesMetier.Festival;
 import mesClassesMetier.Hebergement;
@@ -145,8 +146,8 @@ System.out.println("avant \n");
         int numLogementInt = Integer.parseInt(numLogement);
 
         /*	if (postValide(parametres, id,nom,prenom )) {*/
-        PaquetsBilletsDAO paquetDAO = new PaquetsBilletsDAO();
-        insert = paquetDAO.reserverLogement(idUtilisateur, numLogementInt, jour, nbPlaceAdulteInt, nbPlaceEnfantInt);
+        ReservationLogementDAO LogementDAO = new ReservationLogementDAO();
+       // insert = LogementDAO.creerResaLogementChambre(idUtilisateur, numLogement, jour, nbPlaceAdulte, nbPlaceEnfant);
       
         //creer timer pour supprimer resa 
        /* if (insert == true) {
