@@ -24,11 +24,11 @@ export class HebergementComponent implements OnInit {
     Residence = "RESIDENCE";
     camping : "CAMPING";
     vilalageVaca : "VillageVaccance";
-    tabHotels : Hotel[];
-    tabCamping : Camping[];
+    tabHotels : Hotel[]=[];
+    tabCamping : Camping[]=[];
     tabVillageVaccance : VillageVaccance[];
-    tabResidence : Residence[];
-    typeHebergement : any[];
+    tabResidence : Residence[]=[];
+    typeHebergement : any;
   dated: string;
   datef: string;
 
@@ -70,6 +70,9 @@ export class HebergementComponent implements OnInit {
         idHebergement : this.idHebergement,
       }).then( res => {
         this.tabHotels = res;
+        this.tabCamping= [];
+        this.tabResidence=[];
+        this.tabVillageVaccance=[];
         console.log(this.tabHotels);
       }).catch( err =>{
         console.log(err);
@@ -81,7 +84,7 @@ export class HebergementComponent implements OnInit {
         typeHebergement : this.selectedType,
       });
       this.tabCamping= [];
-      this.tabCamping=[];
+      this.tabHotels=[];
       this.tabVillageVaccance=[];
 
     }

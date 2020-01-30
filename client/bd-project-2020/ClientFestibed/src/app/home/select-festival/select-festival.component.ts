@@ -3,6 +3,7 @@ import {Place} from "../../Place-data/Place";
 import {FestivalService} from "../../service/Festival.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {IpServiceService} from "../../ip-service.service";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-select-festival',
@@ -22,9 +23,10 @@ export class SelectFestivalComponent implements OnInit {
     tabOption : any[];
     dated: string;
     datef: string;
+    reponse : any;
 
     constructor(private festservice: FestivalService,private route : ActivatedRoute,
-                private ip:IpServiceService, private router : Router) {
+                private ip:IpServiceService, private router : Router, private message : MessageService) {
     }
 
     ngOnInit() {
@@ -59,7 +61,7 @@ export class SelectFestivalComponent implements OnInit {
     }
 
     async addPlace() {
-        await this.festservice.addPlace({
+      this.reponse=  await this.festservice.addPlace({
             // variable que le serveur s'attend a recevoir
             idUtilisateur: this.idUtilisateur,
             idFestival: this.idFestival,
@@ -70,7 +72,10 @@ export class SelectFestivalComponent implements OnInit {
 
 
         }).then(res =>{
-            console.log("succes")
+            this.message.add({severity:'success',
+            summary:`Etat de Votre reservation  `,
+            detail:'${u.user.displayName}'});
+            
         }).catch(error =>{
             console.log(error);
             console.log(this.idUtilisateur);

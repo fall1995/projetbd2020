@@ -31,12 +31,12 @@ export class PanierComponent implements OnInit {
 
     prevScrollpos:any;
     ipAddress: string;
-    idUtilisateur : String;
+    idUtilisateur : any;
 
     // tslint:disable-next-line:max-line-length
     constructor( private route: Router, private message: MessageService,
                 private commandeService: CommandeService, private afAuth: AngularFireAuth,
-                private authService: AuthService, private eventEmitterService: EventEmitterService, private panierServ : panierService,  private ip:IpServiceService) {
+                private authService: AuthService, private eventEmitterService: EventEmitterService, private panierServ : panierService,  private ip:IpServiceService,) {
 
     }
 
