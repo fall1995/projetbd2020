@@ -16,17 +16,17 @@
           <mat-list>
               <mat-list-item></mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.tarifSansCateg}}</mat-list-item>
+              <mat-list-item>nombre place Categorie 1 : {{place.nbPlacesRestantesCateg1}}</mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.nbPlacesSansCateg}}</mat-list-item>
+              <mat-list-item>tarif : {{place.tarifCateg1}}</mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+              <mat-list-item>nombre place Categorie 2 : {{place.nbPlacesRestantesCateg2}}</mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+              <mat-list-item>tarif : {{place.tarifCateg2}}</mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+              <mat-list-item>nombre place Sans Categorie : {{place.nbPlacesRestantesSansCateg}}</mat-list-item>
               <mat-divider></mat-divider>
-              <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+              <mat-list-item>tarif : {{place.tarifSansCateg}}</mat-list-item>
             </mat-list>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true"
