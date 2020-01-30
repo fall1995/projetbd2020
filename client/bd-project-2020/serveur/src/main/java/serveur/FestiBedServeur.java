@@ -49,7 +49,8 @@ public class FestiBedServeur extends HttpServlet {
         servletHandler.addServletWithMapping(DisponibilitesServlet.class, "/api/disponibilitesLogement");
 
         servletHandler.addServletWithMapping(BilletServelet.class, "/api/billets");
-        servletHandler.addServletWithMapping(PanierServelet.class, "/api/panier");
+        servletHandler.addServletWithMapping(PanierPlaceServelet.class, "/api/panierP");
+        servletHandler.addServletWithMapping(PanierLogServelet.class, "/api/panierLog");
         servletHandler.addServletWithMapping(LogementServelet.class, "/api/reservationLogement");
        /* TimerT t1 = new TimerT();
         Timer t = new Timer();
