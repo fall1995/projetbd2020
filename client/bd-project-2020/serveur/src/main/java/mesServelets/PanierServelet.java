@@ -26,6 +26,7 @@ public class PanierServelet extends HttpServlet {
         System.out.println( "========================================================== PanierServelet [doGet] =========================================================" );
         response.setContentType("application/json");
         response.addHeader("Access-Control-Allow-Origin", "*");
+        
         Enumeration<String> P = request.getParameterNames();
         HashMap<String, String> parametres = new HashMap();
        
@@ -39,7 +40,7 @@ public class PanierServelet extends HttpServlet {
         String idUtilisateur;
     
         idUtilisateur = parametres.get("idUtilisateur"); 
-
+        System.out.println("--------->"+idUtilisateur);
 		ArrayList<LesReservationsPlaces> resultat = new ArrayList<LesReservationsPlaces>();
 		ResPlacesDAO resPlacesDao = new ResPlacesDAO();
 

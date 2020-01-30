@@ -13,6 +13,7 @@ public class ResPlacesDAO extends SQLAble {
 
 	public ArrayList<LesReservationsPlaces> panierPlaces(String idUtilisateur) {
 
+		System.out.println("idUtilis =="+ idUtilisateur);
 		ArrayList<LesReservationsPlaces> places = new ArrayList<LesReservationsPlaces>();
 		int idReservation;
 		int idFestival;
@@ -65,7 +66,8 @@ public class ResPlacesDAO extends SQLAble {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
+		System.out.println("taille tab =="+places.size());
+		System.out.println("premier element"+places.get(0).getJour());
 		return places;
 
 	}
