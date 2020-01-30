@@ -14,16 +14,18 @@ import com.google.gson.Gson;
 
 import DAO.LogementDAO;
 import DAO.ResPlacesDAO;
+import DAO.ResLogDao;
+import mesClassesMetier.LesReservationsLogements;
 import mesClassesMetier.LesReservationsPlaces;
 import mesClassesMetier.Logement;
 
-public class PanierServelet extends HttpServlet {
+public class PanierLogServelet extends HttpServlet {
 
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
         
-        System.out.println( "========================================================== PanierServelet [doGet] =========================================================" );
+        System.out.println( "========================================================== PanierLogServelet [doGet] =========================================================" );
         response.setContentType("application/json");
         response.addHeader("Access-Control-Allow-Origin", "*");
         
@@ -41,15 +43,15 @@ public class PanierServelet extends HttpServlet {
     
         idUtilisateur = parametres.get("idUtilisateur"); 
         System.out.println("--------->"+idUtilisateur);
-		ArrayList<LesReservationsPlaces> resultat = new ArrayList<LesReservationsPlaces>();
-		ResPlacesDAO resPlacesDao = new ResPlacesDAO();
+		ArrayList<LesReservationsLogements> resultat = new ArrayList<LesReservationsLogements>();
+		ResLogDao resLogDao = new ResLogDao();
 
 
 
         
         
 System.out.println("massinsissiana \n");
-        resultat = resPlacesDao.panierPlaces(idUtilisateur);
+        resultat = resLogDao.resLog(idUtilisateur);
         System.out.println("apres \n");
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_OK);

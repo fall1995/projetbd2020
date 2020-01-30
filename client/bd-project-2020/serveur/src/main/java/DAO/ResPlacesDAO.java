@@ -29,7 +29,7 @@ public class ResPlacesDAO extends SQLAble {
 			connectToDatabase();
 			int res = 0;
 			// int idReservation;
-			System.out.println("dans creer panierPlaces ");
+			System.out.println("dans creer panierLogement ");
 			Statement ps2 = conn.createStatement();
 			Statement ps = conn.createStatement();
 			idUtilisateur = "'" + idUtilisateur + "'";
