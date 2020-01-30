@@ -1,0 +1,31 @@
+<div class="col-md-12" >
+  <div class="example-container">
+
+      <mat-form-field >
+          <mat-select placeholder="Choisir jour" [(ngModel)]="jour">
+              <mat-option *ngFor="let dateD of tabDisponiblite" [value]="dateD">{{ dateD}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+      <mat-form-field>
+        <input matInput placeholder=" nombre Adultes" type="number"
+                  min="0" value="0" name="" [(ngModel)]="nbPlaceSansCateg">
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+          <input matInput placeholder=" nombre enfants " type="number"
+                    min="0" value="0" name="" [(ngModel)]="nbPlaceCateg1">
+        </mat-form-field>
+        <br>
+        
+          <button type="button" class="btn btn-success" (click)="onSubmit()">Reserver</button>
+         
+
+    </div>
+    <br>
+    <br>
+  
+
+
+
+</div>

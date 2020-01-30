@@ -99,6 +99,7 @@ import { SelectFestivalComponent } from './home/select-festival/select-festival.
 import {MatDividerModule} from '@angular/material/divider';
 import { HebergementComponent } from './hebergement/hebergement.component';
 import { ChambreHotelComponent } from './hebergement/chambre-hotel/chambre-hotel.component';
+import { ListeChambreComponent } from './hebergement/liste-chambre/liste-chambre.component';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { ChambreHotelComponent } from './hebergement/chambre-hotel/chambre-hotel
         SelectFestivalComponent,
         HebergementComponent,
         ChambreHotelComponent,
+        ListeChambreComponent,
 
 
 

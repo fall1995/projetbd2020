@@ -21,7 +21,7 @@ function AlxToObjectString(data?: object): { [key: string]: string } {
 })
 
 
-export class hebergementService {
+export class panierService {
     serverUrl = 'http://localhost:8090/api/hebergements';
 
     private async get<T>(url: string, data: object): Promise<HttpResponse<T>> {
@@ -36,40 +36,16 @@ export class hebergementService {
 
     }
 
-    async getHebergement(params:  {[key: string]: string}) : Promise<any[]>  {
-        this.serverUrl= "http://localhost:8090/api/hebergements";
+    async getResFestivales(params:  {[key: string]: string}) : Promise<any[]>  {
+        this.serverUrl= "http://localhost:8090/api/panier";
         const url = this.serverUrl;
         const res = await this.get<any[]>(url, params);
         console.log('recuperation hebergements')
         return res.body;
     }
 
-    async getchambres(params:  {[key: string]: any}) : Promise<any[]>  {
-        this.serverUrl= "http://localhost:8090/api/logements";
-        const url = this.serverUrl;
-        const res = await this.get<any[]>(url, params);
-        console.log('recuperation chambres')
-        return res.body;
-    }
-
-    async getListeChambre(params:  {[key: string]: any}) : Promise<any[]>  {
-        this.serverUrl= "http://localhost:8090/api/logements";
-        const url = this.serverUrl;
-        const res = await this.get<any[]>(url, params);
-        console.log('recuperation Liste Chambre')
-        return res.body;
-    }
-
-   async getDisponibilite(params:  {[key: string]: any}) : Promise<any[]>  {
-        this.serverUrl= "http://localhost:8090/api/logements";
-        const url = this.serverUrl;
-        const res = await this.get<any[]>(url, params);
-        console.log('recuperation Liste disponibilité')
-        return res.body;
-    }
-
-    async addReservationLogement(params:  {[key: string]: any}) {
-        this.serverUrl= "http://localhost:8090/api/logements";
+    async validerPanier(params:  {[key: string]: any}) {
+        this.serverUrl= "http://localhost:8090/api/panier";
         const P = new HttpParams( {fromObject: params} );
         return this.http.post( `${this.serverUrl}`, P, {
             observe: 'response',
@@ -78,7 +54,5 @@ export class hebergementService {
     
         }).toPromise();
     }
-
-
 
 }

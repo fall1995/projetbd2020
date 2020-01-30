@@ -8,6 +8,7 @@ import {hebergementService} from '../../service/hebergement.service';
   styleUrls: ['./chambre-hotel.component.scss']
 })
 export class ChambreHotelComponent implements OnInit {
+  numlogement : any;
   idf: any;
   idFestival : any;
   dated: any;
@@ -15,6 +16,7 @@ export class ChambreHotelComponent implements OnInit {
   type: any;
   idhebergement: string;
   tabChambre : any[];
+ 
 
   constructor(private router : Router, private route : ActivatedRoute, private heberg : hebergementService) { 
     
@@ -46,6 +48,13 @@ export class ChambreHotelComponent implements OnInit {
   console.log(this.idhebergement);
 
 }
+
+ChambreListeHotel(numlog : any) {
+  console.log(numlog);
+  this.router.navigate(['chambre-liste',numlog]);
+}
+
+
 
 
   
