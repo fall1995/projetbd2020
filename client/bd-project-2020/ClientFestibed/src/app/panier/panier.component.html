@@ -39,6 +39,43 @@
           </mat-accordion>
     </div>
     </div>
+
+
+<div class="col-md-6">
+    <div *ngFor="let log of tabResLogement">
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Logement  : {{log.numLogement}}
+                    
+                </mat-panel-title>
+                <mat-panel-description>
+                    Logement  : {{log.numLogement}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-list>
+                  <mat-list-item></mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>prixResLogement : {{log.prixResLogement}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>nbPlaceAdulte : {{log.nbPlaceAdulte}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>nbPlaceEnfant : {{log.nbPlaceEnfant}}</mat-list-item>
+                  <mat-divider></mat-divider>
+    
+                  
+                </mat-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              
+              <p></p>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+    </div>
           
   
 

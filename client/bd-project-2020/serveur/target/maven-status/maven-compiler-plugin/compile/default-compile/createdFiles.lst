@@ -1,15 +1,15 @@
 DAO/HebergementDAO.class
 mesClassesMetier/Residence.class
-serveur/BlockingServlet.class
 classesRemplissageBD/RemplissageCamping.class
+serveur/BlockingServlet.class
 DAO/ChambreHotelDAO.class
 mesServelets/DisponibilitesServlet.class
 connexionBase/SQLAble.class
 DAO/PaquetsBilletsDAO.class
 classesRemplissageBD/RemplissageDisponibilité.class
 Timer/TimerT.class
-mesClassesMetier/LogementCamping.class
 mesServelets/LogementServelet.class
+mesClassesMetier/LogementCamping.class
 DAOInterfaces/UtilisateurAuthenticationInterface.class
 classesRemplissageBD/RemplissageLesLogements.class
 mesClassesMetier/PaquetsBillets.class
@@ -31,8 +31,8 @@ DAO/EmplacementsCollectifsDAO.class
 mesClassesMetier/LogementResidence.class
 DAO/EmplacementVillageDAO.class
 DAO/CampingDAO.class
-mesClassesMetier/ChambreHotel.class
 mesServelets/HebergementServelet.class
+mesClassesMetier/ChambreHotel.class
 mesClassesMetier/EmplacementsCollectifs.class
 classesRemplissageBD/RemplissageHotels.class
 mesClassesMetier/LesUtilisateurs.class
@@ -40,8 +40,8 @@ connexionBase/DataBaseAble.class
 mesClassesMetier/Festival.class
 DAO/ResPlacesDAO.class
 connexionBase/DatabaseAccesProperties.class
-DAOInterfaces/FestivalInterface.class
 DAO/LogementDAO.class
+DAOInterfaces/FestivalInterface.class
 DAO/DisponibiliteLogmentDAO.class
 classesRemplissageBD/RemplissageLesVillageVacances.class
 mesClassesMetier/EmplacementsChambres.class

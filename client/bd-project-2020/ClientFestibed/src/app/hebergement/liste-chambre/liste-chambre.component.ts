@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {hebergementService} from '../../service/hebergement.service';
 import {IpServiceService} from "../../ip-service.service";
+import { User } from 'src/app/tmdb-data/user';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-liste-chambre',
@@ -16,15 +18,18 @@ export class ListeChambreComponent implements OnInit {
   numLogement : any;
   ipAddress:string;
   idUtilisateur : any;
+  user: User;
   
 
-  constructor(private router : Router, private route : ActivatedRoute, private heberg : hebergementService, private ip:IpServiceService,) { }
+  constructor(private router : Router, private route : ActivatedRoute, private heberg : hebergementService,
+    private afAuth: AngularFireAuth, private ip:IpServiceService,) { }
 
   ngOnInit() {
     this.numLogement = this.route.snapshot.paramMap.get('numloge');
 
     console.log("bug");
-    this.getIP();
+    this.idutilisa();
+   
     this.init();
    
   }
@@ -62,13 +67,7 @@ async init() {
 
     }
 
-    getIP() {
-      this.ip.getIPAddress().subscribe((res: any) => {
-          this.ipAddress = res.ip;
-          this.idUtilisateur = this.ipAddress;
-          //console.log(this.idUtilisateur);
-      });
-  }
+    
 
     onSubmit(){
         
@@ -76,5 +75,13 @@ async init() {
 
       this.addLogement();
   }
+
+  idutilisa(){
+    this.afAuth.user.subscribe(utilisateur =>{
+        this.idUtilisateur=utilisateur.uid;
+              
+            });
+            console.log(this.idUtilisateur)
+        }
 
 }

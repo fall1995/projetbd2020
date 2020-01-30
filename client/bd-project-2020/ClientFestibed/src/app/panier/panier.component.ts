@@ -14,6 +14,7 @@ import {IpServiceService} from "./../ip-service.service";
 
 
 
+
 @Component({
     selector: 'app-panier',
     templateUrl: './panier.component.html',
@@ -49,8 +50,9 @@ export class PanierComponent implements OnInit {
 
 
     ngOnInit() {
-        this.idUtilisateur();
+        this.idutilisa();
         this.getReservation();
+        this.getReservationLogement();
        
     }
 
@@ -66,6 +68,13 @@ export class PanierComponent implements OnInit {
           console.log(this.tabResFest.length)
     }
 
+    async getReservationLogement(){
+        this.tabResLogement = await this.panierServ.getResLogement({
+            idUtilisateur : this.idUtilisateur
+           
+          })
+          console.log(this.tabResFest.length)
+    }
 
    
 

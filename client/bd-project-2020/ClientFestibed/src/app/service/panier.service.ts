@@ -37,7 +37,7 @@ export class panierService {
     }
 
     async getResFestivales(params:  {[idUtilisateur: string]: any}) : Promise<any[]>  {
-        this.serverUrl= "http://localhost:8090/api/panier";
+        this.serverUrl= "http://localhost:8090/api/panierP";
         console.log('recuperation reservations en cours');
         const url = this.serverUrl;
         const res = await this.get<any[]>(url, params);
@@ -56,7 +56,14 @@ export class panierService {
         }).toPromise();
     }
 
-    
+    async getResLogement(params:  {[idUtilisateur: string]: any}) : Promise<any[]>  {
+        this.serverUrl= "http://localhost:8090/api/panierLog";
+        console.log('recuperation reservations en cours');
+        const url = this.serverUrl;
+        const res = await this.get<any[]>(url, params);
+        console.log('recuperation reservations en cours')
+        return res.body;
+    }
 
 
 
