@@ -9,12 +9,15 @@ import DAOInterfaces.FestivalInterface;
 import DAOInterfaces.HebergementInterface;
 import DAOInterfaces.LogementInterface;
 import connexionBase.SQLAble;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mesClassesMetier.ChambreHotel;
 import mesClassesMetier.Festival;
 import mesClassesMetier.Hebergement;
@@ -53,7 +56,8 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
         // String nomDepartementUpper = nomDepartement.toUpperCase();
         //nomDepartementUpper = "'" + nomDepartementUpper + "'";
         //float diffDate = this.diffrenecEnetreDates(dateDF, dateFF);
-
+String dateDFD = null;
+String dateFFD = null;
         ArrayList<Logement> logementsDispo = new ArrayList<Logement>();
         try {
 
@@ -69,8 +73,8 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
             int nbEnfants;
             char typeChambre;
             int idHebergementInt;
-            dateDF = "'" + dateDF + "'";
-            dateFF = "'" + dateFF + "'";
+            //dateDF = "'" + dateDF + "'";
+            //dateFF = "'" + dateFF + "'";
             
             
             /*String query = "SELECT numLogement, tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement\n"
@@ -81,9 +85,34 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
                     + "group by (numLogement)\n"
                     + "having count(*) = TO_DATE(" + dateFF + ",'DD-MM-YY') -  TO_DATE(" + dateDF + ",'DD-MM-YY') + 1) B";
 */
-  String query = "SELECT numLogement, tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement FROM ( select * from LesChambres natural join LesHotels where idHebergement = "+idH+" ) A NATURAL JOIN (select numLogement, count(*) from LesPeriodeDeDisponibilites where (dateDispo >= TO_DATE("+dateDF+",'DD-MM-YYYY') and dateDispo <= TO_DATE("+dateFF+",'DD-MM-YY')) group by (numLogement) having count(*) >= TO_DATE("+dateFF+",'DD-MM-YY') -  TO_DATE("+dateDF+",'DD-MM-YY') + 1) B";
-          
-            System.out.println("après req");
+            int idFestString  = Integer.parseInt(iDFestival);
+            String q = "SELECT dateDebut, dateFin FROM LesFestivals where idFestival = "+idFestString+"";
+            ResultSet r = ps.executeQuery(q);
+            while(r.next()){
+                 String[] splitArray = null;
+                 dateDFD = r.getString(1);
+                 splitArray = dateDFD.split(" ");
+                 dateDFD = splitArray[0];
+                
+                 dateFFD = r.getString(2);
+                 splitArray = dateFFD.split(" ");
+                 dateFFD = splitArray[0];
+                 
+            }
+             System.out.println("-------------++++++> dateDF      "+dateDFD);
+             System.out.println("-------------+++++++++> dateDF     "+dateFFD);
+            dateDFD = this.changeFormat(dateDFD);
+            dateFFD = this.changeFormat(dateFFD);
+            System.out.println("-------------> dateDF      "+dateDFD);
+            System.out.println("-------------> dateDF     "+dateFFD);
+            dateDFD = "'" + dateDFD + "'";
+            dateFFD = "'" + dateFFD + "'";
+            System.out.println("------------> à quoi ça ress    "+dateDFD);
+            
+ // String query = "SELECT numLogement, tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement FROM ( select * from LesChambres natural join LesHotels where idHebergement = "+idH+" ) A NATURAL JOIN (select numLogement, count(*) from LesPeriodeDeDisponibilites where dateDispo >= TO_DATE("+dateDFD+",'dd-MM-yy') and dateDispo <= TO_DATE("+dateFFD+",'dd-MM-yy') group by(numLogement))  B";
+    //String query = "select numLogement from LesPeriodeDeDisponibilites where dateDispo >= TO_DATE("+dateDFD+",'dd-MM-yy') and dateDispo <= TO_DATE(+"+dateFFD+",'dd-MM-yy') ";      
+   String query = "select distinct(numLogement),tarifAdulte, tarifEnfant, nbAdultes, nbEnfants, typeChambre, idHebergement from LesPeriodeDeDisponibilites natural join LesChambres where dateDispo >= TO_DATE("+dateDFD+",'dd-MM-yy') and dateDispo <= TO_DATE(+"+dateFFD+",'dd-MM-yy') and idHebergement ="+idH+"";
+    System.out.println("après req");
             ResultSet resultats = ps.executeQuery(query);
             while (resultats.next()) {
             	System.out.println("icccccccccccccci");
@@ -113,13 +142,15 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (ParseException ex) {
+            Logger.getLogger(ChambreHotelDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         System.out.println("\n" + logementsDispo.size());
         return logementsDispo;
 
     }
-
+/*
     public float diffrenecEnetreDates(String dateD, String dateF) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
         float res = 0;
@@ -135,5 +166,17 @@ public class ChambreHotelDAO extends SQLAble implements LogementInterface {
         }
         return res;
     }
-
+*/
+    
+    public String changeFormat(String oldDate) throws ParseException{
+        final String OLD_FORMAT = "yyyy-MM-dd";
+        final String NEW_FORMAT = "dd-MM-yy";
+        String oldDateString = oldDate;
+        String newDateString;
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        java.util.Date d = sdf.parse(oldDateString);
+        sdf.applyPattern(NEW_FORMAT);
+        newDateString = sdf.format(d);
+        return newDateString;
+    } 
 }
