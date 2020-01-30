@@ -13,7 +13,7 @@ import mesClassesMetier.PaquetsBillets;
 import connexionBase.SQLAble;
 import DAOInterfaces.FestivalInterface;
 
-public class PaquetsBilletsDAO extends SQLAble {
+public class ReservationLogementDAO extends SQLAble {
 
 	public ArrayList<PaquetsBillets> billetFestivalSql(int idFestival) {
 
@@ -128,18 +128,12 @@ public class PaquetsBilletsDAO extends SQLAble {
 			 * DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"); Date date =
 			 * new Date();
 			 */
-
 			/*
 			 * String select =
 			 * "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
 			 * + jour + " and idFestival =" + idFestival + " for Update ";
 			 */
 			// ResultSet rs1 = ps.executeQuery(select);
-
-		//	String select = "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
-			//		+ jour + " and idFestival =" + idFestival + " for Update ";
-		//	ResultSet rs1 = ps.executeQuery(select);
-
 			ps.close();
 			this.disconnect();
 		} catch (Exception e) {
@@ -148,22 +142,24 @@ public class PaquetsBilletsDAO extends SQLAble {
 
 	}
 
-	public boolean creerResBillet(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
-			int nbPlaceCateg1, int nbPlaceCateg2) throws SQLException {
+	public boolean creerResaLogementChambre(String idUtilisateur, int numLogement, int jour, int nbPlaceAdulte,
+			int nbPlaceEnfant) throws SQLException {
 		/*
 		 * System.out.println("nbcommandeS  ="+ nbPlacesSansCateg);
 		 * System.out.println("nbcommandeC1  ="+ nbPlaceCateg1);
 		 * System.out.println("nbcommandeC2  ="+ nbPlaceCateg2);
 		 */
-		System.out.println("-------------->" + nbPlacesSansCateg);
-		System.out.println("-------------->" + nbPlaceCateg1);
-		System.out.println("-------------->" + nbPlaceCateg2);
+		System.out.println("-------------->" + idUtilisateur);
+		System.out.println("-------------->" + numLogement);
+		System.out.println("-------------->" + jour);
+		System.out.println("-------------->" + nbPlaceAdulte);
+		System.out.println("-------------->" + nbPlaceEnfant);
 
 		try {
 			connectToDatabase();
 			int count =0;
 			int res = 0;
-			System.out.println("dans creerResbillet");
+			System.out.println("dans creerResLogement");
 			Statement ps = conn.createStatement();
 			idUtilisateur = "'" + idUtilisateur + "'";
 			System.out.println("id Utilisateur ="+idUtilisateur);
@@ -206,52 +202,44 @@ public class PaquetsBilletsDAO extends SQLAble {
 			}
 			System.out.println("idRes===" + idReservation);
 			// voir les dispo
-			String select = "select nbPlacesRestantesCateg1, nbPlacesRestantesCateg2, nbPlacesRestantesSansCateg,tarifSansCateg,tarifCateg1,tarifCateg2 from LesPaquetsPlaces where jour ="
-					+ jour + " and idFestival =" + idFestival + " for Update ";
+			String select = "select NBADULTES, NBENFANTS, TARIFADULTE, TARIFENFANT from LesChambres where numLogement ="
+					+ numLogement + " for Update ";
 			ResultSet rs1 = ps.executeQuery(select);
-			int nbSansC = -1, nbC1 = -1, nbC2 = -1;
-			int tarifS = 0, tarifC1 = 0, tarifC2 = 0;
+			int tarifAdulte = 0; 
+			int tarifEnfant = 0;
+			int nbAdulte = 0;
+			int nbEnfant = 0;
+			
 
 			while (rs1.next()) {
-				nbSansC = rs1.getInt(3);
-				nbC1 = rs1.getInt(1);
-				nbC2 = rs1.getInt(2);
-				tarifS = rs1.getInt(4);
-				tarifC1 = rs1.getInt(5);
-				tarifC2 = rs1.getInt(6);
-			}
-			System.out.println("quantite sans = " + nbSansC);
-			System.out.println("quantite cat1 = " + nbC1);
-			System.out.println("quantite cat2 = " + nbC2);
-			System.out.println("prixS = " + tarifS);
-			System.out.println("prix1 = " + tarifC1);
-			System.out.println("prix2 = " + tarifC2);
+				nbAdulte = rs1.getInt(1);
+				nbEnfant = rs1.getInt(2);
+				tarifAdulte = rs1.getInt(3);
+				tarifEnfant = rs1.getInt(4);
 
-			int totalSansC = tarifS * nbPlacesSansCateg;
-			int totalC1 = tarifC1 * nbPlaceCateg1;
-			int totalC2 = tarifC2 * nbPlaceCateg2;
-			int prixTotal = totalSansC + totalC1 + totalC2;
+			}
+
+
+			int totalPrixAdulte = tarifAdulte * nbAdulte;
+			int totalPrixEnfant = tarifEnfant * nbEnfant;
+			int prixTotal = totalPrixAdulte + totalPrixEnfant ;
 			System.out.println("prix total = " + prixTotal);
 
 			Statement upd = conn.createStatement();
 
-			if (nbSansC >= nbPlacesSansCateg && nbC1 >= nbPlaceCateg1 && nbC2 >= nbPlaceCateg2) {
+			if (nbAdulte >= nbPlaceAdulte && nbEnfant >= nbPlaceEnfant) {
 				System.out.println("dans le mille");
-				int nb = ps
-						.executeUpdate("UPDATE LesPaquetsPlaces SET nbPlacesRestantesCateg1 = nbPlacesRestantesCateg1 -"
-								+ nbPlaceCateg1 + ", nbPlacesRestantesCateg2 = nbPlacesRestantesCateg2 -"
-								+ nbPlaceCateg2 + ", nbPlacesRestantesSansCateg = nbPlacesRestantesSansCateg -"
-								+ nbPlacesSansCateg + " WHERE jour = " + jour + " and idFestival =" + idFestival + "");
+				int nb = ps.executeUpdate("DELETE FROM LesPeriodeDeDisponibilites WHERE dateDispo = " + jour + " and numLogement =" + numLogement + "");
 
 				System.out.println("Nombre de lignes mises à jour dans update place = " + nb);
 				if (nb > 0) {
 		
 
 					int nb2 = ps.executeUpdate(
-							"INSERT INTO LesReservationPaquetsPlaces (idReservation, idFestival, jour, nbPlacesSansCateg, "
-									+ " nbPlacesCateg1, nbPlacesCateg2, prixResPlace ) VALUES (" + idReservation + ","
-									+ idFestival + "," + jour + "," + nbPlacesSansCateg + "," + nbPlaceCateg1 + ","
-									+ nbPlaceCateg2 + "," + prixTotal +")");
+							"INSERT INTO LesReservationLogements (idReservation, numLogement, prixResLogement, nbPlaceAdulte, "
+									+ " nbPlaceEnfant, dateReservation) VALUES (" + idReservation + ","
+									+ numLogement + "," + prixTotal + "," + nbPlaceAdulte + "," + nbPlaceEnfant + ","
+									+ date + ")");
 					System.out.println("Nombre de lignes insérées dans RESPAQUETPLACE = " + nb2);
 
 				}
@@ -283,13 +271,13 @@ public class PaquetsBilletsDAO extends SQLAble {
 
 	}
 
-	public boolean reserverBillets(String idUtilisateur, int idFestival, int jour, int nbPlacesSansCateg,
-			int nbPlaceCateg1, int nbPlaceCateg2) {
+	public boolean reserverLogement(String idUtilisateur, int numLogement, int jour, int nbPlaceAdulte,
+			int nbPlaceEnfant) {
 		boolean res = false;
 		try {
 			// this.creerPanierRes(idUtilisateur);
 
-			res = this.creerResBillet(idUtilisateur, idFestival, jour, nbPlacesSansCateg, nbPlaceCateg1, nbPlaceCateg2);
+			res = this.creerResaLogementChambre(idUtilisateur, numLogement, jour, nbPlaceAdulte, nbPlaceEnfant);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

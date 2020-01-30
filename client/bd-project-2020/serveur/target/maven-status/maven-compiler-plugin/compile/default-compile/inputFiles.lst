@@ -1,3 +1,65 @@
+<<<<<<< HEAD
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageChambres.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageLesVillageVacances.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageLesLogements.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/serveur/BlockingServlet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/EmplacementVillageDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/ResidenceDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageCamping.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/FestivalDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageHotels.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageDisponibilité.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/DataBaseAble.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/DatabaseAccesProperties.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/connexionBase/SQLAble.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/UtilisateurAuthenticationInterface.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/LogementInterface.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/CampingDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/EmplacementsChambresDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageLesResidences.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/LogementServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/EmplacementsCollectifsDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Reservation.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LesUtilisateurs.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Hotel.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/PanierServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/HotelDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/EmplacementsVillages.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/ChambreHotel.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LogementResidence.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Residence.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/DisponibiliteLogmentDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/HebergementDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/HebergementInterface.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Logement.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/FestivalServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LesReservationsPlaces.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/ChambreHotelDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/HebergementServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/PaquetsBillets.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/AuthentificationServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/VillagesVacancesDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/EmplacementsChambres.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/LogementCampingDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Camping.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/Timer/TimerT.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Festival.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/EmplacementsCollectifs.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/VillagesVacances.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/LogementDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/ResPlacesDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/PaquetsBilletsDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LesReservationsLogements.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LogementCamping.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/BilletServelet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Hebergement.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAOInterfaces/FestivalInterface.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/UtilisateurAuthenficationDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/serveur/FestiBedServeur.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/DisponibilitesServlet.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/LogementResidenceDAO.java
+/home/fall/Bureau/ProjetBD/projetbd2020/client/bd-project-2020/serveur/src/main/java/classesRemplissageBD/RemplissageHebergement.java
+=======
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/DAO/UtilisateurAuthenficationDAO.java
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/ChambreHotel.java
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesServelets/LogementServelet.java
@@ -54,3 +116,4 @@
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/LogementResidence.java
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Residence.java
 /home/bouaziz/Etudes M1/ProjetIM1/projetbd2020/client/bd-project-2020/serveur/src/main/java/mesClassesMetier/Reservation.java
+>>>>>>> ef5dd260deeba732f5529c0be7e4a609d900c16e
