@@ -69,7 +69,7 @@ export class hebergementService {
     }
 
     async addReservationLogement(params:  {[key: string]: any}) {
-        this.serverUrl= "http://localhost:8090/api/logements";
+        this.serverUrl= "http://localhost:8090/api/reservationLogement";
         const P = new HttpParams( {fromObject: params} );
         return this.http.post( `${this.serverUrl}`, P, {
             observe: 'response',
@@ -79,6 +79,13 @@ export class hebergementService {
         }).toPromise();
     }
 
+    async tabDispo(params:  {numLogement : any}) : Promise<any[]>  {
+        this.serverUrl= "http://localhost:8090/api/disponibilitesLogement";
+        const url = this.serverUrl;
+        const res = await this.get<any[]>(url, params);
+        console.log('recuperation places heberg-dispo.service')
+        return res.body;
+    }
 
 
 }

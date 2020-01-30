@@ -134,6 +134,12 @@ System.out.println("avant \n");
         String jour = parametres.get("jour");
         String nbPlaceAdulte = parametres.get("nbPlaceAdulte");
         String nbPlaceEnfant = parametres.get("nbPlaceEnfant");
+        System.out.println("numLogement ====>"+numLogement);
+        System.out.println("utilisagzghj ====>"+idUtilisateur);
+        //System.out.println("nbpA ====>"+nbPlaceAdulte);
+       // System.out.println("nbpEnf ====>"+nbPlaceEnfant);
+       // System.out.println("nbpEnf ====>"+jour);
+
    
 
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {hebergementService} from '../../service/hebergement.service';
+import {IpServiceService} from "../../ip-service.service";
 
 @Component({
   selector: 'app-liste-chambre',
@@ -9,25 +10,48 @@ import {hebergementService} from '../../service/hebergement.service';
 })
 export class ListeChambreComponent implements OnInit {
   tabDisponiblite : any[];
-  dateSelect : any;
-  nbPlaceAdult : any;
+  jour : Date;
+  nbPlaceAdulte : any;
   nbPlaceEnfant : any;
-  numlog : any;
+  numLogement : any;
+  ipAddress:string;
+  idUtilisateur : any;
+  
 
-  constructor(private router : Router, private route : ActivatedRoute, private heberg : hebergementService) { }
+  constructor(private router : Router, private route : ActivatedRoute, private heberg : hebergementService, private ip:IpServiceService,) { }
 
   ngOnInit() {
-    this.numlog = this.route.snapshot.paramMap.get('numloge');
+    this.numLogement = this.route.snapshot.paramMap.get('numloge');
+
+    console.log("bug");
+    this.getIP();
+    this.init();
+   
   }
 
+  async getTabDispo() {
+    this.tabDisponiblite = await this.heberg.tabDispo({
+      numLogement: this.numLogement,
+
+    });
+
+}
+
+async init() {
+  await this.getTabDispo();
+
+}
   
-  async addPlace() {
+  async addLogement() {
+    console.log(this.idUtilisateur);
     await this.heberg.addReservationLogement({
         // variable que le serveur s'attend a recevoir
-        nulogement: this.numlog,
-        date: this.dateSelect,
-        nbPlaceAdult : this.nbPlaceAdult,
+        idUtilisateur : this.idUtilisateur,
+        numLogement: this.numLogement,
+        jour: this.jour,
+        nbPlaceAdulte : this.nbPlaceAdulte,
         nbPlaceEnfant: this.nbPlaceEnfant,
+        
    
     }).then(res =>{
         console.log("succes")
@@ -37,5 +61,20 @@ export class ListeChambreComponent implements OnInit {
       });
 
     }
+
+    getIP() {
+      this.ip.getIPAddress().subscribe((res: any) => {
+          this.ipAddress = res.ip;
+          this.idUtilisateur = this.ipAddress;
+          //console.log(this.idUtilisateur);
+      });
+  }
+
+    onSubmit(){
+        
+      console.log('heyy brrs');
+
+      this.addLogement();
+  }
 
 }

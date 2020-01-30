@@ -158,39 +158,44 @@ public class ReservationLogementDAO extends SQLAble {
 		try {
 			connectToDatabase();
 			System.out.println("après conn base");
-			int count =0;
+			int count = 0;
 			int res = 0;
 			System.out.println("dans creerResLogement");
 			Statement ps = conn.createStatement();
 			idUtilisateur = "'" + idUtilisateur + "'";
-			System.out.println("id Utilisateur ="+idUtilisateur);
-			
-			String query15 = "select count(idUtilisateur) from LesUtilisateurs where idUtilisateur = "+idUtilisateur+"";
+			System.out.println("id Utilisateur =" + idUtilisateur);
+			String str = this.str(jour);
+			System.out.println("--------->" + str);
+			str = "'" + str + "'";
+
+			String query15 = "select count(idUtilisateur) from LesUtilisateurs where idUtilisateur = " + idUtilisateur
+					+ "";
 			ResultSet rs8 = ps.executeQuery(query15);
 			while (rs8.next()) {
 				count = rs8.getInt(1);
 			}
-			System.out.println("count =="+count);
-			if(count>0) {
+			System.out.println("count ==" + count);
+			if (count > 0) {
 				System.out.println("client deja existant");
 			}
-			
-			if(count ==0) {
-			// creer nouvel utilisateur
-			int nb10 = ps.executeUpdate("INSERT INTO LesUtilisateurs ( idUtilisateur) VALUES (" + idUtilisateur + ")");
-			System.out.println("Nombre de lignes insérées dans LesUtilisateurs = " + nb10);
 
-			// creer nouveau client
-			int nb7 = ps.executeUpdate("INSERT INTO LesClients ( idUtilisateur) VALUES (" + idUtilisateur + ")");
-			System.out.println("Nombre de lignes insérées dans LesClients = " + nb7);
+			if (count == 0) {
+				// creer nouvel utilisateur
+				int nb10 = ps
+						.executeUpdate("INSERT INTO LesUtilisateurs ( idUtilisateur) VALUES (" + idUtilisateur + ")");
+				System.out.println("Nombre de lignes insérées dans LesUtilisateurs = " + nb10);
+
+				// creer nouveau client
+				int nb7 = ps.executeUpdate("INSERT INTO LesClients ( idUtilisateur) VALUES (" + idUtilisateur + ")");
+				System.out.println("Nombre de lignes insérées dans LesClients = " + nb7);
 			}
 			// creation du panier
-			
-			  DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			  Date date = new Date();
+
+			DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
 			// Date d= format.format(date)
-			
-		int nb9 = ps.executeUpdate(
+
+			int nb9 = ps.executeUpdate(
 					"INSERT INTO LesReservations ( idUtilisateur, prix, status) VALUES (" + idUtilisateur + ",0,'N')");
 			System.out.println("Nombre de lignes insérées dans panier = " + nb9);
 
@@ -206,11 +211,10 @@ public class ReservationLogementDAO extends SQLAble {
 			String select = "select NBADULTES, NBENFANTS, TARIFADULTE, TARIFENFANT from LesChambres where numLogement ="
 					+ numLogement + " for Update ";
 			ResultSet rs1 = ps.executeQuery(select);
-			int tarifAdulte = 0; 
+			int tarifAdulte = 0;
 			int tarifEnfant = 0;
 			int nbAdulte = 0;
 			int nbEnfant = 0;
-			
 
 			while (rs1.next()) {
 				nbAdulte = rs1.getInt(1);
@@ -220,30 +224,28 @@ public class ReservationLogementDAO extends SQLAble {
 
 			}
 
-
 			int totalPrixAdulte = tarifAdulte * nbAdulte;
 			int totalPrixEnfant = tarifEnfant * nbEnfant;
-			int prixTotal = totalPrixAdulte + totalPrixEnfant ;
+			int prixTotal = totalPrixAdulte + totalPrixEnfant;
 			System.out.println("prix total = " + prixTotal);
-
+			jour = "'" + jour + "'";
 			Statement upd = conn.createStatement();
-			
+
 			if (nbAdulte >= nbPlaceAdulte && nbEnfant >= nbPlaceEnfant) {
 				System.out.println("dans le mille");
-				int nb = ps.executeUpdate("DELETE FROM LesPeriodeDeDisponibilites WHERE dateDispo = " + jour + " and numLogement =" + numLogement + "");
+				int nb = ps.executeUpdate("DELETE FROM LesPeriodeDeDisponibilites WHERE dateDispo = TO_DATE(" + str
+						+ ",'dd-MM-yy') and numLogement =" + numLogement + "");
 
 				System.out.println("Nombre de lignes mises à jour dans update place = " + nb);
 				if (nb > 0) {
-		
 
 					int nb2 = ps.executeUpdate(
 							"INSERT INTO LesReservationLogements (idReservation, numLogement, prixResLogement, nbPlaceAdulte, "
-									+ " nbPlaceEnfant, dateReservation) VALUES (" + idReservation + ","
-									+ numLogement + "," + prixTotal + "," + nbPlaceAdulte + "," + nbPlaceEnfant + ","
-									+ date + ")");
+									+ " nbPlaceEnfant) VALUES (" + idReservation + "," + numLogement + "," + prixTotal
+									+ "," + nbPlaceAdulte + "," + nbPlaceEnfant + ")");
 					System.out.println("Nombre de lignes insérées dans RESPAQUETPLACE = " + nb2);
 
-				}
+				}System.out.println("commit");
 				conn.commit();
 				ps.close();
 				return true;
@@ -253,6 +255,7 @@ public class ReservationLogementDAO extends SQLAble {
 				// int nb = ps.executeUpdate("Delete from LesReservations where idReservation ="
 				// + idReservation + "");
 				// System.out.println("Nombre de lignes supprime dans LesReservations = " + nb);
+				System.out.println("rollback");
 				SQLAble.conn.rollback();
 				ps.close();
 				return false;
@@ -261,7 +264,7 @@ public class ReservationLogementDAO extends SQLAble {
 			// this.disconnect();
 		} catch (SQLException e) {
 			// TODO: handle exception
-			 e.printStackTrace();
+			e.printStackTrace();
 			SQLAble.conn.rollback();
 			return false;
 		} catch (ClassNotFoundException e) {
@@ -293,6 +296,61 @@ public class ReservationLogementDAO extends SQLAble {
 		ArrayList<PaquetsBillets> paquets = new ArrayList<PaquetsBillets>();
 		paquets = this.billetFestivalSql(idFestival);
 		return paquets;
+
+	}
+
+	public String str(String s) {
+		s = s.replace(".", "");
+		s = s.replace(",", "");
+		// System.out.println(s);
+		String[] test = s.split(" ");
+		String mois = test[0];
+		String jour = test[1];
+		String annee = test[2];
+
+		String d = jour + "-" + mois + "-" + annee;
+		System.out.println(d);
+		switch (mois) {
+		case "janv":
+			mois = "01";
+			break;
+		case "févr":
+			mois = "02";
+			break;
+		case "mars":
+			mois = "03";
+			break;
+		case "avr":
+			mois = "04";
+			break;
+		case "mai":
+			mois = "05";
+			break;
+		case "juin":
+			mois = "06";
+			break;
+		case "juil":
+			mois = "07";
+			break;
+		case "août":
+			mois = "08";
+			break;
+		case "sept":
+			mois = "09";
+			break;
+		case "oct":
+			mois = "10";
+			break;
+		case "nov":
+			mois = "11";
+			break;
+		case "déc":
+			mois = "12";
+			break;
+
+		}
+		d = jour + "-" + mois + "-" + annee;
+		return d;
 
 	}
 }

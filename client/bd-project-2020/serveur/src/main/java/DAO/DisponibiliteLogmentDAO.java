@@ -47,7 +47,7 @@ public class DisponibiliteLogmentDAO extends SQLAble{
 				
 				
 		
-				System.out.println("Date  ="+dateDeDispoD);
+				//System.out.println("Date  ="+dateDeDispoD);
 				listeDeDsipo.add(dateDeDispoD);
 				
 			}

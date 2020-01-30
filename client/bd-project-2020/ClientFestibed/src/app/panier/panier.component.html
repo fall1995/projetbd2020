@@ -1,32 +1,34 @@
 
 
 <div class="col-md-6">
-    <div *ngFor="let place of places">
+    <div *ngFor="let res of tabResFest">
         <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                    Jour {{place.jour}}
+                    festival : {{res.nomFestivale}}<br>
+                    Jour : {{res.jour}}
                 </mat-panel-title>
                 <mat-panel-description>
-                  Information du festival :{{place.idFestival}}
+                    festival : {{res.nomFestivale}}<br>
+                    Jour : {{res.jour}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
           
               <mat-list>
                   <mat-list-item></mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.tarifSansCateg}}</mat-list-item>
+                  <mat-list-item>nbPlacesSansCateg : {{res.nbPlacesSansCateg}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.nbPlacesSansCateg}}</mat-list-item>
+                  <mat-list-item>nbPlacesCateg1 : {{res.nbPlacesCateg1}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+                  <mat-list-item>nbplacesCateg2 : {{res.nbplacesCateg2}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.tarifCateg1}}</mat-list-item>
+                  <mat-list-item>dateReservat : {{res.dateReservat}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+                  <mat-list-item>prix : {{res.prixResTota}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item>{{place.tarifCateg2}}</mat-list-item>
+                  
                 </mat-list>
             </mat-expansion-panel>
             <mat-expansion-panel (opened)="panelOpenState = true"

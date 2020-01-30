@@ -26,12 +26,12 @@ export class PanierComponent implements OnInit {
     
     afficherDialog = false;
     user: User; // l'utilisateur courant
-    tabResFest : Reservation[];
+    tabResFest : any[];
     tabResLogement : any[];
 
     prevScrollpos:any;
-    ipAddress: any;
-    idUtilisateur: any;
+    ipAddress: string;
+    idUtilisateur : String;
 
     // tslint:disable-next-line:max-line-length
     constructor( private route: Router, private message: MessageService,
@@ -41,12 +41,7 @@ export class PanierComponent implements OnInit {
     }
 
 
-    getIP() {
-        this.ip.getIPAddress().subscribe((res: any) => {
-            this.ipAddress = res.ip;
-            this.idUtilisateur = this.ipAddress;
-        });
-    }
+    
 
     
   
@@ -54,16 +49,8 @@ export class PanierComponent implements OnInit {
 
 
     ngOnInit() {
-        this.init();
-        this.afAuth.auth.onAuthStateChanged(
-            (user) => {
-                if (user) {
-                    this.isAuth = true;
-                } else {
-                    this.isAuth = false;
-                }
-            }
-        );
+        this.getIP();
+        this.getReservation();
        
     }
 
@@ -73,11 +60,20 @@ export class PanierComponent implements OnInit {
 
     async getReservation(){
         this.tabResFest = await this.panierServ.getResFestivales({
-            idFestival : this.idUtilisateur
+            idUtilisateur : this.idUtilisateur
            
           })
+          console.log(this.tabResFest.length)
     }
 
+
+    getIP() {
+        this.ip.getIPAddress().subscribe((res: any) => {
+            this.ipAddress = res.ip;
+            this.idUtilisateur = this.ipAddress;
+            console.log(this.idUtilisateur);
+        });
+    }
 }
 
    
