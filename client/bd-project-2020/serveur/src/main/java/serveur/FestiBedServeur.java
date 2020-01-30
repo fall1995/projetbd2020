@@ -50,6 +50,7 @@ public class FestiBedServeur extends HttpServlet {
 
         servletHandler.addServletWithMapping(BilletServelet.class, "/api/billets");
         servletHandler.addServletWithMapping(PanierServelet.class, "/api/panier");
+        servletHandler.addServletWithMapping(LogementServelet.class, "/api/reservationLogement");
        /* TimerT t1 = new TimerT();
         Timer t = new Timer();
         t.schedule(t1, 10000); //  executes for every 10 seconds*/
