@@ -6,9 +6,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {MessageService} from 'primeng/api';
 import {User} from '../tmdb-data/user';
 import {AuthService} from '../service/auth.service';
-import {TmdbService} from '../service/tmdb.service';
+
 import { EventEmitterService } from '../service/event-emitter.service'; 
-import { Reservation } from '../Reservation-DATA/Reservation';
+
 import { panierService } from '../service/panier.service';
 import {IpServiceService} from "./../ip-service.service";
 
@@ -49,7 +49,7 @@ export class PanierComponent implements OnInit {
 
 
     ngOnInit() {
-        this.getIP();
+        this.idUtilisateur();
         this.getReservation();
        
     }
@@ -67,13 +67,17 @@ export class PanierComponent implements OnInit {
     }
 
 
-    getIP() {
-        this.ip.getIPAddress().subscribe((res: any) => {
-            this.ipAddress = res.ip;
-            this.idUtilisateur = this.ipAddress;
-            console.log(this.idUtilisateur);
-        });
-    }
+   
+
+    idutilisa(){
+        this.afAuth.user.subscribe(utilisateur =>{
+            this.idUtilisateur=utilisateur.uid;
+                  
+                });
+                console.log(this.idUtilisateur)
+            }
+
+    
 }
 
    

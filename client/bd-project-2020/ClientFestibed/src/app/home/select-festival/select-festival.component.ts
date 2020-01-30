@@ -4,6 +4,8 @@ import {FestivalService} from "../../service/Festival.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {IpServiceService} from "../../ip-service.service";
 import { MessageService } from 'primeng/api';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-select-festival',
@@ -26,7 +28,8 @@ export class SelectFestivalComponent implements OnInit {
     reponse : any;
 
     constructor(private festservice: FestivalService,private route : ActivatedRoute,
-                private ip:IpServiceService, private router : Router, private message : MessageService) {
+                private ip:IpServiceService, private router : Router, private message : MessageService,
+                 private afAuth: AngularFireAuth, private authService : AuthService) {
     }
 
     ngOnInit() {
@@ -35,8 +38,8 @@ export class SelectFestivalComponent implements OnInit {
         this.dated = this.route.snapshot.paramMap.get('dated');
         this.datef = this.route.snapshot.paramMap.get('datef');
         this.idFestival = parseInt(this.idf, 10);
+        this.idutilisa();
         this.init();
-        this.getIP();
         //this.remplirTab();
        // console.log(this.tabOption.length);
        
@@ -111,6 +114,14 @@ export class SelectFestivalComponent implements OnInit {
             this.idUtilisateur = this.ipAddress;
         });
     }
+    idutilisa(){
+        this.afAuth.user.subscribe(utilisateur =>{
+            this.idUtilisateur=utilisateur.uid;
+                  
+                });
+                console.log(this.idUtilisateur)
+            }
+
 
 
     }

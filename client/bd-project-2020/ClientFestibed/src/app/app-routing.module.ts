@@ -23,7 +23,7 @@ const routes: Routes = [
     {path: 'authentification/signup', component: SignupComponent},
     {path: 'menus', component: MenusComponent},
     {path: 'AjoutFestival', component: AjouterfestivalComponent},
-    {path: 'AjoutPlaceFestivale/:id/:dated/:datef', component: SelectFestivalComponent},
+    {path: 'home/AjoutPlaceFestivale/:id/:dated/:datef', component: SelectFestivalComponent},
     {path: 'Hebergement/:id/:dated/:datef', component: HebergementComponent},
     {path: 'ChambreHotel/:id/:idheber/:type/:dated/:datef', component: ChambreHotelComponent},
     
@@ -31,7 +31,8 @@ const routes: Routes = [
     {path: 'user/commande', component: CommandeComponent },
     {path: 'user/panier', component: PanierComponent },
     {path: 'chambre-liste/:numloge', component: ListeChambreComponent },
-    {path: '', component: HomeComponent },
+    {path: '', component: SigninComponent },
+    {path: 'home', component: HomeComponent },
     {path: 'commande/facture/:idCommande', component: FactureDetailComponent},
     {path: '', redirectTo: 'films', pathMatch: 'full'},
 

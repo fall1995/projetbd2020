@@ -1,17 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">FESTIBED</a>
+    <a class="navbar-brand" href="#" *ngIf="isAuth">FESTIBED</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse" id="navbarText" >
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item active" *ngIf="isAuth">
           <a class="nav-link" href="#" routerLink="/">HomeFestibed <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
+       
+        <li class="nav-item" *ngIf="isAuth">
           <a class="nav-link" href="#" routerLink="user/panier">Panier</a>
         </li>
         <li class="nav-item dropdown" id="rightButton">
@@ -29,9 +27,7 @@
                     <li routerLinkActive="" *ngIf="!user">
                         <a routerLink="authentification/signin">Connexion</a>
                     </li>
-                    <li routerLinkActive="" *ngIf="!user">
-                        <a routerLink="authentification/signup">Créer un compte</a>
-                    </li>
+                    
                     <div class="dropdown-divider"></div>
                     <li>
                         <a (click)="onSignOut()" *ngIf="user" style="cursor:pointer">Se déconnecter</a>

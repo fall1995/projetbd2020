@@ -15,7 +15,6 @@ import { EventEmitterService } from '../service/event-emitter.service';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-    //isAuth: boolean;
     nbArticlesPanier:number;
     user: any;
     prevScrollpos:any;
@@ -29,11 +28,18 @@ export class HeaderComponent implements OnInit {
 
 
     ngOnInit() {
-        this.eventEmitterService.invokePanier.subscribe((name:string) => {    
-          this.initnbArticles();    
-        }); 
+        this.init();
+        this.afAuth.auth.onAuthStateChanged(
+            (user) => {
+                if (user) {
+                    this.isAuth = true;
+                } else {
+                    this.isAuth = false;
+                }
+            }
+        );
         this.init()
-        this.initnbArticles()
+
         this.afAuth.auth.onAuthStateChanged(
             (user) => {
                 if(user)

@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit {
     loginGoogle() {
         this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then(
             u => {
-                this.route.navigate(['/']);
+                this.route.navigate(['/home']);
                 this.message.add({severity:'success',
                     summary:`Bienvenue ${u.user.displayName}`,
                     detail:'Vous pouvez commander vos films et plats 😁!'});
@@ -97,6 +97,7 @@ export class SigninComponent implements OnInit {
             let i = utilisateur.displayName.indexOf(" "); // couper en 2 displayname pour avoir le prenom et le nom
             if (utilisateur.uid){
                 console.log('heyyyy')
+                console.log(utilisateur.uid)
                 this.authService.authentificate({
                     // variable que le serveur s'attend a recevoir
                     
