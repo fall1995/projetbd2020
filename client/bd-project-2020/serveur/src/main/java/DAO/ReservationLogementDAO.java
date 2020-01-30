@@ -142,21 +142,22 @@ public class ReservationLogementDAO extends SQLAble {
 
 	}
 
-	public boolean creerResaLogementChambre(String idUtilisateur, int numLogement, int jour, int nbPlaceAdulte,
+	public boolean creerResaLogementChambre(String idUtilisateur, int numLogement, String jour, int nbPlaceAdulte,
 			int nbPlaceEnfant) throws SQLException {
 		/*
 		 * System.out.println("nbcommandeS  ="+ nbPlacesSansCateg);
 		 * System.out.println("nbcommandeC1  ="+ nbPlaceCateg1);
 		 * System.out.println("nbcommandeC2  ="+ nbPlaceCateg2);
 		 */
-		System.out.println("-------------->" + idUtilisateur);
-		System.out.println("-------------->" + numLogement);
-		System.out.println("-------------->" + jour);
-		System.out.println("-------------->" + nbPlaceAdulte);
-		System.out.println("-------------->" + nbPlaceEnfant);
+		System.out.println("-------------->idUtilisateur          " + idUtilisateur);
+		System.out.println("-------------->numLogement        " + numLogement);
+		System.out.println("-------------->jour       " + jour);
+		System.out.println("-------------->nbPlaceAdulte          " + nbPlaceAdulte);
+		System.out.println("-------------->nbPlaceEnfant                " + nbPlaceEnfant);
 
 		try {
 			connectToDatabase();
+			System.out.println("après conn base");
 			int count =0;
 			int res = 0;
 			System.out.println("dans creerResLogement");
@@ -226,7 +227,7 @@ public class ReservationLogementDAO extends SQLAble {
 			System.out.println("prix total = " + prixTotal);
 
 			Statement upd = conn.createStatement();
-
+			
 			if (nbAdulte >= nbPlaceAdulte && nbEnfant >= nbPlaceEnfant) {
 				System.out.println("dans le mille");
 				int nb = ps.executeUpdate("DELETE FROM LesPeriodeDeDisponibilites WHERE dateDispo = " + jour + " and numLogement =" + numLogement + "");
@@ -271,7 +272,7 @@ public class ReservationLogementDAO extends SQLAble {
 
 	}
 
-	public boolean reserverLogement(String idUtilisateur, int numLogement, int jour, int nbPlaceAdulte,
+	public boolean reserverLogement(String idUtilisateur, int numLogement, String jour, int nbPlaceAdulte,
 			int nbPlaceEnfant) {
 		boolean res = false;
 		try {

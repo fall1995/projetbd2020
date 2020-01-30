@@ -7,6 +7,7 @@ package mesServelets;
  */
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ System.out.println("avant \n");
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("================================================== logement servlet [doPost] ==================================================");
+        System.out.println("================================================== LogementResa servlet [doPost] ==================================================");
 
         response.setContentType("application/json");
         response.addHeader("Access-Control-Allow-Origin", "*");
@@ -133,10 +134,7 @@ System.out.println("avant \n");
         String jour = parametres.get("jour");
         String nbPlaceAdulte = parametres.get("nbPlaceAdulte");
         String nbPlaceEnfant = parametres.get("nbPlaceEnfant");
-        
-        System.out.println("nbPlaceS =" + idUtilisateur);
-        System.out.println("nbPlaceC1 =" + numLogement);
-        System.out.println("nbPlaceC2 =" + jour);
+   
 
 
         
@@ -144,11 +142,17 @@ System.out.println("avant \n");
         int nbPlaceAdulteInt = Integer.parseInt(nbPlaceAdulte);
         int nbPlaceEnfantInt = Integer.parseInt(nbPlaceEnfant);
         int numLogementInt = Integer.parseInt(numLogement);
+        
 
         /*	if (postValide(parametres, id,nom,prenom )) {*/
         ReservationLogementDAO LogementDAO = new ReservationLogementDAO();
-       // insert = LogementDAO.creerResaLogementChambre(idUtilisateur, numLogement, jour, nbPlaceAdulte, nbPlaceEnfant);
-      
+        try {
+			insert = LogementDAO.creerResaLogementChambre(idUtilisateur, numLogementInt, jour, nbPlaceAdulteInt, nbPlaceEnfantInt);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         //creer timer pour supprimer resa 
        /* if (insert == true) {
         	//timer 
